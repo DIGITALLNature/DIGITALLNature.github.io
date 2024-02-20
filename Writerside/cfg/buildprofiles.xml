@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<buildprofiles xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/build-profiles.xsd"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <variables>
+        <custom-favicons>https://digitall.com/favicon/favicon.ico</custom-favicons>
+        <header-logo>logo.png</header-logo>
+        <product-web-url>https://www.digitall.com</product-web-url>
+        <primary-color>blueberry</primary-color>
+    </variables>
+    <build-profile instance="cg">
+        <variables>
+            <noindex-content>false</noindex-content>
+        </variables>
+    </build-profile>
+
+</buildprofiles>
