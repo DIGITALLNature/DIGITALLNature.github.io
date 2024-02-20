@@ -13,5 +13,9 @@
             <noindex-content>false</noindex-content>
         </variables>
     </build-profile>
-
+    <footer>
+        <copyright>DIGITALL Nature GmbH</copyright>
+        <social type="blog" href="https://blog.digitall.com" />
+        <social type="twitter" href="https://twitter.com/DIGITALLpeople" />
+    </footer>
 </buildprofiles>
