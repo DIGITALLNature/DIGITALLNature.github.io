@@ -1,3 +1,0 @@
-# Model-driven Apps
-
-Start typing here...
