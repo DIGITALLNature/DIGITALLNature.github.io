@@ -4,7 +4,7 @@
 _Deviations must be justified in the architectural documentation_
 
 ## Configuration / Customization
-- Publisher: Custom one for Customer-Managed Enviroment, for general proposes digitall (prefix: dgt) [dgt_publisher]
+- Publisher: Custom one for Customer-Managed Environment, for general proposes digitall (prefix: dgt) [dgt_publisher]
 - Using XRM Toolbox before install different 3rd party solutions in dynamics!
 - Changes on Ribbon Bar: XRM Toolbox
 ### Themes
