@@ -1,4 +1,4 @@
-# What is DigitallPower CLI?
+# DigitallPower CLI
 
 DIGITALLPOWER - the dotnet tool for the PowerPlatform from DIGITALL.
 A swiss army knife for all ALM issues where PAC still has weaknesses.
