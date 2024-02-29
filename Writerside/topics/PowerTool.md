@@ -29,14 +29,14 @@ dotnet tool uninstall -g dgt.power
 
 This table lists the ommands used in the DigitallPower CLI.
 
-| Command                                   |Description|
-|-------------------------------------------|-----------|
-| [dgtp profile](DGPT-Profile.md)           |Managed authentication profiles.|
-| [dgtp analyze](DGPT-Analyze.md)           |Analyse specific Dataverse artifacts.|
-| [dgtp codegeneration](DGPT-Code-Generation.md)                |Generates .cs, .ts and metadata.xml model files for Dataverse.|
-| [dgtp export](commands/export.md)         |Export specific Dataverse artifacts.|
-| [dgtp import](commands/import.md)         |Import specific Dataverse artifacts.|
-| [dgtp maintaince](commands/maintaince.md) |Handles Authentication.|
-| [dgtp push](commands/push.md)             |Import assembly Dataverse artifacts.|
+| Command                                  |Description|
+|------------------------------------------|-----------|
+| [dgtp profile](DGPT-Profile.md)          |Managed authentication profiles.|
+| [dgtp analyze](DGPT-Analyze.md)          |Analyse specific Dataverse artifacts.|
+| [dgtp codegeneration](DGPT-Code-Generation.md)               |Generates .cs, .ts and metadata.xml model files for Dataverse.|
+| [dgtp export]        |Export specific Dataverse artifacts.|
+| [dgtp import]        |Import specific Dataverse artifacts.|
+| [dgtp maintaince] |Handles Authentication.|
+| [dgtp push]          |Import assembly Dataverse artifacts.|
 
 > For the complete list of supported commands run the `dgtp` command or `dgtp` \<subcommand> - for example: `dgtp codegeneration`.

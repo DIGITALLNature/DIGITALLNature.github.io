@@ -12,16 +12,16 @@ Define an alternate name for the model folder. Default is `Model`.
 ### `--config` `-c`
 Full or relative path to the config file, e.g. 'C:\temp\config.json'. Default is `config.json`.
 
-## Examples
+## Examples {id="examples-general"}
 
 ### Generate model using default parameters
-```powershell
+```Shell
 dgtp codegeneration
 ```
 
 ### Switch profile and generate model in certain sub folder
 
-```powershell
+```Shell
 dgtp profile select Test
 dgtp codegeneration ./subfolder/models `
   --folder CustomModel `
@@ -41,18 +41,18 @@ For the sake of clarity, the chapters on configuration file parameters are separ
 
 * [General parameters](#general-parameters)
     * [Required parameters](#required-parameters)
-    * [Additional content](#additional-content)
-    * [Filters](#filters)
-    * [Output management](#output-management)
+    * [Additional content](#additional-content-general)
+    * [Filters](#filters-general)
+    * [Output management](#output-management_general)
 * [DotNet specific parameters](#dotnet-specific-parameters)
-    * [Filters](#filters-1)
-    * [Output management](#output-management-1)
+    * [Filters](#filters-dotnet)
+    * [Output management](#output-management-dotnet)
 * [TypeScript specific parameters](#typescript-specific-parameters)
-    * [Filters](#filters-2)
-    * [Additional content](#additional-content-1)
-    * [Output management](#output-management-2)
+    * [Filters](#filters-typescript)
+    * [Additional content](#additional-content-typescript)
+    * [Output management](#output-management-typescript)
 
-As an introduction to the config topic, please have a look at the [examples listed below](#examples).
+As an introduction to the config topic, please have a look at the [examples listed below](#examples-config).
 
 ## General parameters
 
@@ -65,25 +65,25 @@ These parameters should always be included. Otherwise the code generation will f
 |Actions|string[]|List of all actions for which model content should be created|
 |CustomAPIs|string[]|List of all custom apis for which model content should be created|
 
-### Additional content
+### Additional content {id="additional-content-general"}
 If you want to generate additional model content on top of the default stuff, use these parameters.
 |Parameter|Value type|Default|Description|
 |---|---|---|---|
 |AdditionalSdkMessages|string[]|`[]`|List of all additional sdk messages for which model content should be created|
 |GlobalOptionSets|string[]|`[]`|Generate code for these global option sets only|
 
-### Filters
+### Filters {id="filters-general"}
 To reduce the amount classes or solution components to get generated code for, use these parameters.
 
-|Parameter|Value type|Default|Description|
-|---|---|---|---|
-|EntityMask|string|`"*"`|Additional to the list of entities you can create a mask to get all entities which fit example: "new_*" would create models for all entities which start with new_|
-|SdkMessageFilters|string[]|`[]`|Generate code for these sdk messages only|
-|Solutions|string[]|`[]`|List all solutions for which classes should be generated.<br>(TypeScript: see [`OnlyFormsFromSolutions`](#filters-2) below)|
-|SuppressOptions|bool|`false`|Deactivate creation of OptionSetValues|
-|SuppressSdkMessages|bool|`false`|Deactivate creation of SdkMessages (Create, Update, Delta, etc..)|
+|Parameter|Value type|Default| Description                                                                                                                                                        |
+|---|---|---|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|EntityMask|string|`"*"`| Additional to the list of entities you can create a mask to get all entities which fit example: "new_*" would create models for all entities which start with new_ |
+|SdkMessageFilters|string[]|`[]`| Generate code for these sdk messages only                                                                                                                          |
+|Solutions|string[]|`[]`| List all solutions for which classes should be generated.<br/>(TypeScript: see [`OnlyFormsFromSolutions`](#filters-general) below)                                               |
+|SuppressOptions|bool|`false`| Deactivate creation of OptionSetValues                                                                                                                             |
+|SuppressSdkMessages|bool|`false`| Deactivate creation of SdkMessages (Create, Update, Delta, etc..)                                                                                                  |
 
-### Output management
+### Output management {id="output-management_general"}
 To define how the output should look like or for which targets you want generated code, use the following parameters.
 |Parameter|Value type|Default|Description|
 |---|---|---|---|
@@ -95,7 +95,7 @@ To define how the output should look like or for which targets you want generate
 
 ## DotNet specific parameters
 
-### Filters
+### Filters {id="filters-dotnet"}
 
 |Parameter|Value type|Default|Description|
 |---|---|---|---|
@@ -107,7 +107,7 @@ To define how the output should look like or for which targets you want generate
 |SuppressNavigationProperties|bool|`false`|Deactivate creation of the navigation properties|
 |SuppressRelations|bool|`false`|Deactivate creation of all Relation Names|
 
-### Output management
+### Output management {id="output-management-dotnet"}
 
 |Parameter|Value type|Default|Description|
 |---|---|---|---|
@@ -119,27 +119,27 @@ To define how the output should look like or for which targets you want generate
 
 ## TypeScript specific parameters
 
-### Filters
+### Filters {id="filters-typescript"}
 
-|Parameter|Value type|Default|Description|
-|---|---|---|---|
-|EntityFilters|[see below](#entityfilters--entityreffilters)||TypeScript only (shrink imports, e.g. odata query or form open)|
-|EntityFormFilters|[see below](#entityformfilters)||Generate classes only for these forms, including only the defined attributes, optionsets, tabs, sections and grids.|
-|EntityRefFilter|[see below](#entityfilters--entityreffilters)||TypeScript only (shrink imports, e.g. odata query or form open)|
-|Forms|string[]|`[]`|List all forms for which classes should be generated.|
-|OnlyFormsFromSolutions|bool|`false`|Generate form classes only for forms included in the solutions defined in the [`Solutions`](#filters) parameter above|
+|Parameter| Value type                      |Default| Description                                                                                                         |
+|---|---------------------------------|---|---------------------------------------------------------------------------------------------------------------------|
+|EntityFilters| [see below](#entityfilters)     || TypeScript only (shrink imports, e.g. odata query or form open)                                                     |
+|EntityFormFilters| [see below](#entityformfilters) || Generate classes only for these forms, including only the defined attributes, optionsets, tabs, sections and grids. |
+|EntityRefFilter| [see below](#entityfilters)     || TypeScript only (shrink imports, e.g. odata query or form open)                                                     |
+|Forms| string[]                        |`[]`| List all forms for which classes should be generated.                                                               |
+|OnlyFormsFromSolutions| bool                            |`false`| Generate form classes only for forms included in the solutions defined in the [`Solutions`](#filters-general) parameter above     |
 
-### Additional content
+### Additional content {id="additional-content-typescript"}
 |Parameter|Value type|Default|Description|
 |---|---|---|---|
 |BusinessProcessFlows|string[]|`[]`|Generate classes for these BPFs.|
 
-### Output management
+### Output management {id="output-management-typescript"}
 |Parameter|Value type|Default|Description|
 |---|---|---|---|
 |TypingPath|string|`"../../Typings/Xrm/index.d.ts"`|TypeScript typings, e.g. ../../Typings/Xrm/index.d.ts|
 
-#### `EntityFilters` / `EntityRefFilters`
+#### `EntityFilters` / `EntityRefFilters` {id="entityfilters"}
 |Parameter|Value type|Default|Description|
 |---|---|---|---|
 |Entity|string||Logical name of the table for which the model is to be generated.|
@@ -156,7 +156,7 @@ To define how the output should look like or for which targets you want generate
 |Sections|string[]|`[]`|Names of the sections inside the table which must be part of the form model.|
 |Grids|string[]|`[]`|Names of the sub grids inside the table which must be part of the form model.|
 
-## Examples
+## Examples {id="examples-config"}
 
 ### Generate DotNet classes for plugin usage
 In this example we use a very common configuration for plugin model generation.
