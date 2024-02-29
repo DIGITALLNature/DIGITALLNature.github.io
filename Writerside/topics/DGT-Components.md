@@ -1,3 +1,0 @@
-# DGT Components
-
-Start typing here...

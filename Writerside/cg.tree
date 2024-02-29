@@ -4,7 +4,7 @@
 
 <instance-profile id="cg"
                  name="Code Guidelines"
-                 start-page="Default-topic.md">
+                  start-page="Default-topic.md">
 
     <toc-element topic="Default-topic.md"/>
     <toc-element toc-title="PowerApps">
@@ -14,13 +14,16 @@
     </toc-element>
     <toc-element topic="PowerAutomate.md"/>
     <toc-element topic="PowerBI.md"/>
-    <toc-element topic="DGT-Components.md">
+    <toc-element toc-title="Tooling">
+        <toc-element topic="PowerTool.md">
+            <toc-element topic="DGPT-Analyze.md"/>
+            <toc-element topic="DGPT-Code-Generation.md"/>
+            <toc-element topic="DGPT-Profile.md"/>
+        </toc-element>
         <toc-element topic="Solution-Concept.md"/>
         <toc-element topic="ALM.md"/>
         <toc-element topic="PowerAssemblies.md"/>
-        <toc-element topic="PowerTool.md"/>
     </toc-element>
     <toc-element topic="Setup.md"/>
-    <toc-element topic="Best-Practices.md">
-    </toc-element>
+    <toc-element topic="Best-Practices.md"/>
 </instance-profile>
