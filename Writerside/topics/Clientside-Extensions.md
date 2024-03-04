@@ -22,3 +22,7 @@ _Deviations must be justified in the architectural documentation_
 - Visual Studio Code default code formatting, enforce lint checks
 
 **Hint:** Best Pratice to use [PCF-CustomControlBuilder](https://github.com/Power-Maverick/PCF-CustomControlBuilder) in XrmToolbox.
+
+https://www.npmjs.com/package/@microsoft/eslint-plugin-power-apps
+
+https://github.com/scottdurow/dataverse-gen

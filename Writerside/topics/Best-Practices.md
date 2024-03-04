@@ -1,5 +1,10 @@
 # Best Practices
 
+## Feature Usage
+-- TODO
+... prefere formular over calculated and over rollups
+
+
 ## ALM
 Best Pratice to consider [Application Lifecycle Management (ALM) mit Microsoft Power Platform](https://docs.microsoft.com/de-de/power-platform/alm/)
 

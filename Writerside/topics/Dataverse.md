@@ -8,27 +8,20 @@ _Deviations must be justified in the architectural documentation_
 - Using XRM Toolbox before install different 3rd party solutions in dynamics!
 - Changes on Ribbon Bar: XRM Toolbox
 ### Themes
-- Every Instance/Stage gets his own color theme
+- Every Instance/Stage/App gets his own color theme
 - Logo: 150-400x50px (png)
 ### Images (Alternative 1):
-- Application Image: (v8.x)
-    - Classic:
-        - 85x71​: White (Hex: #ffffff bzw. #2effffff; RGB: 255, 255, 255 Opacity 18%​) - 4px Padding
 - Entity Image:
-    - Classic:
-        - 16x16 (png): Gray  (Hex: #656565 bzw. #ff656565; RGB: 101, 101, 101) - 0px Padding
-        - 32x32 (png): White (Hex: #ffffff bzw. #ffffffff; RGB: 255, 255, 255) - 4px Padding
     - Unified Interface:
-        - 32x32 (svg): Black (Hex: #000000 bzw. #ff000000; RGB: 0, 0, 0) - 0px Padding
+        - svg: Black (Hex: #000000 bzw. #ff000000; RGB: 0, 0, 0) - 0px Padding
     - Ribbon Bar Icons:
-        - Modern (UI):
-            - 32 x 32 (svg): Grey (HEX: #3A3A3A bzw. ##FF3A3A3A; RGB: 58, 58, 58 ) - 0px padding
+        - svg: Grey (HEX: #3A3A3A bzw. ##FF3A3A3A; RGB: 58, 58, 58 ) - 0px padding
 
 ### Images (Alternative 2):
-- Use the fluentui icons (only available svg)
-  [Office UI Fabric Icons](https://uifabricicons.azurewebsites.net) → [Fluent UI](https://github.com/microsoft/fluentui)
-  clone the git project and extract the svg files; see scripts
-
+- Use the fluentui icons
+    - [Fluent UI](https://github.com/microsoft/fluentui-system-icons?tab=readme-ov-file)
+    - [Office UI Fabric Icons](https://uifabricicons.azurewebsites.net)
+ 
 ### Naming Conventions
 - [snake_case](https://en.wikipedia.org/wiki/Snake_case) (lower)!!
 - Entity Name: `dgt_entityname` (`publisher_name`)
@@ -60,6 +53,7 @@ _Deviations must be justified in the architectural documentation_
             - eMail: `dgt_..._email`
         - Rollup field: `dgt_...[_type]_rf`
         - Calculated field: `dgt_...[_type]_cf`
+        - Formular field: `dgt_...[_type]_fx`
     - Long Field Name:
         - Max length for unique name is 41
         - If the generated name exceeds this length shorten it, but keep the type!
