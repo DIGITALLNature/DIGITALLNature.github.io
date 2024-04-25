@@ -4,9 +4,9 @@
 An internal Azure DevOps project is created with the customer name - system name. Select the “Agile” template and GIt for the source code.
 If the Extended Workbench is commissioned, a feature for the customer system name must be created here.
 
-## Repository Structure
+### Repos
 
-### Repositories
+#### Repositories
 ```plantuml
 @startmindmap
     * Project GIT
@@ -32,7 +32,7 @@ If the Extended Workbench is commissioned, a feature for the customer system nam
 @endmindmap
 ```
 
-### Repositories Folder structure
+#### Repositories Folder structure
 ```plantuml
 @startmindmap
     * Root
@@ -58,7 +58,7 @@ If the Extended Workbench is commissioned, a feature for the customer system nam
 @endmindmap
 ```
 
-### Repositories Branch Strategy
+#### Repositories Branch Strategy
 
 ```mermaid
     gitGraph
@@ -88,9 +88,24 @@ If the Extended Workbench is commissioned, a feature for the customer system nam
 ```
 
 
-### .gitignore
+#### .gitignore
 Generate current .gitignore on [gitignore.io](https://www.toptal.com/developers/gitignore) for used IDE's and technology.
 e.g. visualstudio,rider,visualstudiocode,dotnetcore
 
 Add all folders where generated code is produced. For example, earlybound classes from DGTP or the transpiled 
 JScript files from Typescript projects.
+
+### Pipelines
+
+#### Variable groups
+
+#### Envirpments
+
+#### YAML Pipelines
+
+## Dataverse Development Enviroment
+
+### Creation
+
+### D365 Apps
+
