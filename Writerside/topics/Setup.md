@@ -4,29 +4,36 @@
 An internal Azure DevOps project is created with the customer name - system name. Select the “Agile” template and GIt for the source code.
 If the Extended Workbench is commissioned, a feature for the customer system name must be created here.
 
+Hint: Use PowerShell CreateDevOps.ps1!
+(https://github.com/DIGITALLNature/DigitallPipelines/tree/feat/generate-complete-devops-project/azure-pipeline-scripts)
+
 ### Repos
 
 #### Repositories
 ```plantuml
 @startmindmap
-    * Project GIT
+    * <Project Name>
         *_ Pipeline Scripts for ALM
         *_ Unpacked CRM Solutions
-    * Plugins
+    * Serverside
         *_ Custom APIs
         *_ Dataverse Plugins
         *_ Workflow Assemblies
-    * Webressources
+    * Clientside
         *_ Images
-        *_ Formscripts
+        *_ FormScripts
         *_ PCFs
-    * Azure
+    * Cloud
         *_ Functions
-        *_ DataBricks
+        *_ Logic Apps
+        *_ API Management/Gateways
         *_ etc
-    * Migration
+    * Data
         *_ SSIS
         *_ DataPackages
+        *_ DataBricks
+        *_ DataFactorys
+        *_ etc
     * Documentation
         *_ Writerside
 @endmindmap
