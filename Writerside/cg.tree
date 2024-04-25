@@ -26,6 +26,7 @@
     </toc-element>
     <toc-element topic="Setup.md"/>
     <toc-element topic="Best-Practices.md">
+        <toc-element topic="Dependent-Plugins.md"/>
         <toc-element topic="Testing-Serverside-Extensions.md"/>
     </toc-element>
 </instance-profile>
