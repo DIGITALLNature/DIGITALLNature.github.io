@@ -67,6 +67,7 @@ These parameters should always be included. Otherwise the code generation will f
 
 ### Additional content {id="additional-content-general"}
 If you want to generate additional model content on top of the default stuff, use these parameters.
+
 |Parameter|Value type|Default|Description|
 |---|---|---|---|
 |AdditionalSdkMessages|string[]|`[]`|List of all additional sdk messages for which model content should be created|
@@ -85,9 +86,10 @@ To reduce the amount classes or solution components to get generated code for, u
 
 ### Output management {id="output-management_general"}
 To define how the output should look like or for which targets you want generated code, use the following parameters.
+
 |Parameter|Value type|Default|Description|
 |---|---|---|---|
-|Hints|bool|`true`|Show hints for config improvements or deprecated parameter usage on console.
+|Hints|bool|`true`|Show hints for config improvements or deprecated parameter usage on console.|
 |SuppressDotNet|bool|`false`|Deactivate creation of DotNet files (.cs)|
 |SuppressMetaData|bool|`false`|Deactivate creation of MetaData files (.xml)|
 |SuppressTypeScript|bool|`false`|Deactivate creation of TypeScript files (.ts)|
@@ -112,7 +114,7 @@ To define how the output should look like or for which targets you want generate
 |Parameter|Value type|Default|Description|
 |---|---|---|---|
 |EditableReadOnlyProperties|bool|`false`|Make generated readonly properties editable|
-|NameSpace|string|`"D365.Extension.Model"`|Optional. Define namespace to be used for generated classes.
+|NameSpace|string|`"D365.Extension.Model"`|Optional. Define namespace to be used for generated classes.|
 |NonDebuggerNonUserCode|bool|`false`|Skip annotation of generated properties with 'DebuggerNonUserCode'|
 |SuppressNullableSupport|bool|`false`|Don't use language features of C# 8.0 and up. These are for generating models for tools and dependant plugins.|
 |Virtual|bool|`false`|Generate virtual classes/properties|
