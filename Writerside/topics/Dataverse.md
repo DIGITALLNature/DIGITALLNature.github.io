@@ -21,6 +21,10 @@ _Deviations must be justified in the architectural documentation_
 - Use the fluentui icons
     - [Fluent UI](https://github.com/microsoft/fluentui-system-icons?tab=readme-ov-file)
     - [Office UI Fabric Icons](https://uifabricicons.azurewebsites.net)
+- It is recommended to use the original sources
+- To quickly search for Fluent Icons and possibly download them as .svg, Flicon offers a good overview
+    - [Flicon](https://www.flicon.io/)
+
  
 ### Naming Conventions
 - [snake_case](https://en.wikipedia.org/wiki/Snake_case) (lower)!!
