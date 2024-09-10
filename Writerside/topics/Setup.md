@@ -1,118 +1,41 @@
 # Setup
 
-## DevOps Project
-An internal Azure DevOps project is created with the customer name - system name. Select the “Agile” template and GIt for the source code.
-If the Extended Workbench is commissioned, a feature for the customer system name must be created here.
+## 1. Decide for Dataverse Pipelines or Azure DevOps for ALM
 
-Hint: Use PowerShell CreateDevOps.ps1!
-(https://github.com/DIGITALLNature/DigitallPipelines/tree/feat/generate-complete-devops-project/azure-pipeline-scripts)
-
-### Repos
-
-#### Repositories
 ```plantuml
-@startmindmap
-    * <Project Name>
-        *_ Pipeline Scripts for ALM
-        *_ Unpacked CRM Solutions
-    * Serverside
-        *_ Custom APIs
-        *_ Dataverse Plugins
-        *_ Workflow Assemblies
-    * Clientside
-        *_ Images
-        *_ FormScripts
-        *_ PCFs
-    * Cloud
-        *_ Functions
-        *_ Logic Apps
-        *_ API Management/Gateways
-        *_ etc
-    * Data
-        *_ SSIS
-        *_ DataPackages
-        *_ DataBricks
-        *_ DataFactorys
-        *_ etc
-    * Documentation
-        *_ Writerside
-@endmindmap
+@startuml
+start
+
+if (Assumed Enviroment) then (Low Code)
+: Dataverse Pipelines;
+else (High Code)
+: Azure DevOps;
+endif;
+
+stop
+@enduml
 ```
 
-#### Repositories Folder structure
-```plantuml
-@startmindmap
-    * Root
-        * src
-            * <project a>
-                *_ <project>.csproj
-                *_ package.json
-            * <project b>
-                *_ <project>.csproj
-                *_ package.json
-            *_ Directory.Build.props
-            *_ key.snk
-        * tests
-            * <project a>
-            * <project b>
-        * samples
-        *_ <ci-pipeline>.yaml
-        *_ Directory.Build.props
-        *_ package.json
-        *_ .gitignore
-        *_ <name>.sln
-        *_ README
-@endmindmap
-```
+<tip>
+Operating both approaches is possible and often practical
 
-#### Repositories Branch Strategy
+The platform's own ALM is used for the dataverse stream (in the standard case - LowCode).
+Azure DevOps is used for parallel projects in the system boundary (interfaces, Fabrice, etc.).
+</tip>
 
-```mermaid
-    gitGraph
-        commit id: "Init"
-        branch Development
-        checkout Development
-        branch new_feature_a
-        checkout new_feature_a
-        commit
-        commit
-        checkout Development
-        branch new_feature_b
-        checkout new_feature_b
-        commit
-        checkout new_feature_a
-        commit
-        commit
-        checkout Development
-        merge new_feature_a tag: "CI 20220401.01"
-        checkout new_feature_b
-        commit
-        checkout Development
-        merge new_feature_b tag: "CI 20220401.02"
-        checkout main
-        merge Development tag: "Release 2.0.0"
+Our [Dataverse Pipelines Approach](Dataverse-Pipelines.md).  
+Our [DevOps Approach](DevOps.md).
 
-```
+<note>
+In general, it is also good practice, if source code management is in operation, to regularly keep the Dataverse solutions unpacked here as backups/change tracking.
+</note>
 
+_TODO Link to Pipeline sample for that_
 
-#### .gitignore
-Generate current .gitignore on [gitignore.io](https://www.toptal.com/developers/gitignore) for used IDE's and technology.
-e.g. visualstudio,rider,visualstudiocode,dotnetcore
+<note>
+When using ALM platforms unknown to us, we advise on the utilization of PAC and DGT options.
+</note>
 
-Add all folders where generated code is produced. For example, earlybound classes from DGTP or the transpiled 
-JScript files from Typescript projects.
+## 2. Setup Dataverse Enviroments
 
-### Pipelines
-
-#### Variable groups
-
-#### Envirpments
-
-#### YAML Pipelines
-
-## Dataverse Development Enviroment
-
-### Creation
-
-### D365 Apps
-
+[Consult Dataverse Development Enviroment](Dataverse-Setup.md)
