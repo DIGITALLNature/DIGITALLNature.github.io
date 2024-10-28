@@ -23,7 +23,6 @@ The platform's own ALM is used for the dataverse stream (in the standard case - 
 Azure DevOps is used for parallel projects in the system boundary (interfaces, Fabrice, etc.).
 </tip>
 
-Our [Dataverse Pipelines Approach](Dataverse-Pipelines.md).  
 Our [DevOps Approach](DevOps.md).
 
 <note>

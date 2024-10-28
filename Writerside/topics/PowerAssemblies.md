@@ -1,3 +1,0 @@
-# PowerAssemblies
-
-Start typing here...
