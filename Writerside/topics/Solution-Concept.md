@@ -11,9 +11,7 @@ This documentation provides video tutorials on how to use and configure our Digi
 ### 1. Usage Tutorial
 Learn how to use the solution by watching the following video:
 
-[![Watch the usage tutorial](https://img.youtube.com/vi/USAGE_VIDEO_ID/maxresdefault.jpg)](https://digitallnature.sharepoint.com/:v:/r/teams/Skill-upinitiativeMSFTDynCRM/Shared%20Documents/Academy%20Training%20Material/Onboarding/Solution%20workbench%20-%20how%20to%20use%20it.mp4?csf=1&web=1&nav=undefined&e=ujf8h8)
-> *Click the image or [here](https://digitallnature.sharepoint.com/:v:/r/teams/Skill-upinitiativeMSFTDynCRM/Shared%20Documents/Academy%20Training%20Material/Onboarding/Solution%20workbench%20-%20how%20to%20use%20it.mp4?csf=1&web=1&nav=undefined&e=ujf8h8) to watch the usage tutorial.*
-
+<video src="https://youtu.be/DLfFqvcOrrs?si=xeUrjaQqoptmUmmJ" title="DIGITALL Solution workbench: Usage tutorial" />
 ---
 
 ### 2. Configuration Tutorial
