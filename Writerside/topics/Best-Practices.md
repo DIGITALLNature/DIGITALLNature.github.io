@@ -29,7 +29,7 @@ User Stories for the project will be written by the Backlog Definition Team acco
 
 ## Definition of Done
 
-User Stories for the project will be implemented by the ec4u Development Team according to the following DoD:
+User Stories for the project will be implemented by the DIGITALL Development Team according to the following DoD:
 
 - All acceptance criteria are met and tested successfully by Dev Team
 - Unit Tests/Developer Tests are executed successfully
