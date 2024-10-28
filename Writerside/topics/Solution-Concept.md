@@ -10,9 +10,9 @@ This documentation provides video tutorials on how to use and configure our Digi
 
 ### 1. Usage Tutorial
 Learn how to use the solution by watching the following video:
-
-<video src="https://youtu.be/DLfFqvcOrrs?si=xeUrjaQqoptmUmmJ" title="DIGITALL Solution workbench: Usage tutorial" />
 ---
+<video src="https://youtu.be/DLfFqvcOrrs?si=xeUrjaQqoptmUmmJ" title="DIGITALL Solution workbench: Usage tutorial" />
+
 
 ### 2. Configuration Tutorial
 Understand how to configure the solution by watching this video:
