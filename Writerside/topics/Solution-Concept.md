@@ -29,6 +29,18 @@ Watch the following video to learn how to effectively utilize the solution. This
 ---
 <video src="https://youtu.be/DLfFqvcOrrs?si=xeUrjaQqoptmUmmJ" title="DIGITALL Solution workbench: Usage tutorial" />
 
+### Working with a workbench summary
+Create new workbench:
+    Use descriptive name (best practice to reference work item)
+    Select target carrier (which solution this needs to be deployed with)
+This automatically creates a workbench solution
+Go to the solution (buttons will open the solution)
+    Add necessary components
+    Do changes
+Merge changes if they are ready for test
+If ready for prod either:
+    Merge in release carrier and close workbench after successful prod deployment
+    Finalize workbench towards release carrier
 
 ### 2. Configuration Tutorial
 Watch the following video to learn how to properly configure the solution. This tutorial covers:
@@ -39,6 +51,16 @@ Watch the following video to learn how to properly configure the solution. This 
 
 <video src="https://youtu.be/FHTKOyrkGoM" title="DIGITALL Solution workbench: Configuration tutorial" />
 
+---
+## Quick References
+Name	Description
+Table: Carrier	Reference to a solution that should be deployed (transport solution)
+Table: Workbench	A temporary (workbench) solution containing items relating to a work unit. For deployment needs to be merged towards a target carrier
+Table: Workbench History	Holds details about copied components and failure details
+Workbench Status: Merge	Copy all components in workbench solution to target carrier
+Workbench Status: Finalize	Copy all components in workbench solution to target carrier, delete workbench solution and deactivate workbench
+Workbench Status: Close	Delete workbench solution and deactivate workbench
+Workbench Status: Failure	Something went wrong - check history for details
 ---
 
 ## Additional Resources
