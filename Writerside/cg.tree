@@ -20,6 +20,10 @@
             <toc-element topic="DGPT-Profile.md"/>
         </toc-element>
         <toc-element topic="Solution-Concept.md"/>
+        <toc-element topic="DigitallValidators.md">
+            <toc-element topic="PhoneNumberValidator.md"/>
+            <toc-element topic="IBANValidator.md"/>
+        </toc-element>
     </toc-element>
     <toc-element topic="Setup.md">
         <toc-element topic="Dataverse-Setup.md">
