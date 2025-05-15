@@ -9,7 +9,7 @@ Validates and format the provided phone number
 | Name        | Type   | Required | Description                                                                                     |
 |-------------|--------|----------|-------------------------------------------------------------------------------------------------|
 | PhoneNumber | String | ✅        | input phone number                                                                              |
-| Region      | String | ✅        | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes) country code |
+| Region      | String |          | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes) country code |
 | Format      | String |          | phone number formats: E164 (default) / INTERNATIONAL / NATIONAL / RFC3966                       |
 
 ## Response Properties
