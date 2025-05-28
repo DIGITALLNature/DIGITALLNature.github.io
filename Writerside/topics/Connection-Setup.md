@@ -2,6 +2,19 @@
 
 Quick guide to setup and configure connections and related options for power automate.
 
+## TBD
+- Questions to ask:
+  - Who shall be owner of the flows, respectively which licenses/limits to run against?
+  - Who is holding the connection and what are the implications?
+    - Preferred: Shared user
+    - Only named user: User leaves, changes in password policies
+  - What access are we giving the connection
+- Embed image to connection diagram overview
+- Deployment
+  - What is required to work for automated deployment?
+  - What is our recommended way?
+- Subtopic: dgtp workflowstates
+
 ## Required Users
 
 - A dedicated service user to create and hold the connections
