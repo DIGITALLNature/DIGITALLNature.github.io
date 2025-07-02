@@ -10,6 +10,7 @@ This table lists the ommands used in the DigitallPower CLI.
 |-------|-----------|
 |_dgtp profile_ **list**|List all know local authentication profiles.|
 |_dgtp profile_ **create `<Name> <Connectionstring>`**|Create a new local authentication profiles.|
+|_dgtp profile_ **create `<Name> <Url> --msal`**|Create a new local authentication profiles using MSAL|
 |_dgtp profile_ **delete `<Name>`**|Delete given local authentication profiles.|
 |_dgtp profile_ **select `<Name>`**|Select given local authentication profiles.|
 |_dgtp profile_ **purge**|Managed authentication profiles.|
@@ -21,6 +22,8 @@ This table lists the ommands used in the DigitallPower CLI.
 > `dgtp profile select Test`
 
 > `dgtp profile delete Test`
+
+> `dgtp profile create AnotherTest "https://_sample2_.api.crm4.dynamics.com" --msal`
 
 ## Environment-Variable or Configfile based authentication
 
