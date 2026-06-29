@@ -1,0 +1,33 @@
+# Monitoring & Telemetry
+
+## Plugin telemetry
+
+Enable **Application Insights** integration via "Activate Data Export" in the Power Platform
+admin center for every production environment. Once enabled,
+[`Executor`/`PluginCore`](../coding/serverside/digitall-assembly.md) exposes it directly as
+`PluginTelemetry` (an `ILogger`) — use it for anything beyond the basic trace logging that
+`Trace(...)` gives you, especially structured events you'd want to query or alert on later
+rather than just read in a single trace log.
+
+## Trace logs vs. telemetry
+
+Use `Trace(...)` for step-by-step diagnostic detail you'd want in a single plugin trace log
+entry when debugging a specific failed execution; use `PluginTelemetry` for events you want to
+aggregate, alert on, or correlate across executions. They aren't redundant — a plugin
+typically uses both.
+
+## What to monitor as a baseline
+
+- Plugin/Custom API failures and execution time, via Application Insights.
+- Flow run failures, via the standard Power Automate run history and/or Application Insights
+  if integrated.
+- Solution Checker trend over time (are findings increasing release over release) — see
+  [Solution Checker](../testing/solution-checker.md).
+- Pipeline deployment history and approvals, via
+  [Power Platform Pipelines](../alm/power-platform-pipelines.md) reporting or your CI
+  platform's own run history.
+
+!!! info "Project-specific depth"
+    Beyond this baseline, monitoring depth is genuinely project-specific (SLAs, customer
+    requirements, criticality). Document the chosen approach in the project's architectural
+    documentation rather than expecting this guideline to prescribe it in detail.

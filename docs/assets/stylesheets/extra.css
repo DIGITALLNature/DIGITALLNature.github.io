@@ -1,0 +1,11 @@
+/* Rule-id badges used throughout the guideline, e.g. `DGT-SRV-010` */
+.rule-id {
+  font-family: var(--md-code-font-family);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.05rem 0.4rem;
+  border-radius: 0.2rem;
+  background-color: var(--md-code-bg-color);
+  color: var(--md-default-fg-color--light);
+  white-space: nowrap;
+}

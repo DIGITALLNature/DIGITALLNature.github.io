@@ -1,3 +1,0 @@
-# pipeline-setup.ps1
-
-Start typing here...
