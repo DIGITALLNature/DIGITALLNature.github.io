@@ -1,8 +1,6 @@
 site_name: DIGITALL Power Platform Guidelines
 site_description: Project guidelines for customizers and developers working on Microsoft Power Platform / Dataverse projects at DIGITALL.
 site_url: https://digitallnature.github.io/
-repo_name: DIGITALLNature/DIGITALLNature.github.io
-repo_url: https://github.com/DIGITALLNature/DIGITALLNature.github.io
 edit_uri: edit/main/docs/
 
 copyright: Copyright &copy; DIGITALL Nature
@@ -10,8 +8,8 @@ copyright: Copyright &copy; DIGITALL Nature
 theme:
   name: material
   language: en
-  logo: assets/logo.png
-  favicon: assets/logo.png
+  logo: assets/DIGITALL_white.png
+  favicon: assets/DIGITALL_white.png
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -90,12 +88,13 @@ plugins:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/DIGITALLNature
+      link: https://digitallnature.github.io/
   version:
     provider: mike
 
 nav:
   - Home: index.md
+  - Quickstart: quickstart.md
   - Foundation:
       - foundation/index.md
       - Scope & Principles: foundation/scope-and-principles.md

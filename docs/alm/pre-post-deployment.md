@@ -27,34 +27,17 @@ compiled server-side artifacts, because it does more than copy an assembly: it r
 dgtp push ./bin/Release/MyPlugins.nupkg --solution dgt_myproject_core --publish
 ```
 
-What happens, in order, depends on what `Target` resolves to:
+Depending on whether `Target` is a `.nupkg`, a plain `.dll`, or a web-resource folder, `dgtp
+push` creates or updates the package/assembly and then **reconciles plugin/workflow types, SDK
+message processing steps, and pre/post entity images** against the
+[registration attributes](../coding/serverside/registration-attributes.md) in code — upserting
+*and purging*, so **removing a `[PluginRegistration]` attribute and re-pushing is enough to
+unregister the step**. A successful `dgtp push` is therefore the definitive signal that
+registration matches code. `--publish` publishes the affected customizations afterwards; without
+it, changes land but stay unpublished.
 
-1. **If the target is a `.nupkg`** (a [plugin package](../coding/serverside/plugin-packages.md)):
-   the package is unpacked locally, and compared against the `PluginPackage` already registered
-   in the target environment (matched by name + version).
-   - **Not yet registered** → a new `PluginPackage` is created in the given solution.
-   - **Already registered** → the existing `PluginPackage` is updated in place.
-2. **If the target is a plain `.dll`** (classic, non-package plugin or workflow assembly): the
-   assembly is loaded via reflection (without executing it) and compared the same way against
-   the registered `PluginAssembly`.
-3. Once the assembly/package is created or updated, `dgtp push`:
-   - Skips the assembly entirely if it contains neither plugin nor workflow types (with a
-     warning) — this catches accidentally pointing the command at the wrong `.dll`.
-   - For **workflow assemblies**: upserts and purges registered workflow activity types, so
-     types removed from code are also removed from Dataverse, not just left orphaned.
-   - For **plugin assemblies**: upserts and purges plugin types, then — for types carrying
-     `[PluginRegistration]` attributes — upserts and purges the corresponding **SDK message
-     processing steps** and their **pre/post entity images**, reading the attribute parameters
-     described in [Registration Attributes](../coding/serverside/registration-attributes.md).
-
-This means **removing a `[PluginRegistration]` attribute from code and redeploying is enough to
-unregister the step** — you don't need a separate cleanup task. It also means a successful
-`dgtp push` is the definitive signal that registration matches code; if a step still fires
-after you removed its attribute, the push didn't run, rather than something to debug in the
-plugin code itself.
-
-`--publish` publishes the affected customizations after the push completes; without it, changes
-land but stay in an unpublished state.
+The full per-target-type breakdown and the supported web-resource extensions are in the
+[Command Reference → `push`](../reference/dgtp-commands.md#push).
 
 ### Web resource push
 

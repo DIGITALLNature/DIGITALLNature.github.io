@@ -42,7 +42,7 @@ platform components, and anything outside Dataverse itself.
 The two are bridged through [pipelines extensibility](../alm/power-platform-pipelines.md#extending-pipelines-gated-extensions):
 a gated extension Power Automate flow can trigger a GitHub Actions workflow or an Azure DevOps
 pipeline as part of a pipelines deployment, and vice versa — a CI pipeline can trigger a
-pipelines deployment via the Dataverse Web API.
+pipelines deployment via the [Dataverse Web API](https://learn.microsoft.com/en-us/power-apps/developer/data-platform/webapi/overview).
 
 ## Keep solutions under source control regardless
 

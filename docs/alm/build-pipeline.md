@@ -15,8 +15,10 @@ is missing a step.
    Everything downstream is stamped with this single version.
 
 2. **Restore & build client-side projects.**
-   `npm ci`, lint, `tsc`/bundler build for TypeScript web resources and PCF controls. Output
-   goes to the folder referenced by the solution's web resource mapping.
+   For web resources: `pnpm install`, Biome lint, webpack production bundle (`pnpm run build:prod`);
+   PCF controls use their `pac`-scaffolded `npm` build. Output goes to the folder referenced by
+   the solution's web resource mapping. See
+   [TypeScript Web Resources](../coding/clientside/typescript-webresources.md).
 
 3. **Regenerate early-bound models — *before* compiling server-side code.**
    Run `dgtp codegeneration` against the build environment so that `.cs`/`.ts` models reflect

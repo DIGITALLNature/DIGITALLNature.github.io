@@ -2,7 +2,7 @@
 
 ## Custom APIs
 
-Prefer **Custom APIs** over classic unbound/bound Actions for new server-side operations
+Prefer **[Custom APIs](https://learn.microsoft.com/en-us/power-apps/developer/data-platform/custom-api)** over classic unbound/bound Actions for new server-side operations
 callable from client code, Power Automate, or other plugins — they have first-class typed
 request/response parameters and show up properly in the Dataverse Web API metadata.
 
@@ -39,7 +39,7 @@ handler any more than for a classic plugin.
 
 ## Custom Data Providers (virtual tables)
 
-For virtual table data sources, implement one handler per CRUD/retrieve event and register each
+For [virtual table](https://learn.microsoft.com/en-us/power-apps/developer/data-platform/virtual-entities/get-started-ve) data sources, implement one handler per CRUD/retrieve event and register each
 with [`[CustomDataProviderRegistration]`](registration-attributes.md#customdataproviderregistration-virtual-table-providers):
 
 ```csharp

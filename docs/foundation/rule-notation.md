@@ -5,7 +5,7 @@ requirement to phrase every sentence as a formal rule. Most of this guideline is
 prose, examples, and recommendations.
 
 Where a rule is specific enough that you'd want to point to it from architectural
-documentation — e.g. *"deviates from [`DGT-SRV-010`](#)"* — it gets a short, stable **rule ID**
+documentation — e.g. *"deviates from `DGT-SRV-010`"* — it gets a short, stable **rule ID**
 so the reference doesn't break when headings get reworded. Not every paragraph needs one; use
 your judgment for what's worth pinning down.
 

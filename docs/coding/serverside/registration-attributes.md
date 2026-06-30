@@ -13,6 +13,7 @@ dotnet add package Digitall.Plugins.Registration
 ```
 
 ```csharp
+using Digitall.APower.Model;          // SdkMessageNames, early-bound entities
 using Digitall.Plugins.Registration;
 ```
 
@@ -30,12 +31,12 @@ Stack multiple attributes on one class to register multiple steps from a single 
 (unsecure config string).
 
 ```csharp
-[PluginRegistration(PluginExecutionMode.Asynchronous, "Create", PluginExecutionStage.PreOperation,
-    PrimaryEntityName = "account", ExecutionOrder = 10)]
-[PluginRegistration(PluginExecutionMode.Synchronous, "Update", PluginExecutionStage.PostOperation,
-    PrimaryEntityName = "account",
-    FilterAttributes = new[] { "name" },
-    PreEntityImage = true, PreEntityImageAttributes = new[] { "name" })]
+[PluginRegistration(PluginExecutionMode.Asynchronous, SdkMessageNames.Create, PluginExecutionStage.PreOperation,
+    PrimaryEntityName = Account.EntityLogicalName, ExecutionOrder = 10)]
+[PluginRegistration(PluginExecutionMode.Synchronous, SdkMessageNames.Update, PluginExecutionStage.PostOperation,
+    PrimaryEntityName = Account.EntityLogicalName,
+    FilterAttributes = new[] { Account.LogicalNames.Name },
+    PreEntityImage = true, PreEntityImageAttributes = new[] { Account.LogicalNames.Name })]
 public class SamplePlugin : IPlugin
 {
     public void Execute(IServiceProvider serviceProvider)

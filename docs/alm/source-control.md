@@ -26,9 +26,8 @@ Root
 └── README.md
 ```
 
-This mirrors the previous version of this guideline, with one addition: a top-level
-`solutions/` folder for unpacked Dataverse solutions, kept alongside the code rather than in a
-separate repository — see below.
+Note the top-level `solutions/` folder for unpacked Dataverse solutions, kept alongside the code
+rather than in a separate repository — see below.
 
 ## Keep unpacked solutions in source control
 

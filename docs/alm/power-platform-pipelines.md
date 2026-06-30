@@ -1,6 +1,6 @@
 # Power Platform Pipelines
 
-Power Platform Pipelines is the in-product, low-code ALM path: a maker triggers a deployment
+[Power Platform Pipelines](https://learn.microsoft.com/en-us/power-platform/alm/pipelines) is the in-product, low-code ALM path: a maker triggers a deployment
 from inside their development environment, without needing Azure DevOps or GitHub knowledge.
 Use it per the decision tree in [Deployment Approach](../architecture/deployment-approach.md);
 this page covers how we configure and extend it once that decision is made.
@@ -9,7 +9,7 @@ this page covers how we configure and extend it once that decision is made.
 
 - At least three environments (development, one or more test stages, production); four is the
   common recommendation (dev / test / UAT / prod).
-- All target environments must be **Managed Environments**.
+- All target environments must be **[Managed Environments](https://learn.microsoft.com/en-us/power-platform/admin/managed-environment-overview)**.
 - A dedicated **host environment** for the Power Platform Pipelines app — avoid hosting it in
   the default environment outside small/simple setups.
 - `Deployment Pipeline Administrator` to configure the pipeline; `Deployment Pipeline User` for
@@ -47,7 +47,7 @@ the requesting maker's own identity. This means:
 - the deployment can require **approval** from an authorized identity before it proceeds.
 
 Set this up via the pipeline stage configuration in the Deployment Pipeline Configuration app;
-the service principal must be added as an owner of itself in Microsoft Entra ID for the
+the service principal must be added as an owner of itself in [Microsoft Entra ID](https://learn.microsoft.com/en-us/entra/fundamentals/whatis) for the
 pipeline stage owner relationship to resolve correctly.
 
 ## Extending pipelines (gated extensions)

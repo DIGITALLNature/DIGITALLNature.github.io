@@ -45,16 +45,19 @@ stages:
 
           - task: NodeTool@0
             inputs:
-              versionSpec: "20.x"
+              versionSpec: "24.x"
 
-          - script: npm ci && npm run build
-            displayName: "Build client-side projects"
+          - script: |
+              corepack enable
+              pnpm install
+              pnpm run build:prod
+            displayName: "Build client-side projects (web resources)"
             workingDirectory: src/WebResources
 
           - script: dotnet tool install -g dgt.power
             displayName: "Install dgtp CLI"
 
-          - script: dgtp profile create --name build --connectionstring "$(DataverseConnectionString)"
+          - script: dgtp profile create build "$(DataverseConnectionString)" --msal
             displayName: "Configure dgtp profile"
 
           - script: dgtp codegeneration ./src/Generated --config ./modelconfig.json

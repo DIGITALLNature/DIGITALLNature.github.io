@@ -30,10 +30,9 @@ cover functional/business analysis or project management process.
 **If the customer has a defined standard, that standard takes precedence.** Where no customer
 standard exists, this guideline applies.
 
-This mirrors how the previous version of this guideline was written, and we keep it
-intentionally: DIGITALL is usually a guest in someone else's tenant, and a customer's existing
-conventions (naming, ALM tooling, security model) usually need to be respected even where they
-differ from what is written here.
+We keep this intentionally: DIGITALL is usually a guest in someone else's tenant, and a
+customer's existing conventions (naming, ALM tooling, security model) usually need to be
+respected even where they differ from what is written here.
 
 ## Deviations
 

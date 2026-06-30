@@ -23,23 +23,36 @@ sprint.
 configuration, so you don't pass a connection string on every invocation.
 
 ```shell
-dgtp profile create --name dev --connectionstring "AuthType=OAuth;Url=https://yourorg.crm.dynamics.com;..."
+dgtp profile create dev "AuthType=OAuth;Url=https://yourorg.crm.dynamics.com;AppId=...;RedirectUri=...;LoginPrompt=Auto"
 dgtp profile list
 dgtp profile select dev
 dgtp profile delete dev
 dgtp profile purge   # removes all profiles
 ```
 
-- Use **interactive/OAuth** profiles for local developer work — this is the same Microsoft
-  Entra sign-in flow you already use for `pac` and the Dataverse web UI.
-- Use **token-based** (service principal / client secret) profiles for CI — never store a
-  personal account's credentials in a pipeline. See
+`dgtp profile create` takes the profile **name** and **connection string** as *positional*
+arguments (there is no `--name`/`--connectionstring` option), plus flags including `--msal`
+(token-based, for CI), `--skipcheck`, `-s`/`--security-protocol`, and `-i`/`--insecure`. The full
+option list is in the [Command Reference → `profile`](../reference/dgtp-commands.md#profile).
+
+!!! warning "Don't disable TLS validation against real environments"
+    `--insecure` (and the `xrm:insecure` setting) turns off server-certificate validation
+    entirely. Microsoft-hosted Dataverse always presents a valid certificate, so you never need
+    it there — restrict it to a self-signed on-prem/dev endpoint, and never use it in CI against
+    a cloud environment.
+
+- Use **interactive/OAuth** profiles for local developer work — this is the same
+  [Microsoft Entra](https://learn.microsoft.com/en-us/entra/fundamentals/whatis) sign-in flow
+  you already use for `pac` and the Dataverse web UI.
+- Use **token-based** (`--msal`, service principal / client secret) profiles for CI — never
+  store a personal account's credentials in a pipeline. See
   [Azure DevOps](../alm/azure-devops.md#pipeline-structure) and
   [GitHub Actions](../alm/github-actions.md#secrets-authentication) for how those are wired
   into pipeline secrets.
 - Switch the active profile with `dgtp profile select <name>` before running any other command
-  — every `dgtp` command operates against whichever profile is currently selected, there is no
-  per-command `--profile` override.
+  — every `dgtp` command operates against whichever profile is currently selected. There is no
+  per-command `--profile` override; the alternative to a selected profile is an inline
+  connection string (see [Connecting](#connecting-profile-or-connection-string) below).
 
 ## Where profiles are stored
 
@@ -47,10 +60,27 @@ Profiles are stored in isolated storage scoped to the current user, not in the p
 directory and not in source control — there is nothing to `.gitignore` here, but also nothing
 to share between teammates; each developer creates their own profiles locally.
 
-## Configuration file
+## Connecting: profile or connection string
 
-Some commands (notably `codegeneration`) read additional settings from `dgtp.json` in the
-current directory, plus a `pollrate` default (5000 ms) for how long Dataverse operations are
-polled before timing out, overridable via `dgtp:pollrate` environment variable if a slower
-sandbox needs more patience.
+A command uses an **inline connection string** when one is configured (`xrm:connection`,
+typically the `dgtp:xrm:connection` environment variable in CI) — which **takes precedence over a
+selected profile** — otherwise it falls back to the selected profile. That's why CI needs no
+stored profile: setting `dgtp:xrm:connection` from a pipeline secret is enough.
+
+```yaml title="CI: connect via environment variable, no profile"
+env:
+  dgtp:xrm:connection: $(PowerPlatformConnectionString)
+```
+
+Full resolution order and the `xrm:*` settings: see
+[Command Reference → Connecting & global configuration](../reference/dgtp-commands.md#connecting-global-configuration).
+
+## Configuration files
+
+`dgtp.json` (optional, in the current directory) holds *program-wide* settings — most usefully
+`pollrate` (default **5000 ms**, the Dataverse async-operation poll interval). Many commands also
+take their own per-command `-c`/`--config` file (e.g. `codegeneration`, `analyze`, several
+`maintenance` tasks). Both kinds — and the `dgtp:`-prefixed environment-variable form — are
+documented in
+[Command Reference → Connecting & global configuration](../reference/dgtp-commands.md#connecting-global-configuration).
 

@@ -6,10 +6,9 @@ plugin and Custom API unit tests. It provides an in-memory `IOrganizationService
 a connection to a live Dataverse environment — which also means they run safely in CI without
 needing environment credentials at all for this step.
 
-This **replaces** the previous generation's MSTest/NSubstitute-against-a-live-sandbox
-recommendation — keep your test *framework* choice (xUnit, NUnit, MSTest all work, since
-`Digitall.Dataverse.Testing` doesn't mandate one), but stop asserting against a real
-environment for unit-level plugin tests.
+Keep your test *framework* choice (xUnit, NUnit, MSTest all work, since
+`Digitall.Dataverse.Testing` doesn't mandate one), but don't assert against a real
+environment for unit-level plugin tests — use the in-memory service instead.
 
 ```shell
 dotnet add package Digitall.Dataverse.Testing
@@ -24,6 +23,7 @@ test.
 ```csharp
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Query;
+using Digitall.APower.Model;        // generated early-bound model
 using Digitall.Dataverse.Testing;
 
 public class AccountTests
@@ -33,12 +33,13 @@ public class AccountTests
     {
         var service = new FakeDataverseBuilder().GetOrganizationService();
 
-        var account = new Entity("account") { ["name"] = "Contoso Ltd" };
+        var account = new Account { Name = "Contoso Ltd" };
 
         var id = service.Create(account);
-        var retrieved = service.Retrieve("account", id, new ColumnSet("name"));
+        var retrieved = service.Retrieve(Account.EntityLogicalName, id, new ColumnSet(Account.LogicalNames.Name))
+                               .ToEntity<Account>();
 
-        Assert.That(retrieved["name"], Is.EqualTo("Contoso Ltd"));
+        Assert.That(retrieved.Name, Is.EqualTo("Contoso Ltd"));
     }
 }
 ```
@@ -56,19 +57,18 @@ Dataverse:
 
 ```csharp
 [Test]
-public void Should_SetInvoiceNumber_OnCreate()
+public void Should_AcceptValidBirthDate_OnCreate()
 {
     var builder = new FakePluginContextBuilder();
-    var service = builder.GetOrganizationService();
 
-    var target = new Entity("dgt_invoice");
+    var target = new Contact { BirthDate = new DateTime(1990, 1, 1) };
 
     var serviceProvider = builder
-        .WithMessageName("Create")
+        .WithMessageName(SdkMessageNames.Create)
         .WithTarget(target)
         .BuildServiceProvider();
 
-    var plugin = new InvoiceNumberPlugin();
+    var plugin = new ContactValidationPlugin();
     plugin.Execute(serviceProvider);
 
     Assert.That(plugin.Result, Is.EqualTo(ExecutionResult.Ok));

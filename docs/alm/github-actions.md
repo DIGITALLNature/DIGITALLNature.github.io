@@ -14,8 +14,9 @@ on GitHub rather than Azure DevOps.
   `microsoft/powerplatform-actions/actions-install@v1` before any other Power Platform action.
 - `dgtp` — installed as a regular `dotnet tool install -g dgt.power` step, same as in Azure
   DevOps; there is no dedicated GitHub Action for it.
-- Standard `actions/setup-dotnet`, `actions/setup-node`, and `dotnet`/`npm` CLI steps for the
-  client- and server-side builds.
+- Standard `actions/setup-dotnet`, `actions/setup-node`, and `dotnet`/`pnpm` CLI steps for the
+  client- and server-side builds (web resources use pnpm — see
+  [TypeScript Web Resources](../coding/clientside/typescript-webresources.md)).
 
 ## Example workflow
 
@@ -40,19 +41,20 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: "20.x"
+          node-version: "24.x"
 
-      - name: Build client-side projects
+      - name: Build client-side projects (web resources)
         working-directory: src/WebResources
         run: |
-          npm ci
-          npm run build
+          corepack enable
+          pnpm install
+          pnpm run build:prod
 
       - name: Install dgtp CLI
         run: dotnet tool install -g dgt.power
 
       - name: Configure dgtp profile
-        run: dgtp profile create --name build --connectionstring "${{ secrets.DATAVERSE_BUILD_CONNECTION }}"
+        run: dgtp profile create build "${{ secrets.DATAVERSE_BUILD_CONNECTION }}" --msal
 
       - name: Regenerate early-bound models
         run: dgtp codegeneration ./src/Generated --config ./modelconfig.json

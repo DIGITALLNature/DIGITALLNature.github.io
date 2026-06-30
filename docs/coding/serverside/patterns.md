@@ -27,8 +27,9 @@ it for that purpose specifically, not as a general-purpose control-flow exceptio
 
 ## Filter attributes instead of re-checking inside the plugin
 
-Use `[PluginRegistration(... FilterAttributes = new[] { "name" })]` rather than registering an
-unfiltered step and checking `if (target.Contains("name"))` at the top of `Execute()`. The
+Use `[PluginRegistration(... FilterAttributes = new[] { Account.LogicalNames.Name })]` rather than
+registering an unfiltered step and checking `if (target.Contains(Account.LogicalNames.Name))` at the
+top of `Execute()`. The
 filtered registration means the step doesn't fire — and doesn't consume a pipeline execution —
 when an unrelated field changes, which matters for both performance and for keeping plugin
 trace logs free of no-op runs.

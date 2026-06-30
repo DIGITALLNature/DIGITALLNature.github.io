@@ -1,8 +1,7 @@
 # Solution Concept (Carrier / Workbench)
 
-Our Carrier/Workbench model for separated customizing is documented in detail elsewhere and is
-**not** part of this rewrite — this page only places it in context relative to the rest of
-this guideline, and links onward.
+Our Carrier/Workbench model for separated customizing is documented in detail elsewhere; this
+page only places it in context relative to the rest of this guideline, and links onward.
 
 ## In short
 

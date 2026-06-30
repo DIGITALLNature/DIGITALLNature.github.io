@@ -33,13 +33,21 @@ to use [plugin packages](plugin-packages.md).
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.PowerPlatform.Dataverse.Client" Version="*" />
-    <PackageReference Include="Digitall.APower" Version="*" />
+    <PackageReference Include="Microsoft.CrmSdk.CoreAssemblies" Version="*" PrivateAssets="all" />
+    <PackageReference Include="dgt.apower" Version="*" />
     <PackageReference Include="Digitall.Plugins.Registration" Version="*" />
   </ItemGroup>
 
 </Project>
 ```
+
+!!! note "Why CoreAssemblies, not Dataverse.Client"
+    The Dataverse SDK assemblies already exist in the plug-in sandbox, so they must **not** be
+    shipped inside the package — `PrivateAssets="all"` references them at build time but keeps
+    them out of the `.nupkg` (including them otherwise errors on package registration).
+    `Microsoft.PowerPlatform.Dataverse.Client` is the `ServiceClient` for *external* apps and
+    pulls in a large dependency tree that doesn't belong in a plug-in. See Microsoft's
+    [Build and package plug-in code](https://learn.microsoft.com/en-us/power-apps/developer/data-platform/build-and-package).
 
 ## Naming
 

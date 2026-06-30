@@ -193,8 +193,8 @@ Referenced from [Project Setup](../coding/serverside/project-setup.md).
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.PowerPlatform.Dataverse.Client" Version="*" />
-    <PackageReference Include="Digitall.APower" Version="*" />
+    <PackageReference Include="Microsoft.CrmSdk.CoreAssemblies" Version="*" PrivateAssets="all" />
+    <PackageReference Include="dgt.apower" Version="*" />
     <PackageReference Include="Digitall.Plugins.Registration" Version="*" />
   </ItemGroup>
 

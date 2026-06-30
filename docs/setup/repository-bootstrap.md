@@ -13,14 +13,14 @@ cd <repository>
 # .NET / server-side
 dotnet restore
 
-# Node / client-side
+# Node / client-side (web resources use pnpm; see webresources-template)
 cd src/WebResources
-npm ci
+pnpm install
 cd ../..
 
 # dgtp
 dotnet tool install -g dgt.power
-dgtp profile create --name dev --connectionstring "<your dev environment connection string>"
+dgtp profile create dev "<your dev environment connection string>"
 dgtp profile select dev
 ```
 
@@ -50,7 +50,7 @@ it.
 dotnet build src/Plugins/MyPlugins.csproj -c Debug
 dgtp push src/Plugins/MyPlugins/bin/Debug/MyPlugins.nupkg --solution <project-solution> --publish
 
-npm run build --prefix src/WebResources
+pnpm --dir src/WebResources run build
 dgtp push src/WebResources/dist --solution <project-solution> --publish
 ```
 

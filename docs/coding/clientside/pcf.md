@@ -1,5 +1,7 @@
 # PCF Controls
 
+PCF — the [Power Apps component framework](https://learn.microsoft.com/en-us/power-apps/developer/component-framework/overview) — builds reusable, strongly-typed code components for model-driven and canvas apps.
+
 ## Scaffolding
 
 ```shell
@@ -28,9 +30,11 @@ project it produces still follows the same structure and build conventions as on
 
 ## Linting
 
-Apply the same `@microsoft/eslint-plugin-power-apps` rules used for
-[form scripts](typescript-webresources.md#linting-and-formatting) to PCF projects — there's no
-separate lint configuration for PCF specifically.
+PCF projects scaffolded by `pac` use ESLint — enforce the
+[`@microsoft/eslint-plugin-power-apps`](https://www.npmjs.com/package/@microsoft/eslint-plugin-power-apps)
+rules in CI as well as locally. (Web resources lint with **Biome** instead — see
+[TypeScript Web Resources](typescript-webresources.md#formatting-line-endings) — so the two
+client-side project types don't share a single lint configuration.)
 
 ## Typed Dataverse access from a PCF control
 

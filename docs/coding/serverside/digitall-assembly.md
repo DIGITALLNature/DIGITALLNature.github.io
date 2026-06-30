@@ -8,30 +8,36 @@ hard dependency for [registration attributes](registration-attributes.md) and
 guideline describes.
 
 ```shell
-dotnet add package Digitall.APower
+dotnet add package dgt.apower
 ```
+
+!!! note "Package ID vs. namespace"
+    The package is published as **`dgt.apower`**; the namespace you `using` is
+    **`Digitall.APower`** — they deliberately differ. Install `dgt.apower`, then write
+    `using Digitall.APower;`.
 
 ## `Executor` — the base class for your plugin
 
 Inherit from `Executor` and implement `Execute()`:
 
-```csharp title="InvoiceNumberPlugin.cs"
+```csharp title="ContactValidationPlugin.cs"
 using Digitall.APower;
+using Digitall.APower.Model;   // generated early-bound model
 
-namespace dgt.Plugin.Invoice;
+namespace dgt.Plugin.Contacts;
 
-public class InvoiceNumberPlugin : Executor
+public class ContactValidationPlugin : Executor
 {
     protected override ExecutionResult Execute()
     {
-        var invoice = Entity;
+        var contact = Entity.ToEntity<Contact>();
 
-        if (!invoice.Contains("dgt_number"))
+        if (!contact.BirthDate.HasValue)
         {
             return ExecutionResult.Skipped;
         }
 
-        // ... your logic, using the members below ...
+        // ... your logic, using the typed members below ...
 
         return ExecutionResult.Ok;
     }
@@ -46,6 +52,14 @@ unit tests, so use it deliberately rather than always returning `Ok`.
 `Executor.Execute(IServiceProvider)` (the actual `IPlugin.Execute`) clones itself before running
 your code — following Microsoft's "plugins must be stateless" guidance — so you never need to
 worry about instance fields leaking state between invocations of the same registered step.
+
+!!! tip "Already have a plain `IPlugin`? Use `PluginCore` directly"
+    You don't have to inherit `Executor` to get the typed surface. Inside any
+    `IPlugin.Execute(IServiceProvider serviceProvider)` you can `new PluginCore(serviceProvider)`
+    and use the same `Entity`, `SecuredOrganizationService`, `GetInputParameter<T>`, `Trace`,
+    etc. — handy when a class already derives from another base or you're retrofitting an
+    existing plugin. Inheriting `Executor` stays the default for new code: it adds the
+    clone-per-execution and the `ExecutionResult` contract on top of that same surface.
 
 ## What `Executor` gives you, without touching `IServiceProvider` directly
 
@@ -67,15 +81,35 @@ communicate intent (running as caller vs. running elevated) at the call site.
 
 ## Add-on modules
 
-`Digitall.APower` ships optional modules as separate packages, referenced only where needed —
-don't add all of them by default:
+`Digitall.APower` ships optional modules as separate NuGet packages, referenced only where
+needed — don't add all of them by default. Each package id starts with `dgt.apower.`:
 
-| Module | Adds |
-|---|---|
-| `Digitall.APower.EnvironmentVariables` | `executor.GetConfig("dgt_some_env")` — reads an environment variable's value (definition + value lookup, cached per execution) without hand-rolling the `environmentvariabledefinition`/`environmentvariablevalue` query yourself. |
-| `Digitall.APower.Keyvault` | Secret retrieval from Azure Key Vault. |
-| `Digitall.APower.Sharepoint` | SharePoint REST integration helpers. |
-| (Logging / Telemetry / ServiceBus, where present) | Structured logging and messaging integrations — check the package list for what's current. |
+| Package | Namespace | Adds |
+|---|---|---|
+| `dgt.apower.enviromentvariables` | `Digitall.APower.EnvironmentVariables` | `executor.GetConfig("dgt_some_env")` — reads an environment variable's value (definition + value lookup, cached per execution) without hand-rolling the `environmentvariabledefinition`/`environmentvariablevalue` query yourself. |
+| `dgt.apower.keyvault` | `Digitall.APower.Keyvault` | `executor.KeyVaultSecret(url)` — reads a secret from Azure Key Vault over REST, caching both the access token and the secret. Reads its `Azure.TenantId`, `KeyVault.ClientId`, and `KeyVault.ClientSecret` from environment variables, so it pulls in the environment-variables module. |
+| `dgt.apower.sharepoint` | `Digitall.APower.Sharepoint` | `ISharepointService` — SharePoint REST helpers (request digest, file/folder read & create, list-item update, permissions). |
+
+!!! warning "The Key Vault package id is misspelled"
+    The environment-variables package is published as `dgt.apower.enviromentvariables` — with a
+    typo, "enviroment" missing its second *n*. Install it exactly as written; only the package
+    id is affected, the namespace is spelled correctly.
+
+The OAuth token helpers the Key Vault module relies on (`GetMicrosoftOnlineAccessToken`,
+`GetAccessControlAccessToken`) live in an internal **shared project** (`dgt.apower.http`) that
+is compiled *into* the Key Vault and SharePoint packages — there is no standalone `http`
+package to add.
+
+!!! warning "Prefer managed identity over a stored client secret"
+    The Key Vault module authenticates with a `KeyVault.ClientSecret` read from a Dataverse
+    environment variable — but environment-variable *values* are not a secret store (readable by
+    anyone with access, not encrypted). Where the target supports it, use a
+    [managed identity](custom-api.md#managed-identity) instead of a stored secret; if a client
+    secret is unavoidable, treat that environment variable as sensitive and rotate it.
+
+Telemetry is **not** a separate module: `PluginCore` already exposes an `ILogger`
+(`PluginTelemetry`) wired to the [Application Insights](https://learn.microsoft.com/en-us/power-apps/developer/data-platform/application-insights-ilogger) export configured in the Power Platform
+admin center, so structured logging is available from the core package without an add-on.
 
 ## Custom APIs and workflow activities
 
