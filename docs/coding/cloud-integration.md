@@ -15,8 +15,8 @@ Before writing an integration, decide *where* it runs — this is the highest-le
 | Long-running, fan-out, heavy compute, or orchestration across systems | **Azure** (Functions / Logic Apps / Service Bus) |
 | Synchronous call *out* to an external system from a write | **Plugin** + the HTTP/Key Vault helpers below — but mind the 2-minute sandbox limit |
 
-The platform sandbox kills a plugin at **two minutes** and you don't control retry semantics
-finely — anything slow, bursty, or that must not block the user belongs in async (a flow, or
+**`DGT-SRV-140`**{ #dgt-srv-140 } — The platform sandbox kills a plugin at **two minutes** and you don't control retry
+semantics finely — anything slow, bursty, or that must not block the user belongs in async (a flow, or
 Azure behind a queue), not in a synchronous plugin.
 
 ## Calling out from a plugin

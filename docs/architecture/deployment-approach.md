@@ -1,6 +1,6 @@
 # Deployment Approach
 
-Decide this once, early in the project, ideally before the first solution is created — changing
+**`DGT-ARC-070`**{ #dgt-arc-070 } — Decide this once, early in the project, ideally before the first solution is created — changing
 direction later is possible but costs rework on both the pipeline and the team's habits.
 
 ## Decision tree

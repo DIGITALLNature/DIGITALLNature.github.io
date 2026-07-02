@@ -2,7 +2,7 @@
 
 ## Plugin telemetry
 
-Enable **Application Insights** integration via "Activate Data Export" in the Power Platform
+**`DGT-OPS-040`**{ #dgt-ops-040 } — Enable **Application Insights** integration via "Activate Data Export" in the Power Platform
 admin center for every production environment. Once enabled,
 [`Executor`/`PluginCore`](../coding/serverside/digitall-assembly.md) exposes it directly as
 `PluginTelemetry` (an `ILogger`) — use it for anything beyond the basic trace logging that

@@ -1,7 +1,7 @@
 # Plugin Packages
 
-Plugin packages (NuGet-based **dependent assemblies**) are the default for all new server-side
-projects. **ILMerge is not allowed** — it was never officially supported by Dataverse, is no
+**`DGT-SRV-010`**{ #dgt-srv-010 } — Plugin packages (NuGet-based **dependent assemblies**) are the default for all
+new server-side projects. **ILMerge is not allowed** — it was never officially supported by Dataverse, is no
 longer maintained upstream, and plugin packages provide the same capability (and more) through
 a supported mechanism.
 

@@ -1,6 +1,6 @@
 # Client-side Testing
 
-Unit-test the logic in [TypeScript web resources](../coding/clientside/typescript-webresources.md)
+**`DGT-TST-030`**{ #dgt-tst-030 } — Unit-test the logic in [TypeScript web resources](../coding/clientside/typescript-webresources.md)
 the same way you'd test any other TypeScript: with **Jest**, mocking the `Xrm` API via
 [`xrm-mock`](https://github.com/camsjams/xrm-mock). The
 [`webresources-template`](https://github.com/DIGITALLNature/webresources-template) ships the

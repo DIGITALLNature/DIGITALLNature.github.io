@@ -2,7 +2,7 @@
 
 ## Custom APIs
 
-Prefer **[Custom APIs](https://learn.microsoft.com/en-us/power-apps/developer/data-platform/custom-api)** over classic unbound/bound Actions for new server-side operations
+**`DGT-SRV-110`**{ #dgt-srv-110 } — Prefer **[Custom APIs](https://learn.microsoft.com/en-us/power-apps/developer/data-platform/custom-api)** over classic unbound/bound Actions for new server-side operations
 callable from client code, Power Automate, or other plugins — they have first-class typed
 request/response parameters and show up properly in the Dataverse Web API metadata.
 

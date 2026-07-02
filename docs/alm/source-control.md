@@ -31,7 +31,7 @@ rather than in a separate repository — see below.
 
 ## Keep unpacked solutions in source control
 
-Regardless of which [deployment approach](../architecture/deployment-approach.md) a project
+**`DGT-ALM-010`**{ #dgt-alm-010 } — Regardless of which [deployment approach](../architecture/deployment-approach.md) a project
 uses — Power Platform Pipelines, Azure DevOps, or GitHub Actions — regularly commit the
 **unpacked** Dataverse solution to this repository. This gives you change history and
 reviewable diffs even on a project where the platform's own ALM does the actual deployment.
@@ -81,7 +81,7 @@ gitGraph
 
 ## `.gitattributes`
 
-Enforce a single line-ending convention across the repository — mixed `CRLF`/`LF` in generated
+**`DGT-ALM-020`**{ #dgt-alm-020 } — Enforce a single line-ending convention across the repository — mixed `CRLF`/`LF` in generated
 TypeScript or `.cs` files produces noisy diffs that obscure real changes:
 
 ```text title=".gitattributes"

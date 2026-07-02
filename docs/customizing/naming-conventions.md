@@ -4,7 +4,7 @@
 [publisher prefix](../architecture/publisher-and-prefix.md) — `dgt_` for DIGITALL-internal
 components, or the customer-specific prefix for customer projects.
 
-All schema names are **snake_case**, lowercase. Apply the same pattern to any new component
+**`DGT-CUS-010`**{ #dgt-cus-010 } — All schema names are **snake_case**, lowercase. Apply the same pattern to any new component
 type not explicitly listed below — the format is `[publisher]_[name][_type-suffix]`.
 
 ## Core schema
@@ -79,7 +79,7 @@ naming pattern below still applies to the underlying components either tool prod
 
 ## Further recommendations
 
-- Set the managed property **`IsCustomizable`** to `false` for security roles and for
+- **`DGT-CUS-020`**{ #dgt-cus-020 } — Set the managed property **`IsCustomizable`** to `false` for security roles and for
   rollup/calculated fields — these are rarely meant to be extended downstream and leaving them
   customizable invites accidental drift in managed deployments.
 - Apply the same pattern style to component types not listed here; consistency matters more

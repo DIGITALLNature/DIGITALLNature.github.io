@@ -4,7 +4,7 @@ The command bar (formerly "the ribbon") is the row of buttons on forms, grids, a
 
 ## Use the modern Command Bar Designer
 
-Build commands in the **[Command Bar Designer](https://learn.microsoft.com/en-us/power-apps/maker/model-driven-apps/use-command-designer)** in make.powerapps.com, not by hand-editing
+**`DGT-CUS-120`**{ #dgt-cus-120 } — Build commands in the **[Command Bar Designer](https://learn.microsoft.com/en-us/power-apps/maker/model-driven-apps/use-command-designer)** in make.powerapps.com, not by hand-editing
 ribbon XML. The designer covers the common cases cleanly and keeps the definition inside the
 solution. For the rare thing the designer doesn't expose, use **XrmToolBox** (Ribbon Workbench)
 rather than editing `customizations.xml` directly — see
@@ -34,6 +34,6 @@ buttons, commands, and rules, and the icon convention for button SVGs (see
 [Themes & Icons](themes-and-icons.md)).
 
 !!! warning "Don't break the out-of-the-box command bar"
-    Hiding or overriding standard buttons globally has wide blast radius. Add your own commands;
+    **`DGT-CUS-130`**{ #dgt-cus-130 } — Hiding or overriding standard buttons globally has wide blast radius. Add your own commands;
     only hide a standard one with a specific, documented reason, and scope the change as
     narrowly as possible.

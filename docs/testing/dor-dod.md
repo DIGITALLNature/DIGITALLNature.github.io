@@ -2,7 +2,7 @@
 
 ## Definition of Ready
 
-A user story is ready for a sprint when it:
+**`DGT-TST-040`**{ #dgt-tst-040 } — A user story is ready for a sprint when it:
 
 - is internally consistent and independent — not blocked by other stories;
 - is prioritized and estimable;
@@ -19,7 +19,7 @@ A user story is ready for a sprint when it:
 
 ## Definition of Done
 
-A user story is done when:
+**`DGT-TST-050`**{ #dgt-tst-050 } — A user story is done when:
 
 - all acceptance criteria are met and verified by the development team;
 - unit/developer tests pass — see [Server-side Unit Testing](unit-testing-serverside.md);

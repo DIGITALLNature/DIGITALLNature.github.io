@@ -10,13 +10,13 @@
 | UAT | Customer/business acceptance | Required for pipelines targets |
 | Production | Live system | Required for pipelines targets |
 
-Four target environments (dev → test → UAT → prod) is the common baseline; three is the
+**`DGT-ARC-060`**{ #dgt-arc-060 } — Four target environments (dev → test → UAT → prod) is the common baseline; three is the
 minimum workable setup. Scale up (e.g. a dedicated performance/load environment) based on
 project size, not as a default.
 
 ## Managed Environments are the default, not an opt-in
 
-Enable **[Managed Environments](https://learn.microsoft.com/en-us/power-platform/admin/managed-environment-overview)** on every environment used as a Power Platform Pipelines target
+**`DGT-ARC-050`**{ #dgt-arc-050 } — Enable **[Managed Environments](https://learn.microsoft.com/en-us/power-platform/admin/managed-environment-overview)** on every environment used as a Power Platform Pipelines target
 as part of initial environment setup — not as a reaction to a later governance push. See the
 warning in [Power Platform Pipelines](../alm/power-platform-pipelines.md) about Microsoft's
 February 2026 automatic-enablement change: environments that aren't already managed by then get

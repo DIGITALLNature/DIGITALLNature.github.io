@@ -1,6 +1,6 @@
 # Solution Checker
 
-Run the [Power Apps Solution Checker](https://learn.microsoft.com/en-us/power-apps/maker/data-platform/use-powerapps-checker) against every packed solution as a build-pipeline quality
+**`DGT-TST-020`**{ #dgt-tst-020 } — Run the [Power Apps Solution Checker](https://learn.microsoft.com/en-us/power-apps/maker/data-platform/use-powerapps-checker) against every packed solution as a build-pipeline quality
 gate — step 8 in [Build Pipeline](../alm/build-pipeline.md), after packaging and before
 automated tests.
 

@@ -16,15 +16,15 @@ on the [table ownership](tables-columns-relationships.md) decisions already made
 
 ## Principles
 
-- **Least privilege.** Start from no access and grant what a persona needs, scoped to the
+- **`DGT-CUS-160`**{ #dgt-cus-160 } — **Least privilege.** Start from no access and grant what a persona needs, scoped to the
   smallest ownership depth (User → BU → parent-child BU → Org) that works.
-- **No standing System Administrator for app/service accounts.** Application users get a
+- **`DGT-CUS-170`**{ #dgt-cus-170 } — **No standing System Administrator for app/service accounts.** Application users get a
   purpose-built role — see the service-principal connection guidance in
   [Env Variables & Connection References](envvars-connectionrefs.md) and
   [Governance & DLP](../operations/governance-dlp.md#who-can-do-what).
 - **Mark security roles `IsCustomizable = false`** where they're not meant to be extended
   downstream (see [Naming Conventions](naming-conventions.md#further-recommendations)).
-- **Test with a real role, not as admin.** System Administrator hides every privilege gap;
+- **`DGT-CUS-180`**{ #dgt-cus-180 } — **Test with a real role, not as admin.** System Administrator hides every privilege gap;
   validate forms, views, and plugins under the actual persona role before calling a feature
   done.
 

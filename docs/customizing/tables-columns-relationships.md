@@ -6,12 +6,14 @@ assumes you follow it.
 
 ## Reuse before you create
 
-Check whether a standard table (Account, Contact, the Activity tables, etc.) already fits before
+**`DGT-CUS-030`**{ #dgt-cus-030 } — Check whether a standard table (Account, Contact, the Activity tables, etc.) already fits before
 adding a custom one. A custom table is a long-term maintenance commitment — security, views,
 forms, and an early-bound model all follow from it. Extend a standard table with custom columns
 in preference to cloning it.
 
 ## Decisions you make once, at creation
+
+**`DGT-CUS-040`**{ #dgt-cus-040 } — Some choices are fixed at table creation — decide them deliberately:
 
 | Decision | Why it's permanent | DIGITALL default |
 |---|---|---|
@@ -21,13 +23,13 @@ in preference to cloning it.
 
 ## Columns
 
-- **Pick the narrowest correct data type.** The type drives storage, the early-bound model, and
+- **`DGT-CUS-050`**{ #dgt-cus-050 } — **Pick the narrowest correct data type.** The type drives storage, the early-bound model, and
   the form control — see the [field-suffix table](naming-conventions.md#column-field-suffixes),
   which doubles as the list of available types.
 - **Prefer global choices** (option sets) over local ones for any value list used on more than
   one column — they're reusable and generate a single shared enum in the
   [early-bound model](../coding/serverside/early-binding.md). Name them per the conventions.
-- **Don't store what you can derive.** Use **rollup**, **calculated**, and **formula** columns
+- **`DGT-CUS-060`**{ #dgt-cus-060 } — **Don't store what you can derive.** Use **rollup**, **calculated**, and **formula** columns
   for derived values instead of a plugin writing a plain column — and mark them
   `IsCustomizable = false` (see [Naming Conventions](naming-conventions.md#further-recommendations)).
   Reach for a plugin only when the logic exceeds what a formula column can express.
@@ -38,7 +40,7 @@ in preference to cloning it.
 
 ## Relationships
 
-- **1:N** is the default. Choose the cascade behavior deliberately: **parental** cascades
+- **`DGT-CUS-070`**{ #dgt-cus-070 } — **1:N** is the default. Choose the cascade behavior deliberately: **parental** cascades
   share/assign/delete down the hierarchy (powerful, but a deep parental chain is expensive and
   hard to reason about); **referential** just links. Default to referential and only use
   parental where the child genuinely has no meaning without the parent.

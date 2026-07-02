@@ -5,8 +5,8 @@ Plugin Packages, or Registration Attributes on their own.
 
 ## Plugins are stateless — let `Executor` handle it
 
-[`Executor.Execute(IServiceProvider)`](digitall-assembly.md) clones itself before invoking your
-`Execute()` override, so per-invocation state never leaks across calls to the same registered
+**`DGT-SRV-120`**{ #dgt-srv-120 } — [`Executor.Execute(IServiceProvider)`](digitall-assembly.md) clones itself before
+invoking your `Execute()` override, so per-invocation state never leaks across calls to the same registered
 step even though Dataverse may reuse the plugin type instance. You still need to avoid storing
 mutable state in `static` fields — the clone-per-call only protects instance fields.
 
@@ -20,15 +20,15 @@ and did nothing" from "ran and succeeded."
 
 ## Use `InvalidPluginExecutionException` deliberately for user-facing messages
 
-`Executor` treats an `InvalidPluginExecutionException` with `Status = OperationStatus.Succeeded`
+**`DGT-SRV-130`**{ #dgt-srv-130 } — `Executor` treats an `InvalidPluginExecutionException` with `Status = OperationStatus.Succeeded`
 as a non-error result (`ExecutionResult.Ok`) before re-throwing — this is the supported pattern
 for surfacing a validation message to the user without it being logged/traced as a failure. Use
 it for that purpose specifically, not as a general-purpose control-flow exception.
 
 ## Filter attributes instead of re-checking inside the plugin
 
-Use `[PluginRegistration(... FilterAttributes = new[] { Account.LogicalNames.Name })]` rather than
-registering an unfiltered step and checking `if (target.Contains(Account.LogicalNames.Name))` at the
+**`DGT-SRV-100`**{ #dgt-srv-100 } — Use `[PluginRegistration(... FilterAttributes = new[] { Account.LogicalNames.Name })]`
+rather than registering an unfiltered step and checking `if (target.Contains(Account.LogicalNames.Name))` at the
 top of `Execute()`. The
 filtered registration means the step doesn't fire — and doesn't consume a pipeline execution —
 when an unrelated field changes, which matters for both performance and for keeping plugin
@@ -53,8 +53,8 @@ control.
 
 ## Keep dependent-plugin shared models nullable-disabled
 
-If multiple plugin packages share a generated early-bound model (rather than each generating
-its own), keep `SuppressNullableSupport: true` (see
+**`DGT-SRV-160`**{ #dgt-srv-160 } — If multiple plugin packages share a generated early-bound model (rather than each
+generating its own), keep `SuppressNullableSupport: true` (see
 [Early-Bound Models](early-binding.md)) consistent across every project consuming that shared
 model — a mismatch here is a common source of confusing compiler warnings/errors that look
 unrelated to the actual change that introduced them.

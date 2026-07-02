@@ -44,7 +44,7 @@ option list is in the [Command Reference → `profile`](../reference/dgtp-comman
 - Use **interactive/OAuth** profiles for local developer work — this is the same
   [Microsoft Entra](https://learn.microsoft.com/en-us/entra/fundamentals/whatis) sign-in flow
   you already use for `pac` and the Dataverse web UI.
-- Use **token-based** (`--msal`, service principal / client secret) profiles for CI — never
+- **`DGT-ALM-080`**{ #dgt-alm-080 } — Use **token-based** (`--msal`, service principal / client secret) profiles for CI — never
   store a personal account's credentials in a pipeline. See
   [Azure DevOps](../alm/azure-devops.md#pipeline-structure) and
   [GitHub Actions](../alm/github-actions.md#secrets-authentication) for how those are wired

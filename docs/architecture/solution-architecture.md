@@ -2,7 +2,7 @@
 
 ## Layer by component type, with a defined dependency direction
 
-Organize Dataverse solutions by component type rather than by feature, with a strict,
+**`DGT-ARC-080`**{ #dgt-arc-080 } — Organize Dataverse solutions by component type rather than by feature, with a strict,
 documented dependency direction between them. A layered approach like this scales better than
 one large solution as a project grows, and keeps the blast radius of a single deployment small
 and predictable.
@@ -61,7 +61,7 @@ file-by-file.
 
 ## Managed vs. unmanaged
 
-- Development environments hold the **unmanaged** solution.
+- **`DGT-ARC-090`**{ #dgt-arc-090 } — Development environments hold the **unmanaged** solution.
 - Every other environment (test, UAT, production) receives the solution as **managed**, always
   — see [Power Platform Pipelines](../alm/power-platform-pipelines.md) and
   [Build Pipeline](../alm/build-pipeline.md) for how this is enforced by the pipeline rather

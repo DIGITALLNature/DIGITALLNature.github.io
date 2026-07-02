@@ -1,6 +1,6 @@
 # Build Pipeline
 
-This is the canonical order of steps for building a Dataverse project at DIGITALL, independent
+**`DGT-ALM-050`**{ #dgt-alm-050 } — This is the canonical order of steps for building a Dataverse project at DIGITALL, independent
 of whether the orchestrator is Azure DevOps, GitHub Actions, or a script run by Power Platform
 Pipelines' extensibility hooks. Individual platform chapters
 ([Azure DevOps](azure-devops.md), [GitHub Actions](github-actions.md),

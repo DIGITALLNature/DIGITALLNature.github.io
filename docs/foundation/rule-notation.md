@@ -47,3 +47,6 @@ In architectural documentation, a deviation would then read:
 Rule IDs are introduced gradually as chapters are written or revised — they are not retrofitted
 onto the entire guideline in one pass. If a chapter you're reading doesn't use them yet, that's
 expected at this stage, not an inconsistency to fix.
+
+The [Rules Index](../reference/rules.md) lists every ID assigned so far, with a link to the rule
+it names.
