@@ -1,15 +1,13 @@
-site_name: DIGITALL Power Platform Guidelines
-site_description: Project guidelines for customizers and developers working on Microsoft Power Platform / Dataverse projects at DIGITALL.
+site_name: DIGITALL - Microsoft BizApps Guidelines
+site_description: Project guidelines for all audiences working on Microsoft Power Platform or Dataverse projects at DIGITALL.
 site_url: https://digitallnature.github.io/
-edit_uri: edit/main/docs/
 
 copyright: Copyright &copy; DIGITALL Nature
 
 theme:
   name: material
   language: en
-  logo: assets/DIGITALL_white.png
-  favicon: assets/DIGITALL_white.png
+  logo: assets/images/DIGITALL_clover_white.png
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -161,6 +159,7 @@ nav:
       - Governance & DLP: operations/governance-dlp.md
   - Reference:
       - reference/index.md
+      - Rules Index: reference/rules.md
       - dgtp Command Reference: reference/dgtp-commands.md
       - DIGITALL Validators: reference/validators.md
       - Templates: reference/templates.md
