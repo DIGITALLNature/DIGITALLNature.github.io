@@ -2,6 +2,9 @@
 
 Welcome to the DIGITALL guard rails for the [Microsoft Power Platform](https://learn.microsoft.com/en-us/power-platform/).
 
+!!! warning "Draft"
+    Since we have completely revised this documentation and many sections are brand new, we ask for your understanding if there are still minor errors or omissions. Please feel free to create issues on [github.com](https://github.com/DIGITALLNature/DIGITALLNature.github.io/issues) at any time to bring them to our attention.
+
 This is a constantly growing framework for our projects, the systems we operate, and the
 experience and approaches we have built up along the way. Its core audiences are the two roles
 working side by side on the same Dataverse environment:
