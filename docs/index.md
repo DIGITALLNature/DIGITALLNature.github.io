@@ -1,4 +1,4 @@
-# DIGITALL Power Platform Guidelines
+# DIGITALL - Microsoft BizApps Guidelines
 
 Welcome to the DIGITALL guard rails for the [Microsoft Power Platform](https://learn.microsoft.com/en-us/power-platform/).
 
@@ -21,8 +21,8 @@ be documented and justified in the project's architectural documentation. See
 [Scope & Principles](foundation/scope-and-principles.md) for how that works in practice.
 
 !!! tip "Contributing"
-    Found something outdated, missing, or wrong? Raise it in the architects' circle, open a
-    GitHub discussion, or send a pull request directly. See [Governance & Contribution](foundation/governance.md).
+    Found something outdated, missing, or wrong? You can internally raise it in the MS BizApps Tech circle, open a
+    GitHub issue, or send a pull request directly. See [Governance & Contribution](foundation/governance.md).
 
 ## Where to start
 
