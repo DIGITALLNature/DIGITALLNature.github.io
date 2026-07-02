@@ -32,14 +32,12 @@ dgtp profile purge   # removes all profiles
 
 `dgtp profile create` takes the profile **name** and **connection string** as *positional*
 arguments (there is no `--name`/`--connectionstring` option), plus flags including `--msal`
-(token-based, for CI), `--skipcheck`, `-s`/`--security-protocol`, and `-i`/`--insecure`. The full
-option list is in the [Command Reference → `profile`](../reference/dgtp-commands.md#profile).
+(token-based, for CI) and `--skipcheck`. The full option list is in the
+[Command Reference → `profile`](../reference/dgtp-commands.md#profile).
 
-!!! warning "Don't disable TLS validation against real environments"
-    `--insecure` (and the `xrm:insecure` setting) turns off server-certificate validation
-    entirely. Microsoft-hosted Dataverse always presents a valid certificate, so you never need
-    it there — restrict it to a self-signed on-prem/dev endpoint, and never use it in CI against
-    a cloud environment.
+Run `dgtp profile auth-check` before automated/CI runs to verify the active profile's MSAL token
+is still valid without triggering an interactive login — see
+[Command Reference → `profile`](../reference/dgtp-commands.md#profile) for exit codes.
 
 - Use **interactive/OAuth** profiles for local developer work — this is the same
   [Microsoft Entra](https://learn.microsoft.com/en-us/entra/fundamentals/whatis) sign-in flow

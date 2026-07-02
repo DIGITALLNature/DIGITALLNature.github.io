@@ -4,7 +4,9 @@
 the same way you'd test any other TypeScript: with **Jest**, mocking the `Xrm` API via
 [`xrm-mock`](https://github.com/camsjams/xrm-mock). The
 [`webresources-template`](https://github.com/DIGITALLNature/webresources-template) ships the
-tooling (Jest, `ts-jest`, `jest-environment-jsdom`, `xrm-mock`).
+tooling (Jest, `ts-jest`, `jest-environment-jsdom`, `xrm-mock`) as dependencies, but **not**
+(yet) a `jest.config.*` or an example test — add the config below and at least one test file
+yourself when you start a new project from the template.
 
 ## What to test — and what not to
 

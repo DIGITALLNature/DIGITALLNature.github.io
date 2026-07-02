@@ -43,7 +43,7 @@ Several chapters of this guideline build directly on tooling maintained by DIGIT
 
 - **[dgt.power](https://github.com/DIGITALLNature/DigitallPower)** (`dgtp`) — CLI for code
   generation, assembly/package push, solution maintenance, and Dataverse data export/import.
-- **[Digitall.APower](https://github.com/DIGITALLNature/DigitallAssemblyPower)** — base
+- **[Digitall.Plugins](https://github.com/DIGITALLNature/DigitallAssemblyPower)** — base
   classes and abstractions for plugins, Custom APIs, and workflow assemblies.
 - **[Digitall.Plugins.Registration](https://github.com/DIGITALLNature/DigitallRegistrationPower)** —
   attributes for declarative, automated step registration.

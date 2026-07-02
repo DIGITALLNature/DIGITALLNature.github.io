@@ -13,7 +13,7 @@ dotnet add package Digitall.Plugins.Registration
 ```
 
 ```csharp
-using Digitall.APower.Model;          // SdkMessageNames, early-bound entities
+using Digitall.Dataverse.Model;       // SdkMessageNames, early-bound entities
 using Digitall.Plugins.Registration;
 ```
 

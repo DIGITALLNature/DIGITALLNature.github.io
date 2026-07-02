@@ -194,7 +194,7 @@ Referenced from [Project Setup](../coding/serverside/project-setup.md).
 
   <ItemGroup>
     <PackageReference Include="Microsoft.CrmSdk.CoreAssemblies" Version="*" PrivateAssets="all" />
-    <PackageReference Include="dgt.apower" Version="*" />
+    <PackageReference Include="Digitall.Plugins" Version="*" />
     <PackageReference Include="Digitall.Plugins.Registration" Version="*" />
   </ItemGroup>
 

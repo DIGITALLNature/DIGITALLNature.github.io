@@ -114,6 +114,9 @@ dgtp push ./dist --solution <WebResourceSolution> --publish
 See [`dgtp push` → web resource push](../../alm/pre-post-deployment.md#web-resource-push) for
 `--delete-obsolete` and mapping-config behavior, and
 [Build Pipeline](../../alm/build-pipeline.md) for where this runs in CI. The template ships a
-ready-made Azure DevOps pipeline (`.azure-pipelines/build-push-webresources.yml`) that builds
-with pnpm on Node 24 and pushes via `dgtp` using a `dgtp:xrm:connection` connection string — see
+ready-made Azure DevOps pipeline (root `azure-pipelines.yml`) that builds with pnpm on Node 24
+and pushes via `dgtp` using a `dgtp:xrm:connection` connection string — see
 [dgtp CLI → Configuration](../../setup/dgtp-cli.md#connecting-profile-or-connection-string).
+The repo also still contains `.azure-pipelines/build-push-webresources.yml`, an older
+npm/Node-22-based pipeline with unresolved `# TODO` placeholders that nothing currently
+references — ignore it until it's cleaned up or removed.

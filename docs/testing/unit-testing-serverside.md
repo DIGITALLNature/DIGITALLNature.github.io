@@ -23,7 +23,7 @@ test.
 ```csharp
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Query;
-using Digitall.APower.Model;        // generated early-bound model
+using Digitall.Dataverse.Model;     // generated early-bound model
 using Digitall.Dataverse.Testing;
 
 public class AccountTests
@@ -98,7 +98,7 @@ alongside the test fixtures it supports.
 
 ## Testing environment variable reads
 
-If a plugin uses the `Digitall.APower.EnvironmentVariables` module's `GetConfig` extension (see
+If a plugin uses `Digitall.Plugins`' built-in `GetConfig` extension (see
 [DIGITALL Assembly](../coding/serverside/digitall-assembly.md#add-on-modules)), seed the
 corresponding environment variable definition/value via `.AddConfig(key, defaultValue, value)`
 on the builder rather than mocking the extension method itself.

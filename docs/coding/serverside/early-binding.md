@@ -27,6 +27,14 @@ schema changes — see [Repository Bootstrap](../../setup/repository-bootstrap.m
 source control — see [Source Control](../../alm/source-control.md#gitignore) — it's
 regenerated deterministically from the schema on every build.
 
+!!! note "Config file version"
+    The examples on this page use the **V1** config shape (single file, both .NET and TypeScript
+    output). V1 still works — it's mapped internally onto the newer engine — but the
+    **V2** format (`"version": 2`, one focused file per output target) is now the recommended
+    default for new configs. See
+    [dgtp Command Reference → Configuration file versions](../../reference/dgtp-commands.md#codegeneration-alias-cg)
+    for the full V2 schema and the V1 → V2 migration table.
+
 ## Targets and a minimal config
 
 A single config file can target .NET classes, TypeScript classes, and/or a metadata XML file in

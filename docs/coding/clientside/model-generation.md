@@ -8,6 +8,12 @@ plugin entity access.
 dgtp codegeneration ./src/WebResources/Generated --config ./ts-modelconfig.json
 ```
 
+!!! note "Config file version"
+    The examples on this page use the **V1** config shape. V1 still works, but **V2** is now the
+    recommended format for new configs — except for the exact attribute/tab/section-level form
+    narrowing `EntityFormFilters` gives you below, which has no V2 equivalent yet. See
+    [dgtp Command Reference → Configuration file versions](../../reference/dgtp-commands.md#codegeneration-alias-cg).
+
 ## A form-scoped config
 
 ```json title="ts-modelconfig.json"

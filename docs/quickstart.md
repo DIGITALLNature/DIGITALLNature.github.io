@@ -26,7 +26,7 @@ then add the two DIGITALL packages:
 ```shell
 pac plugin init --outputDirectory ./src/Plugins/Invoice --skip-signing
 cd ./src/Plugins/Invoice
-dotnet add package dgt.apower                      # Executor base class
+dotnet add package Digitall.Plugins                # Executor base class
 dotnet add package Digitall.Plugins.Registration   # declarative step registration
 ```
 
@@ -53,8 +53,8 @@ Registration Tool:
 
 ```csharp title="ContactValidationPlugin.cs"
 using System;
-using Digitall.APower;                 // package: dgt.apower
-using Digitall.APower.Model;           // generated early-bound model
+using Digitall.Plugins;                // package: Digitall.Plugins
+using Digitall.Dataverse.Model;        // generated early-bound model
 using Digitall.Plugins.Registration;
 using Microsoft.Xrm.Sdk;
 

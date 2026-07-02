@@ -51,6 +51,14 @@ fix for "the tool doesn't let me express X declaratively yet" is to raise it aga
 `Digitall.Plugins.Registration`, not to special-case that one step manually outside source
 control.
 
+## Don't hand-roll pre-image diffing
+
+Use [`IsEntityAttributeValueChanged<T>`/`IsEntityAttributeValueNew`/`GetEntityAttributeValue<T>`](digitall-assembly.md#comparing-target-vs-pre-image)
+instead of writing your own `target.Contains(...)`/`preImage.Contains(...)`/null-check chain to
+answer "did this field actually change" — it's easy to get the "new but no pre-image" and
+"unchanged empty string vs. null" edge cases subtly wrong by hand, and these are already
+covered.
+
 ## Keep dependent-plugin shared models nullable-disabled
 
 **`DGT-SRV-160`**{ #dgt-srv-160 } — If multiple plugin packages share a generated early-bound model (rather than each

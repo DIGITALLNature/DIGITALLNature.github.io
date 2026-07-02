@@ -4,7 +4,7 @@ The complete reference for every `dgtp` command, branch by branch — including 
 options (with defaults), and configuration-file attributes. This page is the canonical command
 reference for the [`dgt.power`](https://github.com/DIGITALLNature/DigitallPower) CLI.
 
-`dgtp` is a .NET 8 global tool (`dotnet tool install -g dgt.power`). Run `dgtp` for the branch
+`dgtp` is a .NET 10 global tool (`dotnet tool install -g dgt.power`). Run `dgtp` for the branch
 list or `dgtp <command> --help` for the authoritative options of the exact build you have
 installed; this page documents the behavior in depth.
 
@@ -18,8 +18,6 @@ Every command that talks to Dataverse resolves its connection in this order
 1. **Inline connection string** — if any `xrm:*` setting is present, `dgtp` connects with it and
    **ignores any selected profile**:
     - `xrm:connection` — the Dataverse connection string.
-    - `xrm:securityprotocol` — TLS protocol (optional).
-    - `xrm:insecure` — bypass TLS certificate validation (optional; dev/self-signed only).
 2. **Selected profile** — otherwise the currently selected [profile](#profile) is used.
 3. Otherwise the command fails with a missing-connection error.
 
@@ -34,8 +32,6 @@ Settings come from two sources, both loaded at startup:
 |---|---|---|
 | `pollrate` | `5000` | Poll interval (ms) for long-running Dataverse async operations before timing out. Raise it for slow sandboxes. |
 | `xrm:connection` | — | Inline connection string (see above); the idiomatic CI authentication path. |
-| `xrm:securityprotocol` | — | TLS protocol for the inline connection. |
-| `xrm:insecure` | `false` | Bypass TLS validation for the inline connection — dev/self-signed endpoints only. |
 
 ```json title="dgtp.json (example)"
 { "pollrate": 15000 }
@@ -61,6 +57,7 @@ their own.
 | `dgtp profile select` | `<Name>` | Set a profile as the active one. |
 | `dgtp profile delete` | `<Name>` | Delete a profile. |
 | `dgtp profile purge` | — | Delete **all** profiles. |
+| `dgtp profile auth-check` | — | Non-interactively check whether the active profile's MSAL token is still valid — no browser prompt. Exit code `0` = valid (or a classic, non-MSAL profile), exit code `2` = interactive login required. Intended as a pre-flight check for automation/coding agents before running any other Dataverse command. |
 
 `Name` and `ConnectionString` are **positional** arguments (there is no `--name`/
 `--connectionstring` option). `dgtp profile create` additionally accepts:
@@ -69,13 +66,12 @@ their own.
 |---|---|---|---|
 | `--msal` | bool | `false` | Token-based authentication via MSAL — use for service-principal / client-secret (CI) profiles. |
 | `--skipcheck` | bool | `false` | Skip the connection test that otherwise runs on create. |
-| `-s`, `--security-protocol` | string | `tls12` | TLS protocol; must be one of `ssl3`, `tls`, `tls11`, `tls12` (validated). |
-| `-i`, `--insecure` | bool | `false` | Ignore TLS certificate issues — self-signed dev/test endpoints only. |
 
 ```shell
 dgtp profile create dev "AuthType=OAuth;Url=https://yourorg.crm.dynamics.com;AppId=...;RedirectUri=...;LoginPrompt=Auto"
 dgtp profile create build "$(ConnectionString)" --msal     # CI / service principal
 dgtp profile select dev
+dgtp profile auth-check   # exit 0 = valid, exit 2 = re-authenticate needed
 ```
 
 ---
@@ -106,93 +102,140 @@ Output is written to `<TargetDirectory>/<Folder>/` in up to three sub-folders: `
 (`.cs`), `TypeScript/` (`.ts`), and `MetaData/` (`.xml`) — each suppressible via the flags
 below.
 
-### Configuration attributes
+### Configuration file versions
 
-The config file (default `config.json`) deserializes to `CodeGenerationConfig`. Attributes
-apply to the **.NET**, **TypeScript**, or **both** targets as noted.
+The config file (default `config.json`) supports two schemas, distinguished by a `version`
+field. JSON schemas for both are under
+[`schemas/codegeneration/`](https://github.com/DIGITALLNature/DigitallPower/tree/beta/schemas/codegeneration)
+in the DigitallPower repo.
 
-**General**
+- **V2 (`"version": 2`, recommended)** — one focused config file per output target
+  (`"type": "dotnet"` or `"type": "typescript"`), separating **scope** (`entities`, `requests`,
+  `optionSets` — what to load from Dataverse) from **output** (a type-specific `output` object —
+  what to write to disk).
+- **V1 (`"version": 1`, or no `version` field — legacy)** — a single file for both .NET and
+  TypeScript output. Still works unchanged (mapped internally to the V2 engine before running),
+  but new configs should use V2.
 
-| Attribute | Type | Default | Description |
+#### V2 — shared root properties
+
+| Property | Type | Default | Description |
 |---|---|---|---|
-| `NameSpace` | string | `"Digitall.APower.Model"` | Namespace for generated .NET classes. |
-| `Entities` | string[] | `[]` | Logical names of tables to generate. |
-| `Actions` | string[] | `[]` | Actions to generate. |
-| `CustomAPIs` | string[] | `[]` | Custom APIs to generate. |
-| `AdditionalSdkMessages` | string[] | `[]` | Extra SDK messages to include. |
-| `GlobalOptionSets` | string[] | `[]` | Global option sets to generate. |
-| `Solutions` | string[] | `[]` | Restrict generation to these solution unique names. |
-| `EntityMask` | string | `null` | RegEx mask to filter entities (e.g. `dgt_*`). |
-| `SdkMessageFilters` | string[] | `[]` | Filter generated SDK messages. |
-| `Hints` | bool | `true` | Emit generation hints to the console. |
-| `SuppressOptions` | bool | `false` | Don't generate option-set values (.NET & TS). |
-| `SuppressSdkMessages` | bool | `false` | Don't generate SDK message names (.NET & TS). |
-| `SuppressDotNet` | bool | `false` | Skip the entire `.cs` (`DotNet/`) output. |
-| `SuppressTypeScript` | bool | `false` | Skip the entire `.ts` (`TypeScript/`) output. |
-| `SuppressMetaData` | bool | `false` | Skip the `metadata.xml` (`MetaData/`) output. |
-| `UseBaseLanguage` | bool | `false` | Use the organization base language instead of the user language. |
+| `version` | integer | `1` | Must be `2` to use the V2 engine. |
+| `type` | `"dotnet"` \| `"typescript"` | — | **Required.** Selects the generator and schema. |
+| `namespace` | string \| null | `null` (TS) / `"Digitall.Dataverse.Model"` (.NET) | Root namespace for generated classes. |
+| `language` | integer \| null | `null` | LCID for label localization (e.g. `1033`); `null`/omitted uses the organization's base language. |
 
-**.NET only**
+#### V2 — scope properties (shared by both types)
 
-| Attribute | Type | Default | Description |
+| Property | Type | Default | Description |
 |---|---|---|---|
-| `SuppressContext` | bool | `false` | Don't generate the `DataContext`/`Context.cs`. |
-| `SuppressActions` | bool | `false` | Don't generate `Actions.cs`. |
-| `SuppressLogicalNames` | bool | `false` | Omit the `LogicalNames` constant classes. |
-| `SuppressRelations` | bool | `false` | Omit relationship properties. |
-| `SuppressNavigationProperties` | bool | `false` | Omit navigation properties. |
-| `SuppressEntityTypeCode` | bool | `false` | Omit the `EntityTypeCode` constant. |
-| `SuppressAlternateKeys` | bool | `false` | Omit alternate-key helpers. |
-| `SuppressNullableSupport` | bool | `false` | Disable C# 8+ nullable reference types in the output (the right default for shared `net462` plugin models). |
-| `Virtual` | bool | `false` | Make generated properties `virtual` (e.g. for mocking). |
-| `EditableReadOnlyProperties` | bool | `false` | Make read-only properties settable. |
-| `NonDebuggerNonUserCode` | bool | `false` | Omit the `[DebuggerNonUserCode]` annotation. |
+| `entities.names` | string[] | `[]` | Explicit entity logical names. |
+| `entities.fromSolutions` | string[] | `[]` | Include all entities belonging to these solutions. |
+| `entities.mask` | string \| null | `null` | Publisher-prefix wildcard (e.g. `"dgt_*"`). |
+| `requests` | string[] | `[]` | SDK message / custom action names — generates message constants. |
+| `optionSets` | string[] | `[]` | Global option set logical names. |
 
-**TypeScript only**
+The three `entities` inputs are an **additive union** — an entity is included if it matches
+`names`, belongs to a listed solution, or matches `mask`.
 
-| Attribute | Type | Default | Description |
+#### V2 — .NET output (`"type": "dotnet"`)
+
+| Property | Type | Default | Description |
 |---|---|---|---|
-| `TypingPath` | string | `"../../Typings/Xrm/index.d.ts"` | Path to the `@types/xrm` typings the generated classes are built against. |
-| `Forms` | string[] | `[]` | Form names to generate (format `{entity}.{formname}.form`). |
-| `OnlyFormsFromSolutions` | bool | `false` | Only generate forms belonging to the configured `Solutions`. |
-| `BusinessProcessFlows` | string[] | `[]` | BPF names to generate. |
-| `EntityFilters` | `EntityFilter[]` | `[]` | Per-entity attribute/option-set narrowing. |
-| `EntityRefFilters` | `EntityRefFilter[]` | `[]` | Per-entity-reference narrowing. |
-| `EntityFormFilters` | `EntityFormFilter[]` | `[]` | Per-form narrowing. |
+| `output.target` | `"Modern"` \| `"Framework"` | `"Modern"` | `Modern` = net8.0+ (nullable, implicit usings); `Framework` = .NET Framework 4.6.2 — use this for Dataverse plugins (see [Project Setup](../coding/serverside/project-setup.md)). |
+| `output.virtual` | bool | `false` | Add `virtual` to generated entity properties (mocking, subclassing). |
+| `output.editableReadOnly` | bool | `false` | Make read-only attributes settable. |
+| `output.include.context` | bool | `true` | Generate the `DataContext` class. |
+| `output.include.options` | bool | `true` | Generate `OptionSetValues` enum classes. |
+| `output.include.logicalNames` | bool | `true` | Generate logical-name string constants. |
+| `output.include.relations` | bool | `true` | Generate relationship metadata. |
+| `output.include.navigationProps` | bool | `true` | Generate navigation properties. |
+| `output.include.entityTypeCode` | bool | `true` | Generate the entity type code constant. |
+| `output.include.alternateKeys` | bool | `true` | Generate alternate-key members. |
+| `output.include.metadata` | bool | `false` | Write `metadata.xml` sidecar files. |
 
-**Filter object shapes** (all TypeScript-only):
+#### V2 — TypeScript output (`"type": "typescript"`)
 
-| Object | Members |
-|---|---|
-| `EntityFilter` | `Entity` (required), `Attributes` (string[]), `Optionsets` (string[]) |
-| `EntityRefFilter` | `Entity` (required), `Attributes` (string[]), `Optionsets` (string[]) |
-| `EntityFormFilter` | `EntityForm` (required), `Attributes`, `Optionsets`, `Tabs`, `Sections`, `Grids` (all string[]) |
+| Property | Type | Default | Description |
+|---|---|---|---|
+| `output.forms` | object \| absent | *(all forms)* | Omit to generate all forms for all scoped entities. |
+| `output.forms.filter` | string[] | `[]` | Restrict to specific forms, `"entityLogicalName.formName"`; empty = all forms. |
+| `output.forms.fromSolutions` | bool | `false` | Only include forms belonging to the solutions in `entities.fromSolutions`. |
+| `output.forms.testHelpers` | bool | `false` | Also generate XrmMock test-helper files alongside form helpers. |
+| `output.customApis` | bool | `true` | Generate typed Custom API request/response wrappers. |
 
-#### Example `config.json`
+#### V2 examples
 
-```json title="config.json"
+```json title="genconfig.dotnet.json — plugin/server-side, entities from a solution"
 {
-  "Entities": ["account", "contact"],
-  "Actions": [],
-  "CustomAPIs": [],
-  "Solutions": ["dgt_core"],
-  "EntityMask": "dgt_*",
-  "SuppressTypeScript": true,
-  "SuppressMetaData": true,
-  "SuppressNullableSupport": true
+  "version": 2,
+  "type": "dotnet",
+  "namespace": "Contoso.Dataverse.Model",
+  "entities": { "fromSolutions": ["dgt_myproject_core"], "mask": "dgt_*" },
+  "requests": ["dgt_ApproveOrder"],
+  "output": { "target": "Framework", "include": { "metadata": false } }
 }
 ```
 
+```json title="genconfig.typescript.json — form-scoped, client-side"
+{
+  "version": 2,
+  "type": "typescript",
+  "entities": { "fromSolutions": ["dgt_myproject_core"] },
+  "output": {
+    "forms": { "filter": ["contact.Information"], "testHelpers": true }
+  }
+}
+```
+
+> **Tip:** run one command per config file —
+> `dgtp cg ./generated -c ./genconfig.dotnet.json` and
+> `dgtp cg ./generated -c ./genconfig.typescript.json`.
+
+#### V1 — legacy, still supported
+
+```json title="config.json (V1, legacy)"
+{
+  "version": 1,
+  "Entities": ["account", "contact"],
+  "Solutions": ["dgt_myproject_core"],
+  "EntityMask": "dgt_*",
+  "Actions": ["dgt_ApproveOrder"],
+  "GlobalOptionSets": [],
+  "NameSpace": "Contoso.Dataverse.Model",
+  "SuppressMetaData": true
+}
+```
+
+| V1 property | V2 equivalent |
+|---|---|
+| `Entities` | `entities.names` |
+| `Solutions` | `entities.fromSolutions` |
+| `EntityMask` | `entities.mask` |
+| `Actions` / `SdkMessageFilters` | `requests` |
+| `GlobalOptionSets` | `optionSets` |
+| `NameSpace` | `namespace` |
+| `OnlyFormsFromSolutions` | `output.forms.fromSolutions` |
+| `SuppressMetaData` | `output.include.metadata: false` |
+
+> **Note:** V1's per-attribute filters (`EntityFilters`, `EntityRefFilters`, `EntityFormFilters`)
+> have **no V2 equivalent** — removed by design to keep the V2 schema focused. If you rely on
+> attribute-level narrowing within a single generated form/entity, stay on V1 for that config
+> until an equivalent lands in V2.
+
 See [Early-Bound Models](../coding/serverside/early-binding.md) and
-[TS Model Generation](../coding/clientside/model-generation.md) for target-specific (.NET vs.
-TypeScript) example configs.
+[TS Model Generation](../coding/clientside/model-generation.md) for target-specific usage
+guidance, and the DigitallPower [README](https://github.com/DIGITALLNature/DigitallPower#-code-generation)
+for the full, authoritative schema reference.
 
 ---
 
 ## `push`
 
 ```text
-dgtp push <FileOrFolder> [--solution <name>] [--publish] [--delete-obsolete] [--config <path>]
+dgtp push <FileOrFolder> [--solution <name>] [--publish] [--delete-obsolete]
+          [--delete-on-upgrade] [--no-migrate-custom-apis] [--config <path>]
 ```
 
 | Argument / option | Type | Default | Description |
@@ -201,7 +244,24 @@ dgtp push <FileOrFolder> [--solution <name>] [--publish] [--delete-obsolete] [--
 | `--solution` | string | none | Add created/updated components to this solution. **Mandatory for web resources.** |
 | `--publish` | bool | `false` | Publish changed objects after the push. |
 | `--delete-obsolete` | bool | `false` | Delete **unmanaged** web resources that exist in the solution but no longer on disk. **Dangerous on shared environments.** |
+| `--delete-on-upgrade` | bool | `false` | On a major/minor assembly version bump (which creates a **new** assembly record), migrate plugin steps and Custom API references to the new assembly, then delete the old one. |
+| `--no-migrate-custom-apis` | bool | `false` | Skip Custom API reference migration on a version bump (ignored when `--delete-on-upgrade` is set, since deletion requires migration). |
 | `--config` | string | none | Mapping file for web-resource push, when the on-disk layout doesn't map 1:1 to web-resource names. |
+
+### Assembly version upgrades
+
+When a plugin assembly's **major or minor** version changes (e.g. `1.0.0.0` → `1.1.0.0`),
+Dataverse treats it as a different assembly identity, so `push` creates a **new** assembly
+record rather than updating in place:
+
+| Flag | Behavior |
+|---|---|
+| *(default)* | New assembly created; Custom API references migrated to the new types automatically. |
+| `--delete-on-upgrade` | Migrates plugin steps **and** Custom APIs to the new assembly, then deletes the old assembly. |
+| `--no-migrate-custom-apis` | Skips Custom API migration (ignored when `--delete-on-upgrade` is set). |
+
+Plugin **packages** (`.nupkg`) don't need any of this — the platform manages assembly GUIDs
+within a package, so content updates preserve all references automatically.
 
 ```shell
 dgtp push ./bin/Release/MyPlugins.1.0.0.nupkg --solution dgt_core --publish   # plugin package
@@ -328,6 +388,7 @@ current workflows.
 | `-s`, `--solutions` | — | Comma-separated solution unique names to consider (wildcards `%` allowed). |
 | `-p`, `--publishers` | — | Comma-separated publisher names to consider (wildcards `%` allowed). |
 | `--tablereport` | `true` | Print a table report to the console afterwards. |
+| `--detailed` | `false` | Include every process in the generated config, not just disabled ones or ones with a changed owner. |
 
 ```shell
 dgtp maintenance createworkflowstate -o ./workflowstate.json --solutions dgt_core

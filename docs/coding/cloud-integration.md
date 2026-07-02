@@ -21,19 +21,16 @@ Azure behind a queue), not in a synchronous plugin.
 
 ## Calling out from a plugin
 
-When a plugin *does* call an external service, use the
-[`Digitall.APower`](serverside/digitall-assembly.md#add-on-modules) modules rather than
-hand-rolling `HttpClient` and auth:
+When a plugin *does* call an external service, prefer a **managed identity** via
+[`[ManagedIdentityRegistration]`](serverside/custom-api.md#managed-identity) over a stored
+client secret or Key Vault lookup — `Digitall.Plugins` no longer ships Key Vault/SharePoint/HTTP
+helper modules (removed in `2.0.0`; see
+[DIGITALL Assembly → Add-on modules](serverside/digitall-assembly.md#add-on-modules)), so calling
+another service means either the managed-identity path above or calling the target SDK/REST API
+directly with your own `HttpClient`.
 
-- **`dgt.apower.keyvault`** — pull secrets from Azure Key Vault instead of storing them in
-  plugin config or environment variables.
-- the bundled HTTP/token helpers acquire OAuth tokens (Microsoft Online / ACS) for you.
-- For token-free auth, prefer a **managed identity** via
-  [`[ManagedIdentityRegistration]`](serverside/custom-api.md#managed-identity) over a stored
-  client secret.
-
-These follow the platform rule of a single, connection-closed, lazily-created `HttpClient` —
-which is exactly why you shouldn't reimplement it per plugin.
+Follow the platform rule of a single, connection-closed, lazily-created `HttpClient` regardless
+of which path you take — don't create one per invocation.
 
 ## Eventing out of Dataverse
 

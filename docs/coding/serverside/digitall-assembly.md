@@ -1,6 +1,6 @@
-# DIGITALL Assembly (Digitall.APower)
+# DIGITALL Assembly (Digitall.Plugins)
 
-[`Digitall.APower`](https://github.com/DIGITALLNature/DigitallAssemblyPower) is the
+[`Digitall.Plugins`](https://github.com/DIGITALLNature/DigitallAssemblyPower) is the
 abstraction layer every plugin, Custom API handler, and workflow activity is built on. It
 replaces boilerplate `IServiceProvider` plumbing with a small, consistent API surface, and is a
 hard dependency for [registration attributes](registration-attributes.md) and
@@ -8,21 +8,35 @@ hard dependency for [registration attributes](registration-attributes.md) and
 guideline describes.
 
 ```shell
-dotnet add package dgt.apower
+dotnet add package Digitall.Plugins
 ```
 
-!!! note "Package ID vs. namespace"
-    The package is published as **`dgt.apower`**; the namespace you `using` is
-    **`Digitall.APower`** — they deliberately differ. Install `dgt.apower`, then write
-    `using Digitall.APower;`.
+!!! note "Migrating from `dgt.apower`"
+    Versions before `2.0.0` shipped as package `dgt.apower` with namespace `Digitall.APower`,
+    plus separate `dgt.apower.keyvault`/`dgt.apower.sharepoint`/`dgt.apower.enviromentvariables`
+    add-on packages. As of `2.0.0` the package was renamed to **`Digitall.Plugins`** (package ID
+    now matches the namespace), the Key Vault and SharePoint modules were **removed**, and
+    environment-variable access moved into the core package — see
+    [Add-on modules](#add-on-modules) below.
+
+!!! info "`PluginSkeleton` vs. `Executor`"
+    The package's own README now lists **`PluginSkeleton`** first and labels **`Executor`** a
+    "legacy-compatible base class" — `PluginSkeleton` is the maintainers' recommended starting
+    point for new plugins. This guideline still teaches `Executor` below because most other
+    server-side pages ([Custom API](custom-api.md), [Patterns](patterns.md),
+    [Testing](../../testing/unit-testing-serverside.md)) build on its typed-property surface, and
+    `Executor` remains fully supported, not deprecated. If you're starting a new project and
+    don't need that typed surface, prefer `PluginSkeleton` (see the tip below) — the choice
+    doesn't affect [registration attributes](registration-attributes.md) or `dgtp push`, which
+    work the same either way.
 
 ## `Executor` — the base class for your plugin
 
 Inherit from `Executor` and implement `Execute()`:
 
 ```csharp title="ContactValidationPlugin.cs"
-using Digitall.APower;
-using Digitall.APower.Model;   // generated early-bound model
+using Digitall.Plugins;
+using Digitall.Dataverse.Model;   // generated early-bound model
 
 namespace dgt.Plugin.Contacts;
 
@@ -53,13 +67,21 @@ unit tests, so use it deliberately rather than always returning `Ok`.
 your code — following Microsoft's "plugins must be stateless" guidance — so you never need to
 worry about instance fields leaking state between invocations of the same registered step.
 
-!!! tip "Already have a plain `IPlugin`? Use `PluginCore` directly"
-    You don't have to inherit `Executor` to get the typed surface. Inside any
-    `IPlugin.Execute(IServiceProvider serviceProvider)` you can `new PluginCore(serviceProvider)`
-    and use the same `Entity`, `SecuredOrganizationService`, `GetInputParameter<T>`, `Trace`,
-    etc. — handy when a class already derives from another base or you're retrofitting an
-    existing plugin. Inheriting `Executor` stays the default for new code: it adds the
-    clone-per-execution and the `ExecutionResult` contract on top of that same surface.
+!!! tip "Prefer a lighter base, or already have a plain `IPlugin`? Use `PluginSkeleton`"
+    `PluginSkeleton` is the package's recommended abstract `IPlugin` base for new plugins — it
+    wraps your logic with structured start/end/failure logging and timing (auto-logged to both
+    `PluginTelemetry` and `ITracingService`) built in, while leaving you working against the raw
+    `IServiceProvider`/`IPluginExecutionContext` inside `ExecuteInternal(IServiceProvider)` —
+    typed access comes from extension methods such as `executionContext.GetTarget<T>()`,
+    `GetPreImage<T>()`/`GetPostImage<T>()`, `GetInputParameter`/`SetOutputParameter`, and
+    `serviceProvider.GetOrganizationService()`/`GetElevatedOrganizationService()`/`GetLogger()`/
+    `GetManagedIdentityService()`/`GetTimeProvider()`. Also useful when a class already derives
+    from another base or you're retrofitting an existing plugin — see
+    `examples/SamplePlugin/SkeletonSample.cs` in the AssemblyPower repo for a full walkthrough.
+    `Executor` (documented on this page) stays a fully-supported alternative: it adds
+    clone-per-execution behavior and the `ExecutionResult` contract on top of the same
+    capabilities, exposed as properties instead of extension methods — and it's what the rest of
+    this guideline's server-side examples use.
 
 ## What `Executor` gives you, without touching `IServiceProvider` directly
 
@@ -72,48 +94,58 @@ worry about instance fields leaking state between invocations of the same regist
 | `Stage` / `Mode` / `Depth` | Pipeline stage, sync/async mode, and recursion depth as readable values instead of raw integers. |
 | `GetInputParameter<T>` / `GetOutputParameter<T>` / `SetOutputParameter<T>` | Generic, typed access to the message request/response parameters — used for Custom APIs and actions. |
 | `Query(out QueryExpression, out ColumnSet)` (+ `QueryByAttribute`/`FetchExpression` overloads) | Typed access to a Custom API's `Query` input, with column set inference. |
-| `Trace(format, args)` | Wraps `ITracingService`. |
+| `Core` | The raw `IPluginExecutionContext`, for anything not surfaced as a typed property above. |
 | `ProcessName` | A ready-made `"CRM.{Type}.{Message}.{Mode}.{Stage}.{Depth}"` string for logging/telemetry correlation. |
+
+`Executor` itself doesn't wrap a `Trace(...)` convenience method — call
+`ServiceProvider.GetTracingService()` or `ServiceProvider.GetLogger()` directly (see
+[Logging](#add-on-modules) below) for step-by-step diagnostic output.
 
 **`DGT-SRV-080`**{ #dgt-srv-080 } — Prefer `SecuredOrganizationService`/`ElevatedOrganizationService` over calling
 `OrganizationService(...)` directly — the two named properties are cached per execution and
 communicate intent (running as caller vs. running elevated) at the call site.
 
+## Comparing target vs. pre-image
+
+`executor.GetEntityAttributeValue<T>(attribute)`, `IsEntityAttributeValueNew(attribute)`,
+`IsEntityAttributeValueChanged<T>(attribute)`, `IsEntityAttributeValueNullOrEmpty(attribute)`,
+and `MergeEntity<T>()` (also available on the raw `IPluginExecutionContext`) cover the common
+"what actually changed" checks against `Entity`/`PreEntityImage` without writing the
+`Contains`/`null`-checking boilerplate by hand — see
+`src/Digitall.Plugins/Extensions/EntityAttributeExtension.cs` in the AssemblyPower repo for the
+exact semantics of each.
+
 ## Add-on modules
 
-`Digitall.APower` ships optional modules as separate NuGet packages, referenced only where
-needed — don't add all of them by default. Each package id starts with `dgt.apower.`:
+As of `2.0.0`, `Digitall.Plugins` is a **single package** — the separate Key Vault and
+SharePoint add-on modules from the `dgt.apower.*` era have been removed outright (no REST-based
+`KeyVaultSecret(url)` or `ISharepointService` helpers exist anymore); if you still need Key
+Vault or SharePoint access, call the respective SDKs/REST APIs directly.
 
-| Package | Namespace | Adds |
-|---|---|---|
-| `dgt.apower.enviromentvariables` | `Digitall.APower.EnvironmentVariables` | `executor.GetConfig("dgt_some_env")` — reads an environment variable's value (definition + value lookup, cached per execution) without hand-rolling the `environmentvariabledefinition`/`environmentvariablevalue` query yourself. |
-| `dgt.apower.keyvault` | `Digitall.APower.Keyvault` | `executor.KeyVaultSecret(url)` — reads a secret from Azure Key Vault over REST, caching both the access token and the secret. Reads its `Azure.TenantId`, `KeyVault.ClientId`, and `KeyVault.ClientSecret` from environment variables, so it pulls in the environment-variables module. |
-| `dgt.apower.sharepoint` | `Digitall.APower.Sharepoint` | `ISharepointService` — SharePoint REST helpers (request digest, file/folder read & create, list-item update, permissions). |
+Environment-variable access is no longer a separate add-on — it's built into the core package:
 
-!!! warning "The Key Vault package id is misspelled"
-    The environment-variables package is published as `dgt.apower.enviromentvariables` — with a
-    typo, "enviroment" missing its second *n*. Install it exactly as written; only the package
-    id is affected, the namespace is spelled correctly.
+```csharp
+var value = executor.GetConfig("dgt_some_env");           // Executor, via extension method
+var value = serviceProvider.GetConfig("dgt_some_env");    // raw IServiceProvider (e.g. PluginSkeleton)
+```
 
-The OAuth token helpers the Key Vault module relies on (`GetMicrosoftOnlineAccessToken`,
-`GetAccessControlAccessToken`) live in an internal **shared project** (`dgt.apower.http`) that
-is compiled *into* the Key Vault and SharePoint packages — there is no standalone `http`
-package to add.
+`GetConfig` reads an environment variable's value (definition + value lookup, elevated,
+`defaultvalue` fallback) without hand-rolling the `environmentvariabledefinition`/
+`environmentvariablevalue` query yourself — see
+`src/Digitall.Plugins/Extensions/EnvironmentVariablesExtension.cs` in the AssemblyPower repo.
 
-!!! warning "Prefer managed identity over a stored client secret"
-    The Key Vault module authenticates with a `KeyVault.ClientSecret` read from a Dataverse
-    environment variable — but environment-variable *values* are not a secret store (readable by
-    anyone with access, not encrypted). Where the target supports it, use a
-    [managed identity](custom-api.md#managed-identity) instead of a stored secret; if a client
-    secret is unavoidable, treat that environment variable as sensitive and rotate it.
-
-Telemetry is **not** a separate module: `PluginCore` already exposes an `ILogger`
-(`PluginTelemetry`) wired to the [Application Insights](https://learn.microsoft.com/en-us/power-apps/developer/data-platform/application-insights-ilogger) export configured in the Power Platform
-admin center, so structured logging is available from the core package without an add-on.
+Telemetry is **not** a separate module either: `ServiceProvider.GetLogger(...)` (available on
+both `Executor` and a raw `IServiceProvider`) gives you an `ILogger`-compatible logger that can
+write to the
+[Application Insights](https://learn.microsoft.com/en-us/power-apps/developer/data-platform/application-insights-ilogger)
+`PluginTelemetry` sink, the classic `ITracingService`, or both — structured logging is available
+from the core package without an add-on. `PluginSkeleton` (see the tip above) wires this up for
+you automatically around every execution.
 
 ## Custom APIs and workflow activities
 
-The same `Executor` base and `PluginCore` surface apply to Custom API handlers and workflow
-activities, not just classic plugins — see [Custom API & Data Providers](custom-api.md) for the
+The same `Executor` base (or `PluginSkeleton`/extension-method surface) applies to Custom API
+handlers and workflow activities, not just classic plugins — see
+[Custom API & Data Providers](custom-api.md) for the
 Custom-API-specific parts (input/output parameter typing via `GetInputParameter`/
 `SetOutputParameter`, and the `[CustomApiRegistration]` attribute).
