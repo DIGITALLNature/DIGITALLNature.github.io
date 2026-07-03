@@ -15,7 +15,7 @@ repository — clone it rather than wiring up TypeScript, bundling, and linting 
 | **Biome** | Linting **and** formatting in one tool (replaces ESLint + Prettier). Config in `biome.json`. |
 | **Jest** + `xrm-mock` | Unit testing against a mocked `Xrm` — see [Client-side Testing](../../testing/clientside-testing.md). |
 
-Node.js **24.x** is the recommended runtime. Install dependencies with `pnpm install`.
+Node.js **current LTS** is the recommended runtime. Install dependencies with `pnpm install`.
 
 ## Project structure
 
