@@ -13,7 +13,7 @@ reference for how we build, test, and ship Dataverse solutions. It covers:
 - **Architecture** — solution architecture, publisher/prefix, environment strategy, deployment approach
 - **Setup & Onboarding** — toolchain, the `dgtp` CLI, environment provisioning, repository bootstrap
 - **Customizing** — naming, tables/columns/relationships, forms/views/BPF, command bar, themes, security
-- **Coding** — server-side (plugins, Custom APIs, `Digitall.APower`) and client-side (TypeScript web resources, PCF)
+- **Coding** — server-side (plugins, Custom APIs, `Digitall.Plugins`) and client-side (TypeScript web resources, PCF)
 - **Testing & Quality**, **ALM & Deployment**, **Operations**, and a **Reference** section
 
 New to a project? Start with the [Quickstart](https://digitallnature.github.io/quickstart/).
