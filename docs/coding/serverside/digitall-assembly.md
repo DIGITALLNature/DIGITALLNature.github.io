@@ -134,13 +134,18 @@ var value = serviceProvider.GetConfig("dgt_some_env");    // raw IServiceProvide
 `environmentvariablevalue` query yourself — see
 `src/Digitall.Plugins/Extensions/EnvironmentVariablesExtension.cs` in the AssemblyPower repo.
 
-Telemetry is **not** a separate module either: `ServiceProvider.GetLogger(...)` (available on
-both `Executor` and a raw `IServiceProvider`) gives you an `ILogger`-compatible logger that can
-write to the
-[Application Insights](https://learn.microsoft.com/en-us/power-apps/developer/data-platform/application-insights-ilogger)
-`PluginTelemetry` sink, the classic `ITracingService`, or both — structured logging is available
-from the core package without an add-on. `PluginSkeleton` (see the tip above) wires this up for
-you automatically around every execution.
+Telemetry is **not** a separate module either — `ServiceProvider` (on both `Executor` and a raw
+`IServiceProvider`) exposes two logging entry points, deliberately kept distinct:
+
+| Call | Returns | Writes to |
+|---|---|---|
+| `GetLogger()` | `Microsoft.Xrm.Sdk.PluginTelemetry.ILogger` | [Application Insights](https://learn.microsoft.com/en-us/power-apps/developer/data-platform/application-insights-ilogger) `PluginTelemetry` only |
+| `GetLogger(params LogSink[] sinks)` | `Microsoft.Extensions.Logging.ILogger` | `PluginTelemetry`, `ITracingService`, or both, depending on the sinks passed — no sinks defaults to `ITracingService` |
+
+Prefer the standard `Microsoft.Extensions.Logging.ILogger` overload (`GetLogger(sinks)`) for new
+code — it lets you change sinks later without touching call sites, and it's what
+`PluginSkeleton` (see the tip above) uses internally to auto-log start/end/failure around every
+execution.
 
 ## Custom APIs and workflow activities
 

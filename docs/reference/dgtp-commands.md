@@ -106,7 +106,7 @@ below.
 
 The config file (default `config.json`) supports two schemas, distinguished by a `version`
 field. JSON schemas for both are under
-[`schemas/codegeneration/`](https://github.com/DIGITALLNature/DigitallPower/tree/beta/schemas/codegeneration)
+[`schemas/codegeneration/`](https://github.com/DIGITALLNature/DigitallPower/tree/main/schemas/codegeneration)
 in the DigitallPower repo.
 
 - **V2 (`"version": 2`, recommended)** — one focused config file per output target
