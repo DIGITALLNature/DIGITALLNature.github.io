@@ -86,10 +86,9 @@ plugins:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://digitallnature.github.io/
+      link: https://github.com/DIGITALLNature/DIGITALLNature.github.io/
   version:
     provider: mike
-
 nav:
   - Home: index.md
   - Quickstart: quickstart.md
