@@ -63,7 +63,7 @@ documented in a project's own architectural documentation rather than changed he
 The tooling these guidelines build on:
 
 - [`dgt.power`](https://github.com/DIGITALLNature/DigitallPower) (`dgtp`) — CLI for code generation, assembly/package push, solution maintenance, and data export/import
-- [`Digitall.APower`](https://github.com/DIGITALLNature/DigitallAssemblyPower) — base classes for plugins, Custom APIs, and workflow activities
+- [`Digitall.Plugins`](https://github.com/DIGITALLNature/DigitallAssemblyPower) — base classes for plugins, Custom APIs, and workflow activities
 - [`Digitall.Plugins.Registration`](https://github.com/DIGITALLNature/DigitallRegistrationPower) — declarative plugin/step registration attributes
 - [`Digitall.Dataverse.Testing`](https://github.com/DIGITALLNature/DigitallTesting) — in-memory `IOrganizationService` for fast plugin unit tests
 - [`webresources-template`](https://github.com/DIGITALLNature/webresources-template) — TypeScript/webpack starter for Dataverse web resources
