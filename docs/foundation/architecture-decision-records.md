@@ -1,6 +1,6 @@
 # Architecture Decision Records
 
-[`DGT-FND-010`](scope-and-principles.md#dgt-fnd-010) requires deviations from this guideline to
+[`DGT-FND-020`](scope-and-principles.md#dgt-fnd-020) requires deviations from this guideline to
 be documented and justified — but a requirement without a format and a location tends to decay
 into scattered wiki pages and ticket comments. This chapter pins both down: fundamental
 decisions are recorded as **Architecture Decision Records (ADRs)**, in the project repository,
@@ -25,7 +25,7 @@ guideline** require an ADR in
 [MADR format](https://github.com/adr/madr/blob/develop/template/adr-template.md): Context and
 Problem Statement, Decision Drivers, Considered Options, and a Decision Outcome with
 Consequences and Confirmation. This operationalizes
-[`DGT-FND-010`](scope-and-principles.md#dgt-fnd-010) — a deviation without an ADR is not a
+[`DGT-FND-020`](scope-and-principles.md#dgt-fnd-020) — a deviation without an ADR is not a
 documented deviation. It applies equally to rejecting a rule and to adopting one with
 project-specific modifications.
 
@@ -46,7 +46,7 @@ suppression effect.
 ---
 status: accepted
 date: 2026-05-04
-deviates-from: [DGT-SRV-010]
+deviates-from: [DGT-SRV-060]
 ---
 ```
 

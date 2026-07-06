@@ -10,13 +10,13 @@
 | UAT | Customer/business acceptance | Required for pipelines targets |
 | Production | Live system | Required for pipelines targets |
 
-**`DGT-ARC-060`**{ #dgt-arc-060 } — Four target environments (dev → test → UAT → prod) is the common baseline; three is the
+**`DGT-ARC-080`**{ #dgt-arc-080 } — Four target environments (dev → test → UAT → prod) is the common baseline; three is the
 minimum workable setup. Scale up (e.g. a dedicated performance/load environment) based on
 project size, not as a default.
 
 ## Managed Environments are the default, not an opt-in
 
-**`DGT-ARC-050`**{ #dgt-arc-050 } — Enable **[Managed Environments](https://learn.microsoft.com/en-us/power-platform/admin/managed-environment-overview)** on every environment used as a Power Platform Pipelines target
+**`DGT-ARC-090`**{ #dgt-arc-090 } — Enable **[Managed Environments](https://learn.microsoft.com/en-us/power-platform/admin/managed-environment-overview)** on every environment used as a Power Platform Pipelines target
 as part of initial environment setup — not as a reaction to a later governance push. See the
 warning in [Power Platform Pipelines](../alm/power-platform-pipelines.md) about Microsoft's
 February 2026 automatic-enablement change: environments that aren't already managed by then get
@@ -24,7 +24,7 @@ enabled for you, so getting ahead of it is simpler than discovering it happened.
 
 ## Per-developer environments
 
-**`DGT-ARC-110`**{ #dgt-arc-110 } — Use one development environment **per developer** once the
+**`DGT-ARC-100`**{ #dgt-arc-100 } — Use one development environment **per developer** once the
 team is larger than one or two people; don't share a single dev environment. A shared dev
 environment turns into a source of unreviewable, conflicting changes that no pipeline step can
 reconcile — individual environments combined with regular `pac solution sync` (see

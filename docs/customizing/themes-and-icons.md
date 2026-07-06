@@ -2,7 +2,7 @@
 
 ## Theming
 
-- **`DGT-CUS-140`**{ #dgt-cus-140 } — Brand **per app**, using the modern model-driven app theme (logo, colors set on the app),
+- **`DGT-CUS-180`**{ #dgt-cus-180 } — Brand **per app**, using the modern model-driven app theme (logo, colors set on the app),
   rather than the legacy organization-wide theme — org themes are a classic-era mechanism and
   don't belong in new work.
 - Keep theming **inside the solution** so it deploys with everything else; a color set by hand
@@ -11,7 +11,7 @@
 
 ## Icons
 
-- **`DGT-CUS-150`**{ #dgt-cus-150 } — Use **SVG web resources** for table and command-bar icons — vector scales cleanly across the
+- **`DGT-CUS-190`**{ #dgt-cus-190 } — Use **SVG web resources** for table and command-bar icons — vector scales cleanly across the
   Unified Interface densities where fixed-size PNGs blur. Reserve raster formats for genuine
   images (photos, logos with gradients).
 - Store icons as web resources in the solution and name them per the

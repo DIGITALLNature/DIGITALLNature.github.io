@@ -38,7 +38,7 @@ this page covers how we configure and extend it once that decision is made.
 
 ## Deploying with a service principal
 
-**`DGT-ALM-120`**{ #dgt-alm-120 } — Production deployments through Power Platform Pipelines run
+**`DGT-ALM-100`**{ #dgt-alm-100 } — Production deployments through Power Platform Pipelines run
 as **delegated deployments** — the pipeline stage executes as a service principal (or a
 designated pipeline stage owner), not as the requesting maker's own identity, and production
 stages require an **approval**. This means:

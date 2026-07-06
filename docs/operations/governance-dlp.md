@@ -9,7 +9,7 @@ forward, not just a separate governance nice-to-have.
 
 ## Data Loss Prevention (DLP) policies
 
-- **`DGT-OPS-010`**{ #dgt-ops-010 } — Define DLP policies at the environment-group or tenant level appropriate to the customer's
+- **`DGT-OPS-030`**{ #dgt-ops-030 } — Define DLP policies at the environment-group or tenant level appropriate to the customer's
   risk posture — this is a customer/tenant-admin decision, not something DIGITALL unilaterally
   sets, but raise it explicitly during project setup if no policy exists yet.
 - Connectors used by [connection references](../customizing/envvars-connectionrefs.md) and
@@ -19,10 +19,10 @@ forward, not just a separate governance nice-to-have.
 
 ## Who can do what
 
-- **`DGT-OPS-020`**{ #dgt-ops-020 } — **Don't customize outside development environments.** Managed Environments enforce this by
+- **`DGT-OPS-040`**{ #dgt-ops-040 } — **Don't customize outside development environments.** Managed Environments enforce this by
   blocking unmanaged customization in target environments — rely on that enforcement rather
   than only on convention.
-- **`DGT-OPS-030`**{ #dgt-ops-030 } — Production access for DIGITALL team members should be scoped to what's needed for support
+- **`DGT-OPS-050`**{ #dgt-ops-050 } — Production access for DIGITALL team members should be scoped to what's needed for support
   and deployment troubleshooting, not standing System Administrator access by default — pair
   this with [delegated/service-principal deployment](../alm/power-platform-pipelines.md#deploying-with-a-service-principal)
   so routine deployments don't require personal elevated access at all.

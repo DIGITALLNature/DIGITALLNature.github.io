@@ -15,7 +15,7 @@ stream, or where the customer already standardizes on Azure DevOps.
 
 ## Pipeline structure
 
-**`DGT-ALM-060`**{ #dgt-alm-060 } — Use **YAML pipelines** checked into the repository (under `pipelines/`, see
+**`DGT-ALM-110`**{ #dgt-alm-110 } — Use **YAML pipelines** checked into the repository (under `pipelines/`, see
 [Source Control](source-control.md)) rather than classic editor-defined pipelines — this keeps
 the pipeline definition reviewable in the same pull request as the code change it affects.
 

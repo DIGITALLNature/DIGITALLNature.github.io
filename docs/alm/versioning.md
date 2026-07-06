@@ -17,7 +17,7 @@ to the build that produced it rather than to manual judgment calls:
 | `Build` | Bumped automatically by CI for every build that gets deployed past dev. |
 | `Revision` | Reserved for emergency/hotfix builds against an already-released `Build`. |
 
-**`DGT-ALM-030`**{ #dgt-alm-030 } — Bumping is **not** done by hand-editing `solution.xml`. Use `dgtp maintenance solution-version`,
+**`DGT-ALM-040`**{ #dgt-alm-040 } — Bumping is **not** done by hand-editing `solution.xml`. Use `dgtp maintenance solution-version`,
 which reads the current version directly from the target Dataverse environment and writes the
 incremented version back:
 
@@ -47,7 +47,7 @@ version. `dgtp push` compares this against what is already registered in Dataver
 whether to create or upgrade the `PluginPackage`/`PluginAssembly` records — see
 [Pre- & Post-Deployment Tasks](pre-post-deployment.md).
 
-**`DGT-ALM-040`**{ #dgt-alm-040 } — Because of this, **the assembly version must increase on every build that gets pushed**,
+**`DGT-ALM-050`**{ #dgt-alm-050 } — Because of this, **the assembly version must increase on every build that gets pushed**,
 including dev-loop builds — Dataverse only re-imports a package whose version is higher than
 what's already registered. We bump the `Revision` segment automatically on every CI build
 using the build number (see below); `Major.Minor.Build` follow the same release cadence as the

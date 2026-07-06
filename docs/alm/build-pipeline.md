@@ -1,6 +1,6 @@
 # Build Pipeline
 
-**`DGT-ALM-050`**{ #dgt-alm-050 } — This is the canonical order of steps for building a Dataverse project at DIGITALL, independent
+**`DGT-ALM-060`**{ #dgt-alm-060 } — This is the canonical order of steps for building a Dataverse project at DIGITALL, independent
 of whether the orchestrator is Azure DevOps, GitHub Actions, or a script run by Power Platform
 Pipelines' extensibility hooks. Individual platform chapters
 ([Azure DevOps](azure-devops.md), [GitHub Actions](github-actions.md),
@@ -92,7 +92,7 @@ The two steps most often placed wrong:
 
 ## CI credentials
 
-**`DGT-ALM-080`**{ #dgt-alm-080 } — Use **token-based** (`--msal`, service principal / client secret) `dgtp` profiles for CI — never
+**`DGT-ALM-070`**{ #dgt-alm-070 } — Use **token-based** (`--msal`, service principal / client secret) `dgtp` profiles for CI — never
 store a personal account's credentials in a pipeline. In practice CI needs no stored profile at
 all: set the `dgtp:xrm:connection` environment variable from a pipeline secret (see
 [dgtp CLI → Connecting](../setup/dgtp-cli.md#connecting-profile-or-connection-string)). See

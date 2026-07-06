@@ -1,6 +1,6 @@
 # Plugin Packages
 
-**`DGT-SRV-010`**{ #dgt-srv-010 } — Plugin packages (NuGet-based **dependent assemblies**) are the default for all
+**`DGT-SRV-060`**{ #dgt-srv-060 } — Plugin packages (NuGet-based **dependent assemblies**) are the default for all
 new server-side projects. **ILMerge is not allowed** — it was never officially supported by Dataverse, is no
 longer maintained upstream, and plugin packages provide the same capability (and more) through
 a supported mechanism.
@@ -51,7 +51,7 @@ copy-local if they're satisfied by the sandbox runtime already.
 
 ## One owning solution
 
-**`DGT-SRV-220`**{ #dgt-srv-220 } — A plugin package (and its assembly) belongs to **exactly
+**`DGT-SRV-070`**{ #dgt-srv-070 } — A plugin package (and its assembly) belongs to **exactly
 one** solution. Adding the same assembly to multiple unmanaged solutions invites duplicate step
 registrations and solution-layer conflicts that are painful to untangle in target environments —
 if another solution needs the plugin's behavior, it takes a dependency on the owning solution

@@ -2,7 +2,7 @@
 
 ## Plugin telemetry
 
-**`DGT-OPS-040`**{ #dgt-ops-040 } — Enable **Application Insights** integration via "Activate Data Export" in the Power Platform
+**`DGT-OPS-010`**{ #dgt-ops-010 } — Enable **Application Insights** integration via "Activate Data Export" in the Power Platform
 admin center for every production environment. Once enabled,
 [`ServiceProvider.GetLogger(LogSink.PluginTelemetry, ...)`](../coding/serverside/digitall-assembly.md#add-on-modules)
 (available on both `Executor` and `PluginSkeleton`) writes to it — use it for anything beyond the
@@ -22,7 +22,7 @@ class lets you add your own log lines beyond that.
 
 ## What to monitor as a baseline
 
-**`DGT-OPS-050`**{ #dgt-ops-050 } — Every production environment has at least this monitoring
+**`DGT-OPS-020`**{ #dgt-ops-020 } — Every production environment has at least this monitoring
 baseline in place, with findings routed to a channel someone actually watches:
 
 - Plugin/Custom API failures and execution time, via Application Insights.

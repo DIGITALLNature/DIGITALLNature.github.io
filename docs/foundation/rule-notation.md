@@ -5,7 +5,7 @@ requirement to phrase every sentence as a formal rule. Most of this guideline is
 prose, examples, and recommendations.
 
 Where a rule is specific enough that you'd want to point to it from architectural
-documentation — e.g. *"deviates from `DGT-SRV-010`"* — it gets a short, stable **rule ID**
+documentation — e.g. *"deviates from `DGT-SRV-060`"* — it gets a short, stable **rule ID**
 so the reference doesn't break when headings get reworded. Not every paragraph needs one; use
 your judgment for what's worth pinning down.
 
@@ -34,13 +34,13 @@ project documentation stay unambiguous (they'll just point to a rule marked as r
 
 ## Example
 
-> **`DGT-SRV-010`** — Plugin and Custom API projects target the Dataverse plugin package
+> **`DGT-SRV-060`** — Plugin and Custom API projects target the Dataverse plugin package
 > format (`.nupkg` via dependent assemblies), not classic single-assembly registration. See
 > [Plugin Packages](../coding/serverside/plugin-packages.md).
 
 In architectural documentation, a deviation would then read:
 
-> Deviates from `DGT-SRV-010`: this project keeps the legacy single-assembly plugin because it
+> Deviates from `DGT-SRV-060`: this project keeps the legacy single-assembly plugin because it
 > is shared with a non-Dataverse host process. Reviewed with the architects' circle on
 > 2026-05-04.
 

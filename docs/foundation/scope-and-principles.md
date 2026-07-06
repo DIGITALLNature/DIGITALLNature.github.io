@@ -27,7 +27,7 @@ cover functional/business analysis or project management process.
 
 ## Precedence
 
-**`DGT-FND-020`**{ #dgt-fnd-020 } — **If the customer has a defined standard, that standard takes precedence.** Where no customer
+**`DGT-FND-010`**{ #dgt-fnd-010 } — **If the customer has a defined standard, that standard takes precedence.** Where no customer
 standard exists, this guideline applies.
 
 We keep this intentionally: DIGITALL is usually a guest in someone else's tenant, and a
@@ -36,7 +36,7 @@ respected even where they differ from what is written here.
 
 ## Deviations
 
-**`DGT-FND-010`**{ #dgt-fnd-010 } — Deviations from this guideline are permitted. They **must** be documented and justified in the
+**`DGT-FND-020`**{ #dgt-fnd-020 } — Deviations from this guideline are permitted. They **must** be documented and justified in the
 project's architectural documentation, so that:
 
 - a reviewer can tell a deliberate decision apart from an oversight;

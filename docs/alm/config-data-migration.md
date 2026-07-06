@@ -19,7 +19,7 @@ therefore needs an explicit migration step rather than relying on solution impor
 
 ## `dgtp export` / `dgtp import`
 
-**`DGT-ALM-070`**{ #dgt-alm-070 } — For the non-solution-aware Dataverse configuration objects listed above, use the matching
+**`DGT-ALM-120`**{ #dgt-alm-120 } — For the non-solution-aware Dataverse configuration objects listed above, use the matching
 `dgtp export`/`dgtp import` command pair rather than recreating them by hand in each
 environment:
 

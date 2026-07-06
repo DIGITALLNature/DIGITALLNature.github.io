@@ -2,7 +2,7 @@
 
 ## Layer by component type, with a defined dependency direction
 
-**`DGT-ARC-080`**{ #dgt-arc-080 } — Organize Dataverse solutions by component type rather than by feature, with a strict,
+**`DGT-ARC-010`**{ #dgt-arc-010 } — Organize Dataverse solutions by component type rather than by feature, with a strict,
 documented dependency direction between them. A layered approach like this scales better than
 one large solution as a project grows, and keeps the blast radius of a single deployment small
 and predictable.
@@ -24,7 +24,7 @@ a schema-only deployment possible without dragging in unrelated app or automatio
 
 ## One home per component, segmented export
 
-**`DGT-ARC-100`**{ #dgt-arc-100 } — A given unmanaged component lives in **exactly one**
+**`DGT-ARC-020`**{ #dgt-arc-020 } — A given unmanaged component lives in **exactly one**
 solution, and tables are added to solutions **segmented** — selected subcomponents or "include
 table metadata only", never "Add all assets". The same component in two solutions produces
 layer and merge conflicts on import; "all assets" drags in every current and future
@@ -70,7 +70,7 @@ file-by-file.
 
 ## Managed vs. unmanaged
 
-- **`DGT-ARC-090`**{ #dgt-arc-090 } — Development environments hold the **unmanaged** solution.
+- **`DGT-ARC-030`**{ #dgt-arc-030 } — Development environments hold the **unmanaged** solution.
 - Every other environment (test, UAT, production) receives the solution as **managed**, always
   — see [Power Platform Pipelines](../alm/power-platform-pipelines.md) and
   [Build Pipeline](../alm/build-pipeline.md) for how this is enforced by the pipeline rather

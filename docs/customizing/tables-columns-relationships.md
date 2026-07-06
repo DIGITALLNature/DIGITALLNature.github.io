@@ -23,7 +23,7 @@ in preference to cloning it.
 
 ## Elastic tables for high-volume data
 
-**`DGT-CUS-210`**{ #dgt-cus-210 } — High-volume, telemetry-style data (logs, events, IoT
+**`DGT-CUS-050`**{ #dgt-cus-050 } — High-volume, telemetry-style data (logs, events, IoT
 readings) goes into an **elastic table with a TTL column**, never into a standard table.
 Standard tables accumulate storage and index cost forever; an elastic table auto-expires rows
 via time-to-live. Know the trade-offs before choosing elastic — they change how server-side
@@ -37,18 +37,18 @@ See [Microsoft's elastic tables documentation](https://learn.microsoft.com/en-us
 
 ## Columns
 
-- **`DGT-CUS-050`**{ #dgt-cus-050 } — **Pick the narrowest correct data type.** The type drives storage, the early-bound model, and
+- **`DGT-CUS-060`**{ #dgt-cus-060 } — **Pick the narrowest correct data type.** The type drives storage, the early-bound model, and
   the form control — see the [field-suffix table](naming-conventions.md#column-field-suffixes),
   which doubles as the list of available types.
-- **`DGT-CUS-250`**{ #dgt-cus-250 } — **Use global choices** (option sets) instead of local ones
+- **`DGT-CUS-070`**{ #dgt-cus-070 } — **Use global choices** (option sets) instead of local ones
   for any value list used on more than one column — they're reusable and generate a single
   shared enum in the [early-bound model](../coding/serverside/early-binding.md). Name them per
   the conventions.
-- **`DGT-CUS-060`**{ #dgt-cus-060 } — **Don't store what you can derive.** Use **rollup**, **calculated**, and **formula** columns
+- **`DGT-CUS-080`**{ #dgt-cus-080 } — **Don't store what you can derive.** Use **rollup**, **calculated**, and **formula** columns
   for derived values instead of a plugin writing a plain column — and mark them
   `IsCustomizable = false` (see [Naming Conventions](naming-conventions.md#further-recommendations)).
   Reach for a plugin only when the logic exceeds what a formula column can express.
-- **`DGT-CUS-260`**{ #dgt-cus-260 } — **Alternate keys carry integration identity.** Define an
+- **`DGT-CUS-090`**{ #dgt-cus-090 } — **Alternate keys carry integration identity.** Define an
   alternate key for any column an external system uses to address a record (e.g. a foreign
   system id), and name it `prfx_..._key` — integrations then upsert against the key instead of
   querying for the GUID first.
@@ -57,7 +57,7 @@ See [Microsoft's elastic tables documentation](https://learn.microsoft.com/en-us
 
 ## Relationships
 
-- **`DGT-CUS-070`**{ #dgt-cus-070 } — **1:N** is the default. Choose the cascade behavior deliberately: **parental** cascades
+- **`DGT-CUS-100`**{ #dgt-cus-100 } — **1:N** is the default. Choose the cascade behavior deliberately: **parental** cascades
   share/assign/delete down the hierarchy (powerful, but a deep parental chain is expensive and
   hard to reason about); **referential** just links. Default to referential and only use
   parental where the child genuinely has no meaning without the parent.

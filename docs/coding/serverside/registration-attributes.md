@@ -1,6 +1,6 @@
 # Registration Attributes
 
-**`DGT-SRV-090`**{ #dgt-srv-090 } — [`Digitall.Plugins.Registration`](https://github.com/DIGITALLNature/DigitallRegistrationPower)
+**`DGT-SRV-100`**{ #dgt-srv-100 } — [`Digitall.Plugins.Registration`](https://github.com/DIGITALLNature/DigitallRegistrationPower)
 replaces manual step registration in the Plugin Registration Tool with declarative C#
 attributes. **This is the registration source of truth** — what you see on a class is what
 [`dgtp push`](../../alm/pre-post-deployment.md#dgtp-push-in-depth) reconciles into Dataverse,

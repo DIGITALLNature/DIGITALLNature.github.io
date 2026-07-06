@@ -15,7 +15,7 @@ ALM-side handling on this page.
   deployment time is whose API limits and permissions the flow runs under. After every
   deployment to a new or refreshed environment, re-confirm who the connection is assigned to —
   don't assume the previous environment's assignment carried over.
-- **`DGT-CUS-190`**{ #dgt-cus-190 } — For unattended/production flows, assign the connection via an **application user / service
+- **`DGT-CUS-200`**{ #dgt-cus-200 } — For unattended/production flows, assign the connection via an **application user / service
   principal** rather than a named person's account — this also gives you the full API limit
   allocation rather than a shared per-user quota.
 
@@ -23,7 +23,7 @@ ALM-side handling on this page.
 
 - Naming: `prfx_..._env` (lowercase), e.g. `dgt_foreign_system_url_env`,
   `dgt_organization_friendlyname_env`.
-- **`DGT-CUS-200`**{ #dgt-cus-200 } — In development, create the environment variable **definition only** (no value) and deploy
+- **`DGT-CUS-210`**{ #dgt-cus-210 } — In development, create the environment variable **definition only** (no value) and deploy
   that. If you set a value while creating it in the dev environment, remove it from the
   solution before export — "Remove from this solution" works while the variable is still in
   the same environment it was created in.

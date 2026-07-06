@@ -1,7 +1,7 @@
 # Recommended Additional Rules & Project ToDos (Draft)
 
 Working document — candidate rules and recurring project ToDos identified by comparing the
-current guideline (66 rules, `DGT-FND-010` … `DGT-OPS-040`) against Microsoft Learn best
+current guideline (66 rules, `DGT-FND-020` … `DGT-OPS-010`) against Microsoft Learn best
 practices (Power Platform Well-Architected, Dataverse developer guidance, ALM guidance,
 Success by Design). Items already covered by an existing rule were excluded; where an item
 sharpens an existing rule, that rule is referenced.
@@ -24,7 +24,7 @@ sharpens an existing rule, that rule is referenced.
   Source: <https://learn.microsoft.com/en-us/power-platform/admin/backup-restore-environments>
 
 - [m] **1.2 Define uptime and recovery targets (RTO/RPO) per workload before finalizing the
-  environment strategy.** Complements `DGT-ARC-060`.
+  environment strategy.** Complements `DGT-ARC-080`.
   Source: <https://learn.microsoft.com/en-us/power-platform/well-architected/reliability/>
 
 - [r] **1.3 Use elastic tables (with a TTL column) for high-volume data such as logs and
@@ -56,7 +56,7 @@ sharpens an existing rule, that rule is referenced.
   Source: <https://learn.microsoft.com/en-us/power-platform/admin/manage-dataverse-auditing>
 
 - [r] **2.3 Security roles are solution components and get deployed** — never rebuilt manually
-  in test/prod. Natural companion to `DGT-CUS-160`–`180`.
+  in test/prod. Natural companion to `DGT-CUS-220`–`180`.
   Source: <https://learn.microsoft.com/en-us/power-platform/admin/wp-security-cds>
 
 ## 3. Server-side Coding (`SRV`)
@@ -76,7 +76,7 @@ sharpens an existing rule, that rule is referenced.
 - [r] **3.4 Don't (ab)use `context.Depth` as loop-control logic** — it breaks legitimate
   cascades. Prevent loops via filtering attributes and targeted registration instead; the
   platform's infinite-loop protection is a safety net, not a design element. Complements
-  `DGT-SRV-100`.
+  `DGT-SRV-200`.
   Source: <https://learn.microsoft.com/en-us/power-apps/developer/data-platform/understand-the-data-context>
 
 - [r] **3.5 Query only the columns you need (explicit `ColumnSet`, never `AllColumns`)** —
@@ -85,7 +85,7 @@ sharpens an existing rule, that rule is referenced.
   <https://learn.microsoft.com/en-us/power-apps/developer/data-platform/query-throttling>
 
 - [r] **3.6 External calls from plugins: set an explicit timeout and `KeepAlive=false`.**
-  Sharpens `DGT-SRV-140`.
+  Sharpens `DGT-INT-010`.
   Source: <https://learn.microsoft.com/en-us/power-apps/developer/data-platform/best-practices/business-logic/set-timeout-for-external-calls-from-plug-ins>
 
 - [r] **3.7 A plugin assembly belongs to exactly one solution** — avoids duplicate
@@ -166,7 +166,7 @@ Flows currently appear only as a decision option and via connection references. 
 
 - [r] **8.2 Never put the same unmanaged component into multiple solutions;** export tables
   segmented only ("include table metadata only", never "Add all assets"). Complements
-  `DGT-ARC-080`.
+  `DGT-ARC-010`.
   Source: <https://learn.microsoft.com/en-us/power-platform/alm/organize-solutions>
 
 - [r] **8.3 Use Upgrade (not Update) when components were removed** — otherwise orphaned
@@ -175,7 +175,7 @@ Flows currently appear only as a decision option and via connection references. 
 
 - [r] **8.4 Use a deployment settings file for connection references and environment-variable
   values** as the standard mechanism in automated deployments. Operationalizes
-  `DGT-CUS-190`/`200` at pipeline level.
+  `DGT-CUS-200`/`200` at pipeline level.
   Source: <https://learn.microsoft.com/en-us/power-platform/alm/conn-ref-env-variables-build-tools>
 
 - [m] **8.5 Settle flow ownership after service-principal deployments:** after an import via
@@ -191,7 +191,7 @@ Flows currently appear only as a decision option and via connection references. 
 
 - [m] **9.2 Set the DLP default group for new connectors to Blocked/Non-Business** — new
   connectors otherwise land in the default group automatically. The most important sharpening
-  of `DGT-OPS-010`.
+  of `DGT-OPS-030`.
   Source: <https://learn.microsoft.com/en-us/power-platform/admin/dlp-connector-classification>
 
 - [m] **9.3 Capacity monitoring as an operations baseline:** watch database/file/log capacity
@@ -204,7 +204,7 @@ Flows currently appear only as a decision option and via connection references. 
   Source: <https://learn.microsoft.com/en-us/power-platform/important-changes-coming>
 
 - [m] **9.5 Don't leave the plugin trace log permanently enabled in production** (log
-  capacity) — telemetry belongs in Application Insights. Complements `DGT-OPS-040`.
+  capacity) — telemetry belongs in Application Insights. Complements `DGT-OPS-010`.
   Source: <https://learn.microsoft.com/en-us/power-platform/admin/overview-integration-application-insights>
 
 - [m] **9.6 Tenant isolation / cross-tenant restrictions** as a baseline recommendation for
@@ -221,7 +221,7 @@ Flows currently appear only as a decision option and via connection references. 
 
 ## 11. Foundation (`FND`) — Architecture Decision Records
 
-Not covered anywhere today: `DGT-FND-010` requires deviations to be "documented and justified
+Not covered anywhere today: `DGT-FND-020` requires deviations to be "documented and justified
 in the project's architectural documentation", but prescribes no format, no location, and no
 repository. Pinning this down to ADRs makes deviations reviewable — and machine-checkable:
 automated rule checks (Solution Checker custom rules, `dgtp analyze`, pipeline linters) can
@@ -237,7 +237,7 @@ accepted decision instead of raising noise.
 - [r] **11.2 Fundamental decisions for or against a guideline rule require an ADR** in
   [MADR format](https://github.com/adr/madr/blob/develop/template/adr-template.md)
   (Context and Problem Statement, Decision Drivers, Considered Options, Decision Outcome with
-  Consequences and Confirmation). This operationalizes `DGT-FND-010`: a deviation without an
+  Consequences and Confirmation). This operationalizes `DGT-FND-020`: a deviation without an
   ADR is not a documented deviation. Applies to adopting a rule with project-specific
   modifications as well as to rejecting one.
 

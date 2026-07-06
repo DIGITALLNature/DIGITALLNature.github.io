@@ -55,7 +55,7 @@ resource names.
 
 ## Import behavior: Upgrade, not Update
 
-**`DGT-ALM-090`**{ #dgt-alm-090 } — Import managed solutions as an **Upgrade** (or *stage for
+**`DGT-ALM-080`**{ #dgt-alm-080 } — Import managed solutions as an **Upgrade** (or *stage for
 upgrade* where the deletes need to happen in a controlled second step) — not as an **Update**.
 Update merges the incoming version over the installed one and **never deletes anything**: a
 component you removed in dev quietly lives on in every downstream environment. Upgrade
@@ -64,7 +64,7 @@ reconciles the target against the new version and removes what's gone. See
 
 ## Deployment settings file
 
-**`DGT-ALM-100`**{ #dgt-alm-100 } — Automated deployments provide environment-specific values —
+**`DGT-ALM-090`**{ #dgt-alm-090 } — Automated deployments provide environment-specific values —
 connection references and environment-variable values — through a **deployment settings file**
 per target environment (`pac solution import --settings-file`, the Power Platform Build Tools
 equivalent, or Power Platform Pipelines' pre-deployment step), checked into source control with

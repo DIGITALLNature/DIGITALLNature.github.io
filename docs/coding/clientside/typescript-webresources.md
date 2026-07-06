@@ -34,7 +34,7 @@ object, **`DGT`** (webpack `library.type: assign-properties`) — so a handler w
 form designer as **`DGT.Account.onLoad`**.
 
 !!! tip "One entry point per form/ribbon; shared code in plain modules"
-    **`DGT-CLI-030`**{ #dgt-cli-030 } — Only files matching `*.form.ts` / `*.ribbon.ts` become bundles. Put shared helpers in
+    **`DGT-CLI-020`**{ #dgt-cli-020 } — Only files matching `*.form.ts` / `*.ribbon.ts` become bundles. Put shared helpers in
     ordinary `.ts` modules and `import` them — they're compiled into the bundles that use them,
     rather than emitted as separate web resources.
 
@@ -50,7 +50,7 @@ form designer as **`DGT.Account.onLoad`**.
 
 ## Register `OnLoad` only — bind everything else in code
 
-**`DGT-CLI-020`**{ #dgt-cli-020 } — Register only the form's **`OnLoad`** event in the form designer (pointing at, e.g.,
+**`DGT-CLI-030`**{ #dgt-cli-030 } — Register only the form's **`OnLoad`** event in the form designer (pointing at, e.g.,
 `DGT.Account.onLoad`). Register all other handlers — `OnSave`, field `OnChange`, tab/section
 visibility, and so on — programmatically from inside `onLoad`:
 
@@ -97,7 +97,7 @@ source control the same way as server-side models (see
 
 ## Deprecated client APIs are off limits
 
-**`DGT-CLI-070`**{ #dgt-cli-070 } — Client-side code never uses deprecated platform APIs:
+**`DGT-CLI-050`**{ #dgt-cli-050 } — Client-side code never uses deprecated platform APIs:
 
 - no `Xrm.Page` — use the `formContext` from the execution context (as in the examples above)
   and `Xrm.Utility.getGlobalContext()`;
@@ -113,7 +113,7 @@ regardless of whether a checker catches it. Track upcoming removals via
 
 ## Formatting & line endings
 
-**`DGT-CLI-050`**{ #dgt-cli-050 } — Biome owns both formatting (4-space indent, single quotes, **LF** line endings) and linting —
+**`DGT-CLI-060`**{ #dgt-cli-060 } — Biome owns both formatting (4-space indent, single quotes, **LF** line endings) and linting —
 run `pnpm run lint` and don't hand-tune style. Because Biome normalizes to LF, mixed line
 endings are a non-issue here; the repo-wide `.gitattributes`
 ([Source Control](../../alm/source-control.md#gitattributes)) stays as the belt-and-braces

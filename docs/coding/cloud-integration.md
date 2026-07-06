@@ -15,7 +15,7 @@ Before writing an integration, decide *where* it runs — this is the highest-le
 | Long-running, fan-out, heavy compute, or orchestration across systems | **Azure** (Functions / Logic Apps / Service Bus) |
 | Synchronous call *out* to an external system from a write | **Plugin** + the HTTP/Key Vault helpers below — but mind the 2-minute sandbox limit |
 
-**`DGT-SRV-140`**{ #dgt-srv-140 } — The platform sandbox kills a plugin at **two minutes** and you don't control retry
+**`DGT-INT-010`**{ #dgt-int-010 } — The platform sandbox kills a plugin at **two minutes** and you don't control retry
 semantics finely — anything slow, bursty, or that must not block the user belongs in async (a flow, or
 Azure behind a queue), not in a synchronous plugin.
 
@@ -29,12 +29,12 @@ helper modules (removed in `2.0.0`; see
 another service means either the managed-identity path above or calling the target SDK/REST API
 directly with your own `HttpClient`.
 
-**`DGT-INT-040`**{ #dgt-int-040 } — Use a **single, lazily-created, shared `HttpClient`** (with
+**`DGT-INT-020`**{ #dgt-int-020 } — Use a **single, lazily-created, shared `HttpClient`** (with
 connection keep-alive disabled, see below) regardless of which path you take — never create one
 per invocation. Per-call clients exhaust sockets under load and are one of the standard causes
 of intermittent outbound-call failures from plugins.
 
-**`DGT-INT-020`**{ #dgt-int-020 } — Every external call from a plugin sets an **explicit
+**`DGT-INT-030`**{ #dgt-int-030 } — Every external call from a plugin sets an **explicit
 timeout** (well under the two-minute sandbox budget, so *your* error handling runs instead of
 the sandbox killing the worker) and uses **`KeepAlive = false`** — the sandbox recycles
 processes, and kept-alive connections to a recycled worker surface as sporadic, unreproducible
@@ -47,20 +47,20 @@ Dataverse throttles API consumers per user and web server in a 5-minute sliding 
 requests, 20 minutes combined execution time, ~52 concurrent requests — see
 [Microsoft's service protection documentation](https://learn.microsoft.com/en-us/power-apps/developer/data-platform/api-limits).
 
-**`DGT-INT-010`**{ #dgt-int-010 } — Every integration that talks to Dataverse **must handle
+**`DGT-INT-040`**{ #dgt-int-040 } — Every integration that talks to Dataverse **must handle
 HTTP 429 with the `Retry-After` header** — an integration that treats 429 as a fatal error, or
 retries immediately in a tight loop, fails exactly when load is highest. Use
 `Microsoft.PowerPlatform.Dataverse.Client.ServiceClient`, which honors `Retry-After`
 automatically; hand-rolled HTTP clients must implement the same backoff.
 
-**`DGT-INT-030`**{ #dgt-int-030 } — Never use the **Dataverse Search API** for bulk or
+**`DGT-INT-050`**{ #dgt-int-050 } — Never use the **Dataverse Search API** for bulk or
 programmatic mass queries — it is rate-limited to roughly one request per second per user and
 is built for interactive search. Bulk reads use the Web API / SDK with paging, or
 [FetchXML aggregation](https://learn.microsoft.com/en-us/power-apps/developer/data-platform/api-limits).
 
 ## Eventing out of Dataverse
 
-- **`DGT-INT-050`**{ #dgt-int-050 } — Push Dataverse events to Azure **asynchronously via the
+- **`DGT-INT-060`**{ #dgt-int-060 } — Push Dataverse events to Azure **asynchronously via the
   service-endpoint registration** (Azure Service Bus / event publishing) — not with a plugin
   that POSTs to an external endpoint synchronously. The service endpoint gives you durable
   delivery and retry from the platform; a synchronous POST makes the remote system's downtime

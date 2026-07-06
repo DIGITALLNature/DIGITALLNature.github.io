@@ -58,7 +58,7 @@ public class ContactValidationPlugin : Executor
 }
 ```
 
-**`DGT-SRV-070`**{ #dgt-srv-070 } — `Execute()` returns an `ExecutionResult` — `Ok`, `Failure`, or `Skipped` —
+**`DGT-SRV-080`**{ #dgt-srv-080 } — `Execute()` returns an `ExecutionResult` — `Ok`, `Failure`, or `Skipped` —
 rather than relying purely on exceptions for control flow. This is also what
 [`Digitall.Dataverse.Testing`](../../testing/unit-testing-serverside.md) asserts against in
 unit tests, so use it deliberately rather than always returning `Ok`.
@@ -101,7 +101,7 @@ worry about instance fields leaking state between invocations of the same regist
 `ServiceProvider.GetTracingService()` or `ServiceProvider.GetLogger()` directly (see
 [Logging](#add-on-modules) below) for step-by-step diagnostic output.
 
-**`DGT-SRV-080`**{ #dgt-srv-080 } — Prefer `SecuredOrganizationService`/`ElevatedOrganizationService` over calling
+**`DGT-SRV-090`**{ #dgt-srv-090 } — Prefer `SecuredOrganizationService`/`ElevatedOrganizationService` over calling
 `OrganizationService(...)` directly — the two named properties are cached per execution and
 communicate intent (running as caller vs. running elevated) at the call site.
 

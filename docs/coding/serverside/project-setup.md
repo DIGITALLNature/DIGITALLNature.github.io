@@ -2,7 +2,7 @@
 
 ## Target framework
 
-**`DGT-SRV-020`**{ #dgt-srv-020 } — Plugin and Custom API assemblies target **`net462`** — this is a Dataverse
+**`DGT-SRV-010`**{ #dgt-srv-010 } — Plugin and Custom API assemblies target **`net462`** — this is a Dataverse
 platform constraint, not a project choice, and applies regardless of which .NET SDK you build with.
 
 !!! warning "Looking ahead: .NET Framework 4.8 plugin runtime"
@@ -15,7 +15,7 @@ platform constraint, not a project choice, and applies regardless of which .NET 
 
 ## Project format
 
-**`DGT-SRV-030`**{ #dgt-srv-030 } — Use the **SDK-style project format** (`pac plugin init`-generated, or the
+**`DGT-SRV-020`**{ #dgt-srv-020 } — Use the **SDK-style project format** (`pac plugin init`-generated, or the
 SDK-style template manually) for new projects, not the legacy non-SDK `.csproj`. This is also the format required
 to use [plugin packages](plugin-packages.md).
 
@@ -42,7 +42,7 @@ to use [plugin packages](plugin-packages.md).
 ```
 
 !!! note "Why CoreAssemblies, not Dataverse.Client"
-    **`DGT-SRV-040`**{ #dgt-srv-040 } — The Dataverse SDK assemblies already exist in the plug-in sandbox, so they
+    **`DGT-SRV-030`**{ #dgt-srv-030 } — The Dataverse SDK assemblies already exist in the plug-in sandbox, so they
     must **not** be shipped inside the package — `PrivateAssets="all"` references them at build time but keeps
     them out of the `.nupkg` (including them otherwise errors on package registration).
     `Microsoft.PowerPlatform.Dataverse.Client` is the `ServiceClient` for *external* apps and
@@ -59,7 +59,7 @@ to use [plugin packages](plugin-packages.md).
 
 ## One project per logical unit, versioned independently
 
-**`DGT-SRV-060`**{ #dgt-srv-060 } — Each plugin/Custom API/workflow "group" lives in its own assembly, including
+**`DGT-SRV-050`**{ #dgt-srv-050 } — Each plugin/Custom API/workflow "group" lives in its own assembly, including
 its own version — don't merge unrelated functional areas into one assembly just because they're both plugins.
 This keeps the version bump described in [Versioning](../../alm/versioning.md) meaningful: a
 version increase tells you specifically what changed, not "something somewhere in the project
@@ -121,7 +121,7 @@ See [Templates](../../reference/templates.md) for the full file.
 
 ## Signing
 
-**`DGT-SRV-050`**{ #dgt-srv-050 } — Plugin packages (the default — see [Plugin Packages](plugin-packages.md))
+**`DGT-SRV-040`**{ #dgt-srv-040 } — Plugin packages (the default — see [Plugin Packages](plugin-packages.md))
 **do not require signing**. Only sign assemblies if a project is still on the classic single-assembly
 registration format, in which case follow the standard strong-name signing approach
 (`AssemblyOriginatorKeyFile`, a `key.snk` committed per

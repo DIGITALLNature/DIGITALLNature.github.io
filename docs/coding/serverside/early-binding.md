@@ -1,6 +1,6 @@
 # Early-Bound Models (dgtp)
 
-**`DGT-SRV-150`**{ #dgt-srv-150 } — Use early-bound, strongly-typed classes for server-side Dataverse access rather than
+**`DGT-SRV-110`**{ #dgt-srv-110 } — Use early-bound, strongly-typed classes for server-side Dataverse access rather than
 late-bound `Entity["fieldname"]` access — it gives you compile-time checking against the schema and
 working IntelliSense. Generate them with `dgtp codegeneration` (alias `cg`); this is the
 DIGITALL standard in place of the legacy `CrmSvcUtil`-based generator.

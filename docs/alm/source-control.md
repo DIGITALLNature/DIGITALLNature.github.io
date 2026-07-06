@@ -106,7 +106,7 @@ IDEs and stacks in use, e.g. `visualstudio,rider,visualstudiocode,dotnetcore,nod
 
 ## What does *not* belong in this repository
 
-**`DGT-ALM-110`**{ #dgt-alm-110 } — The repository never contains:
+**`DGT-ALM-030`**{ #dgt-alm-030 } — The repository never contains:
 
 - Secrets (connection strings, client secrets, API keys) — these belong in pipeline variable
   groups / secrets, or Key Vault, referenced by name. See
