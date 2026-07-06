@@ -90,6 +90,15 @@ The two steps most often placed wrong:
   version is currently on the environment into `solution.xml`. Bumping after export has no
   effect on the artifact you're about to ship.
 
+## CI credentials
+
+**`DGT-ALM-080`**{ #dgt-alm-080 } — Use **token-based** (`--msal`, service principal / client secret) `dgtp` profiles for CI — never
+store a personal account's credentials in a pipeline. In practice CI needs no stored profile at
+all: set the `dgtp:xrm:connection` environment variable from a pipeline secret (see
+[dgtp CLI → Connecting](../setup/dgtp-cli.md#connecting-profile-or-connection-string)). See
+[Azure DevOps](azure-devops.md#pipeline-structure) and
+[GitHub Actions](github-actions.md#secrets-authentication) for how those secrets are wired in.
+
 ## Local builds (developer workstation)
 
 A developer running the same steps locally during a feature loop does not need the version

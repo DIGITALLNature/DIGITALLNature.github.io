@@ -109,7 +109,7 @@ directly in this list — they land on it and see the surrounding rules for cont
 | [`DGT-ALM-050`](#dgt-alm-050){ #dgt-alm-050 } | Follow the canonical build-pipeline step order, independent of the CI orchestrator. | [Build Pipeline](../alm/build-pipeline.md#dgt-alm-050) |
 | [`DGT-ALM-060`](#dgt-alm-060){ #dgt-alm-060 } | Use YAML pipelines checked into the repository, not classic editor-defined pipelines. | [Azure DevOps](../alm/azure-devops.md#dgt-alm-060) |
 | [`DGT-ALM-070`](#dgt-alm-070){ #dgt-alm-070 } | Use the matching `dgtp export`/`dgtp import` command pair for non-solution-aware config objects. | [Config & Reference Data Migration](../alm/config-data-migration.md#dgt-alm-070) |
-| [`DGT-ALM-080`](#dgt-alm-080){ #dgt-alm-080 } | Use token-based (service principal) `dgtp` profiles for CI — never personal credentials. | [dgtp CLI](../setup/dgtp-cli.md#dgt-alm-080) |
+| [`DGT-ALM-080`](#dgt-alm-080){ #dgt-alm-080 } | Use token-based (service principal) `dgtp` profiles for CI — never personal credentials. | [Build Pipeline](../alm/build-pipeline.md#dgt-alm-080) |
 
 ## Operations (`OPS`)
 
