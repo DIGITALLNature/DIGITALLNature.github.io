@@ -49,6 +49,15 @@ copy-local if they're satisfied by the sandbox runtime already.
   web UI, Plugin Registration Tool), so don't assume a slow import is specific to one
   deployment method.
 
+## One owning solution
+
+**`DGT-SRV-220`**{ #dgt-srv-220 } — A plugin package (and its assembly) belongs to **exactly
+one** solution. Adding the same assembly to multiple unmanaged solutions invites duplicate step
+registrations and solution-layer conflicts that are painful to untangle in target environments —
+if another solution needs the plugin's behavior, it takes a dependency on the owning solution
+(see [Solution Architecture](../../architecture/solution-architecture.md)) rather than
+containing the assembly itself.
+
 ## Registering and updating
 
 Use [`dgtp push`](../../alm/pre-post-deployment.md#dgtp-push-in-depth) rather than the Plugin

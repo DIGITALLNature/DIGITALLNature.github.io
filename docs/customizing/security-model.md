@@ -27,6 +27,17 @@ on the [table ownership](tables-columns-relationships.md) decisions already made
 - **`DGT-CUS-180`**{ #dgt-cus-180 } — **Test with a real role, not as admin.** System Administrator hides every privilege gap;
   validate forms, views, and plugins under the actual persona role before calling a feature
   done.
+- **`DGT-CUS-220`**{ #dgt-cus-220 } — **Never implement security through UI visibility.** A
+  field hidden on a form, a removed navigation item, or a hidden button restricts nothing — the
+  data stays readable and writable through the Web API. Use
+  [column-level security](https://learn.microsoft.com/en-us/power-platform/admin/field-level-security)
+  for sensitive columns and privileges/roles for operations; UI visibility is a usability tool,
+  not a security boundary.
+- **`DGT-CUS-230`**{ #dgt-cus-230 } — **Security roles are solution components and get
+  deployed.** Roles travel in the solution through every environment; they are never rebuilt or
+  hand-edited in test/prod. A role difference between environments is a deployment defect, not
+  a configuration task. See
+  [Microsoft's security guidance](https://learn.microsoft.com/en-us/power-platform/admin/wp-security-cds).
 
 ## In code
 

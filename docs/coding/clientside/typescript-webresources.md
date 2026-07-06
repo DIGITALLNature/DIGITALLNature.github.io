@@ -95,6 +95,22 @@ dgtp codegeneration ./src/model/ --config ./src/model/model.json --folder datave
 source control the same way as server-side models (see
 [Source Control](../../alm/source-control.md#gitignore)).
 
+## Deprecated client APIs are off limits
+
+**`DGT-CLI-070`**{ #dgt-cli-070 } — Client-side code never uses deprecated platform APIs:
+
+- no `Xrm.Page` — use the `formContext` from the execution context (as in the examples above)
+  and `Xrm.Utility.getGlobalContext()`;
+- no `parent.Xrm` in HTML web resources — pass the context explicitly or use a PCF control
+  instead;
+- no references to scripts shipped by the platform (jQuery has been removed from the platform —
+  a web resource that referenced it breaks);
+- no OData v2 (Organization Data Service) endpoints — only the Web API.
+
+The `@types/xrm` typings and the Solution Checker both flag most of these, but the rule applies
+regardless of whether a checker catches it. Track upcoming removals via
+[Microsoft's deprecation announcements](https://learn.microsoft.com/en-us/power-platform/important-changes-coming).
+
 ## Formatting & line endings
 
 **`DGT-CLI-050`**{ #dgt-cli-050 } — Biome owns both formatting (4-space indent, single quotes, **LF** line endings) and linting —

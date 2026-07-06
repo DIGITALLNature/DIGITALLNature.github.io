@@ -96,6 +96,7 @@ nav:
       - foundation/index.md
       - Scope & Principles: foundation/scope-and-principles.md
       - Rule Notation: foundation/rule-notation.md
+      - Architecture Decision Records: foundation/architecture-decision-records.md
       - Governance & Contribution: foundation/governance.md
       - Glossary: foundation/glossary.md
   - Architecture:
@@ -136,6 +137,7 @@ nav:
           - PCF Controls: coding/clientside/pcf.md
           - TS Model Generation (dgtp): coding/clientside/model-generation.md
       - Cloud & Integration: coding/cloud-integration.md
+      - Power Automate Flows: coding/flows.md
   - Testing & Quality:
       - testing/index.md
       - Server-side Unit Testing: testing/unit-testing-serverside.md

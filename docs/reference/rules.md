@@ -16,6 +16,10 @@ directly in this list — they land on it and see the surrounding rules for cont
 |---|---|---|
 | [`DGT-FND-010`](#dgt-fnd-010){ #dgt-fnd-010 } | Deviations from this guideline are permitted but must be documented and justified in the project's architectural documentation. | [Scope & Principles](../foundation/scope-and-principles.md#dgt-fnd-010) |
 | [`DGT-FND-020`](#dgt-fnd-020){ #dgt-fnd-020 } | If the customer has a defined standard, that standard takes precedence over this guideline. | [Scope & Principles](../foundation/scope-and-principles.md#dgt-fnd-020) |
+| [`DGT-FND-030`](#dgt-fnd-030){ #dgt-fnd-030 } | Every project maintains an ADR log in its main repository (`docs/decisions/`, one Markdown file per decision). | [Architecture Decision Records](../foundation/architecture-decision-records.md#dgt-fnd-030) |
+| [`DGT-FND-040`](#dgt-fnd-040){ #dgt-fnd-040 } | Fundamental decisions for or against a guideline rule require an ADR in MADR format. | [Architecture Decision Records](../foundation/architecture-decision-records.md#dgt-fnd-040) |
+| [`DGT-FND-050`](#dgt-fnd-050){ #dgt-fnd-050 } | A deviation ADR references the affected rule ID machine-readably; the ADR lifecycle is maintained. | [Architecture Decision Records](../foundation/architecture-decision-records.md#dgt-fnd-050) |
+| [`DGT-FND-060`](#dgt-fnd-060){ #dgt-fnd-060 } | ADRs pass through PR review and are part of the Definition of Done's documentation item. | [Architecture Decision Records](../foundation/architecture-decision-records.md#dgt-fnd-060) |
 
 ## Architecture (`ARC`)
 
@@ -30,6 +34,7 @@ directly in this list — they land on it and see the surrounding rules for cont
 | [`DGT-ARC-070`](#dgt-arc-070){ #dgt-arc-070 } | Decide the deployment approach (Pipelines / Azure DevOps / GitHub Actions / hybrid) once, early in the project. | [Deployment Approach](../architecture/deployment-approach.md#dgt-arc-070) |
 | [`DGT-ARC-080`](#dgt-arc-080){ #dgt-arc-080 } | Organize Dataverse solutions by component type (core/server/client/apps/flows), with a strict, documented dependency direction. | [Solution Architecture](../architecture/solution-architecture.md#dgt-arc-080) |
 | [`DGT-ARC-090`](#dgt-arc-090){ #dgt-arc-090 } | Development environments hold the unmanaged solution; every other environment always receives it managed. | [Solution Architecture](../architecture/solution-architecture.md#dgt-arc-090) |
+| [`DGT-ARC-100`](#dgt-arc-100){ #dgt-arc-100 } | A component lives in exactly one solution; tables are added segmented, never "Add all assets". | [Solution Architecture](../architecture/solution-architecture.md#dgt-arc-100) |
 
 ## Customizing (`CUS`)
 
@@ -55,6 +60,9 @@ directly in this list — they land on it and see the surrounding rules for cont
 | [`DGT-CUS-180`](#dgt-cus-180){ #dgt-cus-180 } | Test with a real security role, not as System Administrator. | [Security Model](../customizing/security-model.md#dgt-cus-180) |
 | [`DGT-CUS-190`](#dgt-cus-190){ #dgt-cus-190 } | Assign unattended/production flow connections via an application user / service principal. | [Env Variables & Connection References](../customizing/envvars-connectionrefs.md#dgt-cus-190) |
 | [`DGT-CUS-200`](#dgt-cus-200){ #dgt-cus-200 } | In development, create the environment variable definition only (no value) and deploy that. | [Env Variables & Connection References](../customizing/envvars-connectionrefs.md#dgt-cus-200) |
+| [`DGT-CUS-210`](#dgt-cus-210){ #dgt-cus-210 } | High-volume telemetry-style data goes into an elastic table with a TTL column, never a standard table. | [Tables, Columns & Relationships](../customizing/tables-columns-relationships.md#dgt-cus-210) |
+| [`DGT-CUS-220`](#dgt-cus-220){ #dgt-cus-220 } | Never implement security through UI visibility — use column security and privileges. | [Security Model](../customizing/security-model.md#dgt-cus-220) |
+| [`DGT-CUS-230`](#dgt-cus-230){ #dgt-cus-230 } | Security roles are solution components and get deployed — never rebuilt manually in test/prod. | [Security Model](../customizing/security-model.md#dgt-cus-230) |
 
 ## Server-side (`SRV`)
 
@@ -76,6 +84,12 @@ directly in this list — they land on it and see the surrounding rules for cont
 | [`DGT-SRV-140`](#dgt-srv-140){ #dgt-srv-140 } | Don't do slow/external work synchronously in a plugin (2-minute limit); prefer managed identity over stored secrets. | [Cloud & Integration](../coding/cloud-integration.md#dgt-srv-140) |
 | [`DGT-SRV-150`](#dgt-srv-150){ #dgt-srv-150 } | Use generated early-bound models (`dgtp codegeneration`); generated code is not committed. | [Early-Bound Models](../coding/serverside/early-binding.md#dgt-srv-150) |
 | [`DGT-SRV-160`](#dgt-srv-160){ #dgt-srv-160 } | Keep `SuppressNullableSupport: true` consistent across every project sharing a generated model. | [Patterns & Pitfalls](../coding/serverside/patterns.md#dgt-srv-160) |
+| [`DGT-SRV-170`](#dgt-srv-170){ #dgt-srv-170 } | No `ExecuteMultipleRequest`/`ExecuteTransactionRequest` inside plugins. | [Patterns & Pitfalls](../coding/serverside/patterns.md#dgt-srv-170) |
+| [`DGT-SRV-180`](#dgt-srv-180){ #dgt-srv-180 } | No custom threading (`Parallel.*`, `Task.Run`) inside plugins. | [Patterns & Pitfalls](../coding/serverside/patterns.md#dgt-srv-180) |
+| [`DGT-SRV-190`](#dgt-srv-190){ #dgt-srv-190 } | Synchronous steps on `Retrieve`/`RetrieveMultiple` only in justified exceptions. | [Patterns & Pitfalls](../coding/serverside/patterns.md#dgt-srv-190) |
+| [`DGT-SRV-200`](#dgt-srv-200){ #dgt-srv-200 } | Don't use `context.Depth` as loop control — use filtering attributes and precise registration. | [Patterns & Pitfalls](../coding/serverside/patterns.md#dgt-srv-200) |
+| [`DGT-SRV-210`](#dgt-srv-210){ #dgt-srv-210 } | Every query states an explicit `ColumnSet` — never `AllColumns`. | [Patterns & Pitfalls](../coding/serverside/patterns.md#dgt-srv-210) |
+| [`DGT-SRV-220`](#dgt-srv-220){ #dgt-srv-220 } | A plugin package/assembly belongs to exactly one solution. | [Plugin Packages](../coding/serverside/plugin-packages.md#dgt-srv-220) |
 
 ## Client-side (`CLI`)
 
@@ -87,6 +101,24 @@ directly in this list — they land on it and see the surrounding rules for cont
 | [`DGT-CLI-040`](#dgt-cli-040){ #dgt-cli-040 } | Generate typed models with `dgtp codegeneration` and type the form context against them. | [TypeScript Web Resources](../coding/clientside/typescript-webresources.md#dgt-cli-040) |
 | [`DGT-CLI-050`](#dgt-cli-050){ #dgt-cli-050 } | Biome owns formatting and linting for web resources; don't hand-tune style. | [TypeScript Web Resources](../coding/clientside/typescript-webresources.md#dgt-cli-050) |
 | [`DGT-CLI-060`](#dgt-cli-060){ #dgt-cli-060 } | Use `pac` for PCF scaffolding rather than copying an older project's structure by hand. | [PCF Controls](../coding/clientside/pcf.md#dgt-cli-060) |
+| [`DGT-CLI-070`](#dgt-cli-070){ #dgt-cli-070 } | No deprecated client APIs: no `Xrm.Page`, no `parent.Xrm`, no platform scripts, no OData v2. | [TypeScript Web Resources](../coding/clientside/typescript-webresources.md#dgt-cli-070) |
+
+## Cloud & Integration (`INT`)
+
+| Rule | Statement | Defined in |
+|---|---|---|
+| [`DGT-INT-010`](#dgt-int-010){ #dgt-int-010 } | Every integration handles HTTP 429 / `Retry-After` (service protection limits); use `ServiceClient` or equivalent backoff. | [Cloud & Integration](../coding/cloud-integration.md#dgt-int-010) |
+| [`DGT-INT-020`](#dgt-int-020){ #dgt-int-020 } | External calls from plugins set an explicit timeout and `KeepAlive = false`. | [Cloud & Integration](../coding/cloud-integration.md#dgt-int-020) |
+| [`DGT-INT-030`](#dgt-int-030){ #dgt-int-030 } | Never use the Dataverse Search API for bulk queries. | [Cloud & Integration](../coding/cloud-integration.md#dgt-int-030) |
+
+## Power Automate Flows (`FLW`)
+
+| Rule | Statement | Defined in |
+|---|---|---|
+| [`DGT-FLW-010`](#dgt-flw-010){ #dgt-flw-010 } | Create flows solution-aware, never as standalone "My flows" artifacts. | [Power Automate Flows](../coding/flows.md#dgt-flw-010) |
+| [`DGT-FLW-020`](#dgt-flw-020){ #dgt-flw-020 } | No production flow without error handling (scope-based try/catch and failure notification). | [Power Automate Flows](../coding/flows.md#dgt-flw-020) |
+| [`DGT-FLW-030`](#dgt-flw-030){ #dgt-flw-030 } | Filter in the trigger (trigger conditions, column/row filters), not with a first-action condition. | [Power Automate Flows](../coding/flows.md#dgt-flw-030) |
+| [`DGT-FLW-040`](#dgt-flw-040){ #dgt-flw-040 } | Treat concurrency and pagination settings as code — variables aren't thread-safe under concurrency; raise pagination limits explicitly. | [Power Automate Flows](../coding/flows.md#dgt-flw-040) |
 
 ## Testing & Quality (`TST`)
 
@@ -97,6 +129,7 @@ directly in this list — they land on it and see the surrounding rules for cont
 | [`DGT-TST-030`](#dgt-tst-030){ #dgt-tst-030 } | Unit-test TypeScript web resource logic with Jest, mocking `Xrm` via `xrm-mock`. | [Client-side Testing](../testing/clientside-testing.md#dgt-tst-030) |
 | [`DGT-TST-040`](#dgt-tst-040){ #dgt-tst-040 } | A user story must meet the Definition of Ready before entering a sprint. | [Definition of Ready / Done](../testing/dor-dod.md#dgt-tst-040) |
 | [`DGT-TST-050`](#dgt-tst-050){ #dgt-tst-050 } | A user story must meet the Definition of Done, including passing tests and updated documentation, to be closed. | [Definition of Ready / Done](../testing/dor-dod.md#dgt-tst-050) |
+| [`DGT-TST-060`](#dgt-tst-060){ #dgt-tst-060 } | Activate each release wave's Early Access in a sandbox and run a regression before the wave reaches production. | [Testing & Quality](../testing/index.md#dgt-tst-060) |
 
 ## ALM & Deployment (`ALM`)
 
@@ -110,6 +143,8 @@ directly in this list — they land on it and see the surrounding rules for cont
 | [`DGT-ALM-060`](#dgt-alm-060){ #dgt-alm-060 } | Use YAML pipelines checked into the repository, not classic editor-defined pipelines. | [Azure DevOps](../alm/azure-devops.md#dgt-alm-060) |
 | [`DGT-ALM-070`](#dgt-alm-070){ #dgt-alm-070 } | Use the matching `dgtp export`/`dgtp import` command pair for non-solution-aware config objects. | [Config & Reference Data Migration](../alm/config-data-migration.md#dgt-alm-070) |
 | [`DGT-ALM-080`](#dgt-alm-080){ #dgt-alm-080 } | Use token-based (service principal) `dgtp` profiles for CI — never personal credentials. | [Build Pipeline](../alm/build-pipeline.md#dgt-alm-080) |
+| [`DGT-ALM-090`](#dgt-alm-090){ #dgt-alm-090 } | Import managed solutions as Upgrade (or stage for upgrade), not Update. | [Pre- & Post-Deployment Tasks](../alm/pre-post-deployment.md#dgt-alm-090) |
+| [`DGT-ALM-100`](#dgt-alm-100){ #dgt-alm-100 } | Provide connection references and environment-variable values via a deployment settings file per target. | [Pre- & Post-Deployment Tasks](../alm/pre-post-deployment.md#dgt-alm-100) |
 
 ## Operations (`OPS`)
 

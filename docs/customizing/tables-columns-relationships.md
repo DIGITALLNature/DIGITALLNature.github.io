@@ -21,6 +21,20 @@ in preference to cloning it.
 | **Table type** — standard / activity / elastic / virtual | Type is fixed at creation. | Standard. Use *activity* tables for things that appear in a timeline; *elastic* only for high-volume/high-throughput telemetry-style data; *virtual* for external data (see [Custom API & Data Providers](../coding/serverside/custom-api.md)). |
 | **Primary column** | Hard to repurpose later. | A meaningful human-readable name; if the record is identified by a generated number, keep the primary name column *and* add the number column. |
 
+## Elastic tables for high-volume data
+
+**`DGT-CUS-210`**{ #dgt-cus-210 } — High-volume, telemetry-style data (logs, events, IoT
+readings) goes into an **elastic table with a TTL column**, never into a standard table.
+Standard tables accumulate storage and index cost forever; an elastic table auto-expires rows
+via time-to-live. Know the trade-offs before choosing elastic — they change how server-side
+logic must be written:
+
+- No multi-record transactions; a plugin exception does **not** roll back the write, so
+  validation must run in **PreValidation**.
+- `partitionid` is immutable per row — choose the partitioning strategy deliberately up front.
+
+See [Microsoft's elastic tables documentation](https://learn.microsoft.com/en-us/power-apps/developer/data-platform/elastic-tables).
+
 ## Columns
 
 - **`DGT-CUS-050`**{ #dgt-cus-050 } — **Pick the narrowest correct data type.** The type drives storage, the early-bound model, and

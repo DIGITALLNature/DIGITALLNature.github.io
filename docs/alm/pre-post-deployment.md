@@ -53,6 +53,25 @@ as a one-way sync and review its effect on a shared environment before automatin
 unattended. `--config` points to a mapping file when the on-disk layout doesn't map 1:1 to web
 resource names.
 
+## Import behavior: Upgrade, not Update
+
+**`DGT-ALM-090`**{ #dgt-alm-090 } — Import managed solutions as an **Upgrade** (or *stage for
+upgrade* where the deletes need to happen in a controlled second step) — not as an **Update**.
+Update merges the incoming version over the installed one and **never deletes anything**: a
+component you removed in dev quietly lives on in every downstream environment. Upgrade
+reconciles the target against the new version and removes what's gone. See
+[Microsoft's import/export documentation](https://learn.microsoft.com/en-us/power-platform/alm/solution-import-export-alm).
+
+## Deployment settings file
+
+**`DGT-ALM-100`**{ #dgt-alm-100 } — Automated deployments provide environment-specific values —
+connection references and environment-variable values — through a **deployment settings file**
+per target environment (`pac solution import --settings-file`, the Power Platform Build Tools
+equivalent, or Power Platform Pipelines' pre-deployment step), checked into source control with
+secrets referenced, not embedded. Manually clicking values into the target after import is not
+a deployment mechanism. See
+[Microsoft's guidance on connection references and environment variables in pipelines](https://learn.microsoft.com/en-us/power-platform/alm/conn-ref-env-variables-build-tools).
+
 ## Post-deployment
 
 | Task | Tool | Notes |

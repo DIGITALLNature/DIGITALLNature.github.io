@@ -22,6 +22,8 @@ DGT-<AREA>-<NUMBER>
 | `CUS` | Customizing |
 | `SRV` | Server-side coding |
 | `CLI` | Client-side coding |
+| `INT` | Cloud & integration |
+| `FLW` | Power Automate flows |
 | `TST` | Testing & quality |
 | `ALM` | ALM & deployment |
 | `OPS` | Operations |

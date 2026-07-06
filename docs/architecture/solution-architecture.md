@@ -22,6 +22,15 @@ Solutions only depend "downward" in this picture — process automation can refe
 both code layers, but the core schema solution never references anything above it. This keeps
 a schema-only deployment possible without dragging in unrelated app or automation changes.
 
+## One home per component, segmented export
+
+**`DGT-ARC-100`**{ #dgt-arc-100 } — A given unmanaged component lives in **exactly one**
+solution, and tables are added to solutions **segmented** — selected subcomponents or "include
+table metadata only", never "Add all assets". The same component in two solutions produces
+layer and merge conflicts on import; "all assets" drags in every current and future
+subcomponent and creates dependencies between solutions that nobody chose. See
+[Microsoft's solution-organization guidance](https://learn.microsoft.com/en-us/power-platform/alm/organize-solutions).
+
 ## Naming solutions
 
 Name each layered solution consistently, e.g. `<prefix>_<project>_core`,

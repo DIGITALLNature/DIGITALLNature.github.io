@@ -10,6 +10,48 @@ invoking your `Execute()` override, so per-invocation state never leaks across c
 step even though Dataverse may reuse the plugin type instance. You still need to avoid storing
 mutable state in `static` fields — the clone-per-call only protects instance fields.
 
+## No batch requests inside plugins
+
+**`DGT-SRV-170`**{ #dgt-srv-170 } — Don't use `ExecuteMultipleRequest` or
+`ExecuteTransactionRequest` inside a plugin. The plugin already runs inside the pipeline
+transaction — batching gains nothing there and only extends how long the transaction is held
+open. Batch APIs are for external clients and integrations, not for sandbox code. See
+[Microsoft's business-logic best practices](https://learn.microsoft.com/en-us/power-apps/developer/data-platform/best-practices/business-logic/).
+
+## No custom threading inside plugins
+
+**`DGT-SRV-180`**{ #dgt-srv-180 } — Don't spawn threads or use `Parallel.*`/`Task.Run` inside a
+plugin — parallel execution in sandbox code is not supported and produces failures that don't
+reproduce locally. If work is too slow for the synchronous pipeline, it belongs in an
+asynchronous step or outside Dataverse entirely (see
+[Cloud & Integration](../cloud-integration.md)), not on a background thread.
+
+## Synchronous steps on reads are exceptional
+
+**`DGT-SRV-190`**{ #dgt-srv-190 } — Register synchronous steps on `Retrieve` or
+`RetrieveMultiple` only in justified exceptions. Such a step runs on **every** read of the
+table — every view, every subgrid, every lookup — and its latency is added to all of them.
+Custom data providers for [virtual tables](custom-api.md) are the intended mechanism
+for shaping reads; a `RetrieveMultiple` plugin is almost always the wrong layer.
+
+## Don't use `context.Depth` as loop control
+
+**`DGT-SRV-200`**{ #dgt-srv-200 } — Don't write `if (context.Depth > 1) return;` to "prevent
+loops" — it also silently disables your plugin for every legitimate cascade, workflow, or other
+plugin that triggers it. Prevent update loops with
+[`FilterAttributes`](#filter-attributes-instead-of-re-checking-inside-the-plugin) and precise
+registration instead; the platform's infinite-loop protection is a safety net, not a design
+element. See
+[Microsoft's guidance on the execution context](https://learn.microsoft.com/en-us/power-apps/developer/data-platform/understand-the-data-context).
+
+## Query only the columns you need
+
+**`DGT-SRV-210`**{ #dgt-srv-210 } — Every query states an explicit `ColumnSet` with the columns
+the code actually reads — never `new ColumnSet(true)` / `AllColumns`. Wide queries burn sandbox
+worker memory, transfer data you throw away, and are a
+[query-throttling](https://learn.microsoft.com/en-us/power-apps/developer/data-platform/query-throttling)
+risk on large tables.
+
 ## Prefer `ExecutionResult.Skipped` over silent no-ops
 
 When a plugin determines early on that there's nothing to do (e.g. the triggering attribute

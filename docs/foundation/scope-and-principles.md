@@ -44,8 +44,10 @@ project's architectural documentation, so that:
 - recurring deviations can be fed back into this guideline instead of silently multiplying
   across projects.
 
-A short paragraph is enough — what was done differently, and why. Referencing the
-[rule ID](rule-notation.md) being deviated from makes this easier to track.
+For fundamental decisions for or against a guideline rule, the required form is an
+**Architecture Decision Record** — see
+[Architecture Decision Records](architecture-decision-records.md) for the format, location,
+and how to reference the [rule ID](rule-notation.md) being deviated from.
 
 ## How to read "should" vs. "must"
 

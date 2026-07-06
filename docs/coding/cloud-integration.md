@@ -11,7 +11,7 @@ Before writing an integration, decide *where* it runs — this is the highest-le
 | Need | Use |
 |---|---|
 | Synchronous business rule on a Dataverse write, fast and transactional | **Plugin** ([server-side](serverside/index.md)) |
-| Reaction to a Dataverse event, no strict latency need, citizen-maintainable | **[Power Automate](https://learn.microsoft.com/en-us/power-automate/getting-started) cloud flow** |
+| Reaction to a Dataverse event, no strict latency need, citizen-maintainable | **[Power Automate cloud flow](flows.md)** |
 | Long-running, fan-out, heavy compute, or orchestration across systems | **Azure** (Functions / Logic Apps / Service Bus) |
 | Synchronous call *out* to an external system from a write | **Plugin** + the HTTP/Key Vault helpers below — but mind the 2-minute sandbox limit |
 
@@ -31,6 +31,30 @@ directly with your own `HttpClient`.
 
 Follow the platform rule of a single, connection-closed, lazily-created `HttpClient` regardless
 of which path you take — don't create one per invocation.
+
+**`DGT-INT-020`**{ #dgt-int-020 } — Every external call from a plugin sets an **explicit
+timeout** (well under the two-minute sandbox budget, so *your* error handling runs instead of
+the sandbox killing the worker) and uses **`KeepAlive = false`** — the sandbox recycles
+processes, and kept-alive connections to a recycled worker surface as sporadic, unreproducible
+failures. See
+[Microsoft's guidance on external calls](https://learn.microsoft.com/en-us/power-apps/developer/data-platform/best-practices/business-logic/set-timeout-for-external-calls-from-plug-ins).
+
+## Dataverse service protection limits
+
+Dataverse throttles API consumers per user and web server in a 5-minute sliding window: 6,000
+requests, 20 minutes combined execution time, ~52 concurrent requests — see
+[Microsoft's service protection documentation](https://learn.microsoft.com/en-us/power-apps/developer/data-platform/api-limits).
+
+**`DGT-INT-010`**{ #dgt-int-010 } — Every integration that talks to Dataverse **must handle
+HTTP 429 with the `Retry-After` header** — an integration that treats 429 as a fatal error, or
+retries immediately in a tight loop, fails exactly when load is highest. Use
+`Microsoft.PowerPlatform.Dataverse.Client.ServiceClient`, which honors `Retry-After`
+automatically; hand-rolled HTTP clients must implement the same backoff.
+
+**`DGT-INT-030`**{ #dgt-int-030 } — Never use the **Dataverse Search API** for bulk or
+programmatic mass queries — it is rate-limited to roughly one request per second per user and
+is built for interactive search. Bulk reads use the Web API / SDK with paging, or
+[FetchXML aggregation](https://learn.microsoft.com/en-us/power-apps/developer/data-platform/api-limits).
 
 ## Eventing out of Dataverse
 
