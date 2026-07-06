@@ -21,9 +21,9 @@ open. Batch APIs are for external clients and integrations, not for sandbox code
 ## No custom threading inside plugins
 
 **`DGT-SRV-180`**{ #dgt-srv-180 } — Don't spawn threads or use `Parallel.*`/`Task.Run` inside a
-plugin — parallel execution in sandbox code is not supported and produces failures that don't
-reproduce locally. If work is too slow for the synchronous pipeline, it belongs in an
-asynchronous step or outside Dataverse entirely (see
+plugin — [parallel execution in sandbox code is not supported](https://learn.microsoft.com/en-us/power-apps/developer/data-platform/best-practices/business-logic/)
+and produces failures that don't reproduce locally. If work is too slow for the synchronous
+pipeline, it belongs in an asynchronous step or outside Dataverse entirely (see
 [Cloud & Integration](../cloud-integration.md)), not on a background thread.
 
 ## Synchronous steps on reads are exceptional
@@ -47,8 +47,9 @@ element. See
 ## Query only the columns you need
 
 **`DGT-SRV-210`**{ #dgt-srv-210 } — Every query states an explicit `ColumnSet` with the columns
-the code actually reads — never `new ColumnSet(true)` / `AllColumns`. Wide queries burn sandbox
-worker memory, transfer data you throw away, and are a
+the code actually reads — never `new ColumnSet(true)` / `AllColumns`. Wide queries burn
+[sandbox worker memory](https://learn.microsoft.com/en-us/troubleshoot/power-platform/dataverse/plug-in-execution/dataverse-plug-ins-errors),
+transfer data you throw away, and are a
 [query-throttling](https://learn.microsoft.com/en-us/power-apps/developer/data-platform/query-throttling)
 risk on large tables.
 

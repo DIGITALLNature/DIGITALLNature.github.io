@@ -24,11 +24,12 @@ enabled for you, so getting ahead of it is simpler than discovering it happened.
 
 ## Per-developer environments
 
-Prefer one development environment per developer over a single shared dev environment once a
-team is larger than one or two people. A shared dev environment turns into a source of
-unreviewable, conflicting changes that no pipeline step can reconcile — individual environments
-combined with regular `pac solution sync` (see [Source Control](../alm/source-control.md)) keep
-changes attributable and mergeable through normal code review.
+**`DGT-ARC-110`**{ #dgt-arc-110 } — Use one development environment **per developer** once the
+team is larger than one or two people; don't share a single dev environment. A shared dev
+environment turns into a source of unreviewable, conflicting changes that no pipeline step can
+reconcile — individual environments combined with regular `pac solution sync` (see
+[Source Control](../alm/source-control.md)) keep changes attributable and mergeable through
+normal code review.
 
 ## Backing up unmanaged solutions
 

@@ -40,15 +40,18 @@ See [Microsoft's elastic tables documentation](https://learn.microsoft.com/en-us
 - **`DGT-CUS-050`**{ #dgt-cus-050 } — **Pick the narrowest correct data type.** The type drives storage, the early-bound model, and
   the form control — see the [field-suffix table](naming-conventions.md#column-field-suffixes),
   which doubles as the list of available types.
-- **Prefer global choices** (option sets) over local ones for any value list used on more than
-  one column — they're reusable and generate a single shared enum in the
-  [early-bound model](../coding/serverside/early-binding.md). Name them per the conventions.
+- **`DGT-CUS-250`**{ #dgt-cus-250 } — **Use global choices** (option sets) instead of local ones
+  for any value list used on more than one column — they're reusable and generate a single
+  shared enum in the [early-bound model](../coding/serverside/early-binding.md). Name them per
+  the conventions.
 - **`DGT-CUS-060`**{ #dgt-cus-060 } — **Don't store what you can derive.** Use **rollup**, **calculated**, and **formula** columns
   for derived values instead of a plugin writing a plain column — and mark them
   `IsCustomizable = false` (see [Naming Conventions](naming-conventions.md#further-recommendations)).
   Reach for a plugin only when the logic exceeds what a formula column can express.
-- **Alternate keys** carry integration identity — define one for any column an external system
-  uses to address a record (e.g. a foreign system id), and name it `prfx_..._key`.
+- **`DGT-CUS-260`**{ #dgt-cus-260 } — **Alternate keys carry integration identity.** Define an
+  alternate key for any column an external system uses to address a record (e.g. a foreign
+  system id), and name it `prfx_..._key` — integrations then upsert against the key instead of
+  querying for the GUID first.
 - Give every table and column a **description**; it's the cheapest documentation that travels
   with the schema.
 

@@ -35,6 +35,7 @@ directly in this list — they land on it and see the surrounding rules for cont
 | [`DGT-ARC-080`](#dgt-arc-080){ #dgt-arc-080 } | Organize Dataverse solutions by component type (core/server/client/apps/flows), with a strict, documented dependency direction. | [Solution Architecture](../architecture/solution-architecture.md#dgt-arc-080) |
 | [`DGT-ARC-090`](#dgt-arc-090){ #dgt-arc-090 } | Development environments hold the unmanaged solution; every other environment always receives it managed. | [Solution Architecture](../architecture/solution-architecture.md#dgt-arc-090) |
 | [`DGT-ARC-100`](#dgt-arc-100){ #dgt-arc-100 } | A component lives in exactly one solution; tables are added segmented, never "Add all assets". | [Solution Architecture](../architecture/solution-architecture.md#dgt-arc-100) |
+| [`DGT-ARC-110`](#dgt-arc-110){ #dgt-arc-110 } | One development environment per developer once the team is larger than one or two people. | [Environment Strategy](../architecture/environment-strategy.md#dgt-arc-110) |
 
 ## Customizing (`CUS`)
 
@@ -63,6 +64,10 @@ directly in this list — they land on it and see the surrounding rules for cont
 | [`DGT-CUS-210`](#dgt-cus-210){ #dgt-cus-210 } | High-volume telemetry-style data goes into an elastic table with a TTL column, never a standard table. | [Tables, Columns & Relationships](../customizing/tables-columns-relationships.md#dgt-cus-210) |
 | [`DGT-CUS-220`](#dgt-cus-220){ #dgt-cus-220 } | Never implement security through UI visibility — use column security and privileges. | [Security Model](../customizing/security-model.md#dgt-cus-220) |
 | [`DGT-CUS-230`](#dgt-cus-230){ #dgt-cus-230 } | Security roles are solution components and get deployed — never rebuilt manually in test/prod. | [Security Model](../customizing/security-model.md#dgt-cus-230) |
+| [`DGT-CUS-240`](#dgt-cus-240){ #dgt-cus-240 } | Don't edit out-of-the-box security roles — copy and adjust. | [Security Model](../customizing/security-model.md#dgt-cus-240) |
+| [`DGT-CUS-250`](#dgt-cus-250){ #dgt-cus-250 } | Use global choices instead of local ones for any value list used on more than one column. | [Tables, Columns & Relationships](../customizing/tables-columns-relationships.md#dgt-cus-250) |
+| [`DGT-CUS-260`](#dgt-cus-260){ #dgt-cus-260 } | Define an alternate key for any column an external system uses to address a record. | [Tables, Columns & Relationships](../customizing/tables-columns-relationships.md#dgt-cus-260) |
+| [`DGT-CUS-270`](#dgt-cus-270){ #dgt-cus-270 } | Build for the Unified Interface with the modern designers; classic-only features are off limits. | [Forms, Views & BPF](../customizing/forms-views-bpf.md#dgt-cus-270) |
 
 ## Server-side (`SRV`)
 
@@ -110,6 +115,8 @@ directly in this list — they land on it and see the surrounding rules for cont
 | [`DGT-INT-010`](#dgt-int-010){ #dgt-int-010 } | Every integration handles HTTP 429 / `Retry-After` (service protection limits); use `ServiceClient` or equivalent backoff. | [Cloud & Integration](../coding/cloud-integration.md#dgt-int-010) |
 | [`DGT-INT-020`](#dgt-int-020){ #dgt-int-020 } | External calls from plugins set an explicit timeout and `KeepAlive = false`. | [Cloud & Integration](../coding/cloud-integration.md#dgt-int-020) |
 | [`DGT-INT-030`](#dgt-int-030){ #dgt-int-030 } | Never use the Dataverse Search API for bulk queries. | [Cloud & Integration](../coding/cloud-integration.md#dgt-int-030) |
+| [`DGT-INT-040`](#dgt-int-040){ #dgt-int-040 } | Use a single, lazily-created, shared `HttpClient` — never one per invocation. | [Cloud & Integration](../coding/cloud-integration.md#dgt-int-040) |
+| [`DGT-INT-050`](#dgt-int-050){ #dgt-int-050 } | Push Dataverse events to Azure asynchronously via service-endpoint registration, not synchronous POSTs from plugins. | [Cloud & Integration](../coding/cloud-integration.md#dgt-int-050) |
 
 ## Power Automate Flows (`FLW`)
 
@@ -145,6 +152,8 @@ directly in this list — they land on it and see the surrounding rules for cont
 | [`DGT-ALM-080`](#dgt-alm-080){ #dgt-alm-080 } | Use token-based (service principal) `dgtp` profiles for CI — never personal credentials. | [Build Pipeline](../alm/build-pipeline.md#dgt-alm-080) |
 | [`DGT-ALM-090`](#dgt-alm-090){ #dgt-alm-090 } | Import managed solutions as Upgrade (or stage for upgrade), not Update. | [Pre- & Post-Deployment Tasks](../alm/pre-post-deployment.md#dgt-alm-090) |
 | [`DGT-ALM-100`](#dgt-alm-100){ #dgt-alm-100 } | Provide connection references and environment-variable values via a deployment settings file per target. | [Pre- & Post-Deployment Tasks](../alm/pre-post-deployment.md#dgt-alm-100) |
+| [`DGT-ALM-110`](#dgt-alm-110){ #dgt-alm-110 } | No secrets, environment-specific values, or build artifacts in the repository. | [Source Control](../alm/source-control.md#dgt-alm-110) |
+| [`DGT-ALM-120`](#dgt-alm-120){ #dgt-alm-120 } | Power Platform Pipelines production deployments run delegated (service principal) and require approval. | [Power Platform Pipelines](../alm/power-platform-pipelines.md#dgt-alm-120) |
 
 ## Operations (`OPS`)
 
@@ -154,3 +163,4 @@ directly in this list — they land on it and see the surrounding rules for cont
 | [`DGT-OPS-020`](#dgt-ops-020){ #dgt-ops-020 } | Don't customize outside development environments — rely on Managed Environments to enforce this. | [Governance & DLP](../operations/governance-dlp.md#dgt-ops-020) |
 | [`DGT-OPS-030`](#dgt-ops-030){ #dgt-ops-030 } | Scope production access to what's needed for support/troubleshooting, not standing System Administrator. | [Governance & DLP](../operations/governance-dlp.md#dgt-ops-030) |
 | [`DGT-OPS-040`](#dgt-ops-040){ #dgt-ops-040 } | Enable Application Insights integration for every production environment. | [Monitoring & Telemetry](../operations/monitoring.md#dgt-ops-040) |
+| [`DGT-OPS-050`](#dgt-ops-050){ #dgt-ops-050 } | Every production environment has the monitoring baseline (plugin failures/time, flow failures, checker trend, deployment history). | [Monitoring & Telemetry](../operations/monitoring.md#dgt-ops-050) |

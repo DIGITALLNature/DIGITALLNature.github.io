@@ -22,6 +22,9 @@ class lets you add your own log lines beyond that.
 
 ## What to monitor as a baseline
 
+**`DGT-OPS-050`**{ #dgt-ops-050 } — Every production environment has at least this monitoring
+baseline in place, with findings routed to a channel someone actually watches:
+
 - Plugin/Custom API failures and execution time, via Application Insights.
 - Flow run failures, via the standard Power Automate run history and/or Application Insights
   if integrated.

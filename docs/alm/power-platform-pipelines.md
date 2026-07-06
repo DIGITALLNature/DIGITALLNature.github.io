@@ -38,13 +38,14 @@ this page covers how we configure and extend it once that decision is made.
 
 ## Deploying with a service principal
 
-For unattended or governed production deployments, configure **delegated deployment**: the
-pipeline stage runs as a service principal (or a designated pipeline stage owner) instead of
-the requesting maker's own identity. This means:
+**`DGT-ALM-120`**{ #dgt-alm-120 } — Production deployments through Power Platform Pipelines run
+as **delegated deployments** — the pipeline stage executes as a service principal (or a
+designated pipeline stage owner), not as the requesting maker's own identity, and production
+stages require an **approval**. This means:
 
 - a maker can request a production deployment without holding elevated access in production
   themselves;
-- the deployment can require **approval** from an authorized identity before it proceeds.
+- the deployment proceeds only after **approval** from an authorized identity.
 
 Set this up via the pipeline stage configuration in the Deployment Pipeline Configuration app;
 the service principal must be added as an owner of itself in [Microsoft Entra ID](https://learn.microsoft.com/en-us/entra/fundamentals/whatis) for the

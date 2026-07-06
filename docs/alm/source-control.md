@@ -106,9 +106,14 @@ IDEs and stacks in use, e.g. `visualstudio,rider,visualstudiocode,dotnetcore,nod
 
 ## What does *not* belong in this repository
 
+**`DGT-ALM-110`**{ #dgt-alm-110 } — The repository never contains:
+
 - Secrets (connection strings, client secrets, API keys) — these belong in pipeline variable
   groups / secrets, or Key Vault, referenced by name. See
   [Pre- & Post-Deployment Tasks](pre-post-deployment.md).
 - Environment-specific data values for environment variables/connection references — see
   [Config & Reference Data Migration](config-data-migration.md).
 - Managed solution `.zip` build artifacts — these are pipeline outputs, not source.
+
+A secret that lands in Git history is compromised even after the commit is reverted — rotate
+it; don't just delete the line.

@@ -29,8 +29,10 @@ helper modules (removed in `2.0.0`; see
 another service means either the managed-identity path above or calling the target SDK/REST API
 directly with your own `HttpClient`.
 
-Follow the platform rule of a single, connection-closed, lazily-created `HttpClient` regardless
-of which path you take — don't create one per invocation.
+**`DGT-INT-040`**{ #dgt-int-040 } — Use a **single, lazily-created, shared `HttpClient`** (with
+connection keep-alive disabled, see below) regardless of which path you take — never create one
+per invocation. Per-call clients exhaust sockets under load and are one of the standard causes
+of intermittent outbound-call failures from plugins.
 
 **`DGT-INT-020`**{ #dgt-int-020 } — Every external call from a plugin sets an **explicit
 timeout** (well under the two-minute sandbox budget, so *your* error handling runs instead of
@@ -58,9 +60,11 @@ is built for interactive search. Bulk reads use the Web API / SDK with paging, o
 
 ## Eventing out of Dataverse
 
-- **Azure Service Bus / event publishing** via the service-endpoint registration is the
-  supported way to push Dataverse events to Azure asynchronously — prefer it over a plugin that
-  POSTs to an external endpoint synchronously.
+- **`DGT-INT-050`**{ #dgt-int-050 } — Push Dataverse events to Azure **asynchronously via the
+  service-endpoint registration** (Azure Service Bus / event publishing) — not with a plugin
+  that POSTs to an external endpoint synchronously. The service endpoint gives you durable
+  delivery and retry from the platform; a synchronous POST makes the remote system's downtime
+  your transaction's downtime.
 - **Webhooks** suit a real-time, synchronous external call, but the remote endpoint then sits in
   your transaction's critical path — treat its latency and failure as your plugin's.
 

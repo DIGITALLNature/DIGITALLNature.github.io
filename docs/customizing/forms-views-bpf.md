@@ -35,6 +35,8 @@
 - A record can be on **multiple BPFs**; the user switches between them. Don't model parallel
   processes as one branchy flow if they're genuinely separate.
 
-!!! note "Prefer modern UI behaviors"
-    Build for the **Unified Interface** model-driven app. Don't invest in classic-only form or
-    view features; they don't carry forward.
+## Modern UI only
+
+**`DGT-CUS-270`**{ #dgt-cus-270 } — Build for the **Unified Interface** model-driven app and use
+the modern designers. Don't invest in classic-only form or view features or the classic
+designers — they don't carry forward, and Microsoft has deprecated the classic experiences.

@@ -9,7 +9,7 @@ on the [table ownership](tables-columns-relationships.md) decisions already made
 | Block | Use it for | DIGITALL guidance |
 |---|---|---|
 | **Business units** | Coarse data partitioning across org structure. | Keep the BU tree as flat as the data-access requirements allow; use the modern matrix data-access where org and data boundaries differ, rather than deep BU nesting. |
-| **[Security roles](https://learn.microsoft.com/en-us/power-platform/admin/security-roles-privileges)** | What a *persona* can do. | One role per persona, built from least privilege up. Don't edit out-of-the-box roles — copy and adjust, so platform updates to the originals don't surprise you. |
+| **[Security roles](https://learn.microsoft.com/en-us/power-platform/admin/security-roles-privileges)** | What a *persona* can do. | One role per persona, built from least privilege up. Don't edit out-of-the-box roles — copy and adjust (see [`DGT-CUS-240`](#dgt-cus-240) below). |
 | **Teams** | Sharing and group ownership. | Prefer **Microsoft Entra group teams** so membership follows identity governance. Use **access teams** for ad-hoc per-record sharing; **owner teams** when a team, not a person, owns records. |
 | **Column (field) security** | A handful of genuinely sensitive columns. | Apply a field security profile to the specific columns; don't blanket-secure a whole table this way. |
 | **Hierarchy security** | Manager-sees-reports access. | Enable only if the org actually needs it; it adds query cost. |
@@ -18,6 +18,9 @@ on the [table ownership](tables-columns-relationships.md) decisions already made
 
 - **`DGT-CUS-160`**{ #dgt-cus-160 } — **Least privilege.** Start from no access and grant what a persona needs, scoped to the
   smallest ownership depth (User → BU → parent-child BU → Org) that works.
+- **`DGT-CUS-240`**{ #dgt-cus-240 } — **Don't edit out-of-the-box security roles — copy and
+  adjust.** Platform updates change the originals underneath you; a customized copy keeps your
+  changes and Microsoft's updates apart.
 - **`DGT-CUS-170`**{ #dgt-cus-170 } — **No standing System Administrator for app/service accounts.** Application users get a
   purpose-built role — see the service-principal connection guidance in
   [Env Variables & Connection References](envvars-connectionrefs.md) and
