@@ -53,6 +53,14 @@ retries immediately in a tight loop, fails exactly when load is highest. Use
 `Microsoft.PowerPlatform.Dataverse.Client.ServiceClient`, which honors `Retry-After`
 automatically; hand-rolled HTTP clients must implement the same backoff.
 
+For bulk workloads, note that **large batches are not a remedy for throttling** — batch
+execution time counts against the same limits. Microsoft's guidance is small batches (~10)
+with controlled parallelism, preferring the bulk-operation APIs
+(`CreateMultiple`/`UpdateMultiple`), and letting the server dictate throughput via
+`Retry-After` — see
+[optimizing bulk performance](https://learn.microsoft.com/en-us/power-apps/developer/data-platform/optimize-performance-create-update)
+and [sending parallel requests](https://learn.microsoft.com/en-us/power-apps/developer/data-platform/send-parallel-requests).
+
 **`DGT-INT-050`**{ #dgt-int-050 } — Never use the **Dataverse Search API** for bulk or
 programmatic mass queries — it is rate-limited to roughly one request per second per user and
 is built for interactive search. Bulk reads use the Web API / SDK with paging, or

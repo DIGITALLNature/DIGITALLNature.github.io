@@ -44,6 +44,26 @@
       [Power Platform Pipelines](../alm/power-platform-pipelines.md#deploying-with-a-service-principal)
       or Azure DevOps/GitHub Actions environment gate configuration.
 
+## Go-live / cutover
+
+Beyond the regular pre-deployment checklist, a first production go-live needs (see
+[Microsoft's go-live checklist](https://learn.microsoft.com/en-us/dynamics365/guidance/implementation-guide/prepare-go-live-checklist)):
+
+- [ ] UAT signed off; [performance test](../testing/index.md#performance-testing-before-go-live)
+      under realistic load passed.
+- [ ] Data migration rehearsed with a dry run, including throughput measurement — factor
+      [service protection limits](../coding/cloud-integration.md#dataverse-service-protection-limits)
+      into the cutover window.
+- [ ] Version parity confirmed: production receives exactly the solution/app versions that
+      passed test/UAT.
+- [ ] Manual environment backup taken immediately before cutover; rollback decision point and
+      criteria documented.
+- [ ] Go/no-go decision taken and documented with the customer.
+- [ ] Hypercare plan active: support responsibilities, escalation path, and coverage agreed;
+      knowledge transfer from project team to support done.
+- [ ] First days after go-live: watch API-limit errors, storage consumption, and flow failure
+      rates (see [Monitoring](../operations/monitoring.md)).
+
 ## Post-deployment
 
 - [ ] Smoke-test the registered plugin steps and Custom APIs expected from this release.

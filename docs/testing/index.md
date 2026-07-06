@@ -9,6 +9,15 @@
 These quality gates plug into [Build Pipeline](../alm/build-pipeline.md) at steps 8 and 9 — see
 that page for exactly where each one runs relative to packaging and deployment.
 
+## Performance testing before go-live
+
+Plan a performance test under realistic production load as part of go-live readiness — form
+load times, search, and integration throughput are **non-functional acceptance criteria**, not
+things to discover in week one of production. Factor
+[service protection limits](../coding/cloud-integration.md#dataverse-service-protection-limits)
+into any load scenario that exercises integrations. See
+[Microsoft's go-live preparation guidance](https://learn.microsoft.com/en-us/dynamics365/guidance/implementation-guide/prepare-to-go-live).
+
 ## Release wave regression
 
 **`DGT-TST-060`**{ #dgt-tst-060 } — Microsoft ships two release waves per year that reach

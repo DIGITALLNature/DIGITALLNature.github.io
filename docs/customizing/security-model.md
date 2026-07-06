@@ -42,6 +42,15 @@ on the [table ownership](tables-columns-relationships.md) decisions already made
   a configuration task. See
   [Microsoft's security guidance](https://learn.microsoft.com/en-us/power-platform/admin/wp-security-cds).
 
+## Auditing
+
+Configure [Dataverse auditing](https://learn.microsoft.com/en-us/power-platform/admin/manage-dataverse-auditing)
+deliberately rather than leaving the defaults: decide per table (and where needed per column)
+what gets audited, and agree a **retention period** with the customer — audit logs consume log
+capacity and are a common silent cost driver. Also know that an environment restore does *not*
+bring audit logs back; if the audit trail is a compliance requirement, plan its preservation
+separately.
+
 ## In code
 
 Plugins run against either the **calling user** (`SecuredOrganizationService`) or **elevated**

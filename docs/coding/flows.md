@@ -23,6 +23,11 @@ from the catch branch. An unhandled failed run that nobody notices is the flow e
 swallowed exception. See
 [Microsoft's error-handling guidance](https://learn.microsoft.com/en-us/power-automate/guidance/coding-guidelines/error-handling).
 
+Also configure each action's **retry policy** deliberately rather than accepting the default
+(exponential, four attempts): for idempotent actions the default is fine or can be extended;
+for non-idempotent actions (creating records, sending mails) disable the retry and compensate
+in the catch branch instead — an automatic retry of a non-idempotent action is a duplicate.
+
 ## Triggers
 
 **`DGT-FLW-030`**{ #dgt-flw-030 } — Filter in the **trigger**, not with a condition as the first
@@ -40,3 +45,12 @@ thread-safe once concurrency is enabled (use *Select*/*Filter array* composition
 shared variable, or leave concurrency off); list actions return **100 items** by default —
 raise the pagination limit explicitly when more rows are expected. See
 [Microsoft's limits guidance](https://learn.microsoft.com/en-us/power-automate/guidance/coding-guidelines/understand-limits).
+
+## Know what flows are not for
+
+Flows are not a high-volume ETL tool. Power Automate has its own
+[throttling and duration limits](https://learn.microsoft.com/en-us/power-automate/limits-and-config)
+(actions per day per license, payload sizes, maximum run duration) that are easy to hit with
+data-migration-style workloads — those belong in the
+[Azure/data tooling row](cloud-integration.md#choose-the-right-place-for-the-logic) of the
+where-does-the-logic-run decision, not in a flow with a loop.

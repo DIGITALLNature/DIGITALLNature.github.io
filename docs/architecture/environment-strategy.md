@@ -14,6 +14,11 @@
 minimum workable setup. Scale up (e.g. a dedicated performance/load environment) based on
 project size, not as a default.
 
+Before finalizing the set, agree uptime and recovery targets (RTO/RPO) for the workload with
+the customer — they determine whether the baseline is enough (see
+[Power Platform Well-Architected, Reliability](https://learn.microsoft.com/en-us/power-platform/well-architected/reliability/))
+and they feed directly into the backup and restore approach below.
+
 ## Managed Environments are the default, not an opt-in
 
 **`DGT-ARC-090`**{ #dgt-arc-090 } — Enable **[Managed Environments](https://learn.microsoft.com/en-us/power-platform/admin/managed-environment-overview)** on every environment used as a Power Platform Pipelines target
@@ -30,6 +35,23 @@ environment turns into a source of unreviewable, conflicting changes that no pip
 reconcile — individual environments combined with regular `pac solution sync` (see
 [Source Control](../alm/source-control.md)) keep changes attributable and mergeable through
 normal code review.
+
+## Backup & restore
+
+Decide the backup and restore approach as part of the environment strategy, not when the first
+incident happens. The platform behaviors worth planning around (see
+[Microsoft's backup/restore documentation](https://learn.microsoft.com/en-us/power-platform/admin/backup-restore-environments)):
+
+- System backups are continuous, but **retention differs**: production environments (as
+  Managed Environments) can retain up to 28 days — sandboxes only 7.
+- There is **no restore directly onto production**: the path is switching production to
+  sandbox type, restoring, and switching back — which also drops it to 7-day retention while
+  it is a sandbox. Rehearse this once before you need it.
+- A restore is not a clean rewind: solution cloud flows come back **turned off**, connection
+  references need their connections re-assigned, and canvas app IDs change. Put these steps in
+  the project runbook.
+- Take a **manual backup before every major deployment** — it's the cheapest rollback option
+  you'll ever configure.
 
 ## Backing up unmanaged solutions
 

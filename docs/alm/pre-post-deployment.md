@@ -78,6 +78,8 @@ a deployment mechanism. See
 |---|---|---|
 | Set/confirm environment variable values | Manual, or an unmanaged "values" solution per environment | Definitions are solution-aware; values, by design, are not. See [Env Variables & Connection References](../customizing/envvars-connectionrefs.md). |
 | Re-point connection references | Manual (per-user) or service-principal connection | Connection assignment is user-specific even after deployment — re-confirm after every target environment refresh. |
+| Confirm flow ownership & run-as | Power Platform admin center / `pac` | After an import via service principal, flows are owned by that service principal — its connections must exist, and run-as/ownership may need re-assignment. See [Microsoft's delegated-deployment guidance](https://learn.microsoft.com/en-us/power-platform/alm/delegated-deployments-setup). |
+| Check for unmanaged layers | `dgtp analyze noactivelayer` / "Solution layers" view | An unmanaged layer on top of a managed component silently overrides every future deployment of it — the most common cause of "the change didn't arrive". Remove active custom layers; run this check periodically in test/prod, not just after incidents. See [solution layers](https://learn.microsoft.com/en-us/power-platform/alm/solution-layers-alm). |
 | Re-import migrated config/reference data | `dgtp import ...` | See [Config & Reference Data Migration](config-data-migration.md). |
 | Smoke-test registered steps | — | Confirm the steps you expect to see after a `dgtp push` are actually present and enabled, especially after a `--delete-obsolete` run. |
 | Tag the release in Git | CI, automatic | Only after the deployment to that stage's reference environment succeeds — see [Versioning](versioning.md). |
