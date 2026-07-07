@@ -1,0 +1,4075 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Project guidelines for all audiences working on Microsoft Power Platform or Dataverse projects at DIGITALL.">
+      
+      
+      
+        <link rel="canonical" href="https://digitallnature.github.io/reference/rules/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../dgtp-commands/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Rules Index - DIGITALL - Microsoft BizApps Guidelines</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#rules-index" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="DIGITALL - Microsoft BizApps Guidelines" class="md-header__button md-logo" aria-label="DIGITALL - Microsoft BizApps Guidelines" data-md-component="logo">
+      
+  <img src="../../assets/images/DIGITALL_clover_white.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DIGITALL - Microsoft BizApps Guidelines
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Rules Index
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../quickstart/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Quickstart
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../foundation/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Foundation
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../architecture/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Architecture
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../setup/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Setup & Onboarding
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../customizing/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Customizing
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../coding/serverside/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Coding
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../testing/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Testing & Quality
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../alm/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  ALM & Deployment
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../operations/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Operations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="DIGITALL - Microsoft BizApps Guidelines" class="md-nav__button md-logo" aria-label="DIGITALL - Microsoft BizApps Guidelines" data-md-component="logo">
+      
+  <img src="../../assets/images/DIGITALL_clover_white.png" alt="logo">
+
+    </a>
+    DIGITALL - Microsoft BizApps Guidelines
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../foundation/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Foundation
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Foundation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/scope-and-principles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scope & Principles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/rule-notation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rule Notation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/architecture-decision-records/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture Decision Records
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Governance & Contribution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../architecture/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/solution-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Solution Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/publisher-and-prefix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Publisher & Prefix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/environment-strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Environment Strategy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/deployment-approach/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment Approach (Decision)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/solution-concept/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Solution Concept (Carrier/Workbench)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../setup/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup & Onboarding
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Setup & Onboarding
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/toolchain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Toolchain
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/dgtp-cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    dgtp CLI (Install & Profiles)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/dataverse-environment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dataverse Environment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/repository-bootstrap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Repository Bootstrap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../customizing/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Customizing
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Customizing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customizing/naming-conventions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Naming Conventions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customizing/tables-columns-relationships/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tables, Columns & Relationships
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customizing/forms-views-bpf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Forms, Views & BPF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customizing/command-bar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Command Bar
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customizing/themes-and-icons/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Themes & Icons
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customizing/envvars-connectionrefs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Env Variables & Connection References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customizing/security-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coding
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Coding
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../coding/serverside/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Server-side
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Server-side
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../coding/serverside/project-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../coding/serverside/plugin-packages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plugin Packages
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../coding/serverside/digitall-assembly/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DIGITALL Assembly (Digitall.APower)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../coding/serverside/registration-attributes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Registration Attributes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../coding/serverside/early-binding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Early-Bound Models (dgtp)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../coding/serverside/custom-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom API & Data Providers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../coding/serverside/patterns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Patterns & Pitfalls
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../coding/clientside/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client-side
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Client-side
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../coding/clientside/typescript-webresources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TypeScript Web Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../coding/clientside/pcf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PCF Controls
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../coding/clientside/model-generation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TS Model Generation (dgtp)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../coding/cloud-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cloud & Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../coding/flows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Power Automate Flows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../testing/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing & Quality
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Testing & Quality
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testing/unit-testing-serverside/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Server-side Unit Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testing/solution-checker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Solution Checker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testing/clientside-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client-side Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testing/dor-dod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Definition of Ready / Done
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testing/performance-and-release-waves/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Performance & Release Waves
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../alm/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ALM & Deployment
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ALM & Deployment
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alm/source-control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Source Control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alm/versioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Versioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alm/build-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alm/pre-post-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pre- & Post-Deployment Tasks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alm/power-platform-pipelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Power Platform Pipelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alm/azure-devops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Azure DevOps
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alm/github-actions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GitHub Actions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alm/config-data-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Config & Reference Data Migration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../operations/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Operations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitoring & Telemetry
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/governance-dlp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Governance & DLP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_11" id="__nav_11_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rules Index
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rules Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#foundation-fnd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Foundation (FND)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-arc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture (ARC)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#customizing-cus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Customizing (CUS)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#server-side-srv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Server-side (SRV)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#client-side-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Client-side (CLI)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cloud-integration-int" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cloud &amp; Integration (INT)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#power-automate-flows-flw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Power Automate Flows (FLW)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-quality-tst" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing &amp; Quality (TST)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alm-deployment-alm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ALM &amp; Deployment (ALM)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operations-ops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operations (OPS)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dgtp-commands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    dgtp Command Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validators/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DIGITALL Validators
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../templates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Templates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../checklists/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Checklists
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#foundation-fnd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Foundation (FND)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-arc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture (ARC)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#customizing-cus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Customizing (CUS)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#server-side-srv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Server-side (SRV)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#client-side-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Client-side (CLI)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cloud-integration-int" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cloud &amp; Integration (INT)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#power-automate-flows-flw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Power Automate Flows (FLW)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-quality-tst" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing &amp; Quality (TST)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alm-deployment-alm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ALM &amp; Deployment (ALM)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operations-ops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operations (OPS)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="rules-index">Rules Index<a class="headerlink" href="#rules-index" title="Permanent link">&para;</a></h1>
+<p>Referenceable rules across this guideline. Each rule has a short, stable ID —
+<code>DGT-&lt;AREA&gt;-&lt;NUMBER&gt;</code> — assigned ascending per area and <strong>never reused</strong>: if a rule is removed,
+its ID is retired, not recycled, so references from project documentation stay unambiguous. See
+<a href="../../foundation/rule-notation/">Rule Notation</a> for the scheme.</p>
+<p>Cite a rule by its ID (e.g. <em>"deviates from <code>DGT-SRV-060</code>"</em>); the links below jump straight to
+the rule where it is stated. Each row also has its own anchor
+(e.g. <code>reference/rules.md#dgt-srv-060</code>), so you can point a colleague at one specific rule
+directly in this list — they land on it and see the surrounding rules for context.</p>
+<h2 id="foundation-fnd">Foundation (<code>FND</code>)<a class="headerlink" href="#foundation-fnd" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Statement</th>
+<th>Defined in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#dgt-fnd-010" id="dgt-fnd-010"><code>DGT-FND-010</code></a></td>
+<td>If the customer has a defined standard, that standard takes precedence over this guideline.</td>
+<td><a href="../../foundation/scope-and-principles/#dgt-fnd-010">Scope &amp; Principles</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-fnd-020" id="dgt-fnd-020"><code>DGT-FND-020</code></a></td>
+<td>Deviations from this guideline are permitted but must be documented and justified in the project's architectural documentation.</td>
+<td><a href="../../foundation/scope-and-principles/#dgt-fnd-020">Scope &amp; Principles</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-fnd-030" id="dgt-fnd-030"><code>DGT-FND-030</code></a></td>
+<td>Every project maintains an ADR log in its main repository (<code>docs/decisions/</code>, one Markdown file per decision).</td>
+<td><a href="../../foundation/architecture-decision-records/#dgt-fnd-030">Architecture Decision Records</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-fnd-040" id="dgt-fnd-040"><code>DGT-FND-040</code></a></td>
+<td>Fundamental decisions for or against a guideline rule require an ADR in MADR format.</td>
+<td><a href="../../foundation/architecture-decision-records/#dgt-fnd-040">Architecture Decision Records</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-fnd-050" id="dgt-fnd-050"><code>DGT-FND-050</code></a></td>
+<td>A deviation ADR references the affected rule ID machine-readably; the ADR lifecycle is maintained.</td>
+<td><a href="../../foundation/architecture-decision-records/#dgt-fnd-050">Architecture Decision Records</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-fnd-060" id="dgt-fnd-060"><code>DGT-FND-060</code></a></td>
+<td>ADRs pass through PR review and are part of the Definition of Done's documentation item.</td>
+<td><a href="../../foundation/architecture-decision-records/#dgt-fnd-060">Architecture Decision Records</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="architecture-arc">Architecture (<code>ARC</code>)<a class="headerlink" href="#architecture-arc" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Statement</th>
+<th>Defined in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#dgt-arc-010" id="dgt-arc-010"><code>DGT-ARC-010</code></a></td>
+<td>Organize Dataverse solutions by component type (core/server/client/apps/flows), with a strict, documented dependency direction.</td>
+<td><a href="../../architecture/solution-architecture/#dgt-arc-010">Solution Architecture</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-arc-020" id="dgt-arc-020"><code>DGT-ARC-020</code></a></td>
+<td>A component lives in exactly one solution; tables are added segmented, never "Add all assets".</td>
+<td><a href="../../architecture/solution-architecture/#dgt-arc-020">Solution Architecture</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-arc-030" id="dgt-arc-030"><code>DGT-ARC-030</code></a></td>
+<td>Development environments hold the unmanaged solution; every other environment always receives it managed.</td>
+<td><a href="../../architecture/solution-architecture/#dgt-arc-030">Solution Architecture</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-arc-040" id="dgt-arc-040"><code>DGT-ARC-040</code></a></td>
+<td>Use the DIGITALL publisher/<code>dgt_</code> prefix for productized components; a customer-specific publisher/prefix for customer projects.</td>
+<td><a href="../../architecture/publisher-and-prefix/#dgt-arc-040">Publisher &amp; Prefix</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-arc-050" id="dgt-arc-050"><code>DGT-ARC-050</code></a></td>
+<td>Once a prefix is chosen for a project, it does not change.</td>
+<td><a href="../../architecture/publisher-and-prefix/#dgt-arc-050">Publisher &amp; Prefix</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-arc-060" id="dgt-arc-060"><code>DGT-ARC-060</code></a></td>
+<td>Follow Microsoft's customization guidance by default; deviate only with a documented, concrete reason.</td>
+<td><a href="../../architecture/publisher-and-prefix/#dgt-arc-060">Publisher &amp; Prefix</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-arc-070" id="dgt-arc-070"><code>DGT-ARC-070</code></a></td>
+<td>Prefer an XrmToolBox plugin over installing a special-purpose third-party solution.</td>
+<td><a href="../../architecture/publisher-and-prefix/#dgt-arc-070">Publisher &amp; Prefix</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-arc-080" id="dgt-arc-080"><code>DGT-ARC-080</code></a></td>
+<td>Four target environments (dev → test → UAT → prod) is the common baseline; three is the minimum.</td>
+<td><a href="../../architecture/environment-strategy/#dgt-arc-080">Environment Strategy</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-arc-090" id="dgt-arc-090"><code>DGT-ARC-090</code></a></td>
+<td>Enable Managed Environments on every Power Platform Pipelines target environment from initial setup.</td>
+<td><a href="../../architecture/environment-strategy/#dgt-arc-090">Environment Strategy</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-arc-100" id="dgt-arc-100"><code>DGT-ARC-100</code></a></td>
+<td>One development environment per developer once the team is larger than one or two people.</td>
+<td><a href="../../architecture/environment-strategy/#dgt-arc-100">Environment Strategy</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-arc-110" id="dgt-arc-110"><code>DGT-ARC-110</code></a></td>
+<td>Decide the deployment approach (Pipelines / Azure DevOps / GitHub Actions / hybrid) once, early in the project.</td>
+<td><a href="../../architecture/deployment-approach/#dgt-arc-110">Deployment Approach</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="customizing-cus">Customizing (<code>CUS</code>)<a class="headerlink" href="#customizing-cus" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Statement</th>
+<th>Defined in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#dgt-cus-010" id="dgt-cus-010"><code>DGT-CUS-010</code></a></td>
+<td>All schema names are snake_case, lowercase, <code>[publisher]_[name][_type-suffix]</code>.</td>
+<td><a href="../../customizing/naming-conventions/#dgt-cus-010">Naming Conventions</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-cus-020" id="dgt-cus-020"><code>DGT-CUS-020</code></a></td>
+<td>Set <code>IsCustomizable = false</code> for security roles and rollup/calculated fields.</td>
+<td><a href="../../customizing/naming-conventions/#dgt-cus-020">Naming Conventions</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-cus-030" id="dgt-cus-030"><code>DGT-CUS-030</code></a></td>
+<td>Check whether a standard table already fits before adding a custom one.</td>
+<td><a href="../../customizing/tables-columns-relationships/#dgt-cus-030">Tables, Columns &amp; Relationships</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-cus-040" id="dgt-cus-040"><code>DGT-CUS-040</code></a></td>
+<td>Decide ownership, table type, and primary column deliberately — they are fixed at table creation.</td>
+<td><a href="../../customizing/tables-columns-relationships/#dgt-cus-040">Tables, Columns &amp; Relationships</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-cus-050" id="dgt-cus-050"><code>DGT-CUS-050</code></a></td>
+<td>High-volume telemetry-style data goes into an elastic table with a TTL column, never a standard table.</td>
+<td><a href="../../customizing/tables-columns-relationships/#dgt-cus-050">Tables, Columns &amp; Relationships</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-cus-060" id="dgt-cus-060"><code>DGT-CUS-060</code></a></td>
+<td>Pick the narrowest correct column data type.</td>
+<td><a href="../../customizing/tables-columns-relationships/#dgt-cus-060">Tables, Columns &amp; Relationships</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-cus-070" id="dgt-cus-070"><code>DGT-CUS-070</code></a></td>
+<td>Use global choices instead of local ones for any value list used on more than one column.</td>
+<td><a href="../../customizing/tables-columns-relationships/#dgt-cus-070">Tables, Columns &amp; Relationships</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-cus-080" id="dgt-cus-080"><code>DGT-CUS-080</code></a></td>
+<td>Don't store what you can derive — prefer rollup/calculated/formula columns over a plugin-written plain column.</td>
+<td><a href="../../customizing/tables-columns-relationships/#dgt-cus-080">Tables, Columns &amp; Relationships</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-cus-090" id="dgt-cus-090"><code>DGT-CUS-090</code></a></td>
+<td>Define an alternate key for any column an external system uses to address a record.</td>
+<td><a href="../../customizing/tables-columns-relationships/#dgt-cus-090">Tables, Columns &amp; Relationships</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-cus-100" id="dgt-cus-100"><code>DGT-CUS-100</code></a></td>
+<td>Default relationships to referential cascade; use parental only where the child has no meaning without the parent.</td>
+<td><a href="../../customizing/tables-columns-relationships/#dgt-cus-100">Tables, Columns &amp; Relationships</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-cus-110" id="dgt-cus-110"><code>DGT-CUS-110</code></a></td>
+<td>One main form per persona, not one form with everything hidden per role.</td>
+<td><a href="../../customizing/forms-views-bpf/#dgt-cus-110">Forms, Views &amp; BPF</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-cus-120" id="dgt-cus-120"><code>DGT-CUS-120</code></a></td>
+<td>Logic belongs in code once non-trivial; register only <code>OnLoad</code> and wire the rest in TypeScript.</td>
+<td><a href="../../customizing/forms-views-bpf/#dgt-cus-120">Forms, Views &amp; BPF</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-cus-130" id="dgt-cus-130"><code>DGT-CUS-130</code></a></td>
+<td>Keep view columns lean — every column is a query column.</td>
+<td><a href="../../customizing/forms-views-bpf/#dgt-cus-130">Forms, Views &amp; BPF</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-cus-140" id="dgt-cus-140"><code>DGT-CUS-140</code></a></td>
+<td>A BPF models a cross-table process as few, meaningful ordered stages.</td>
+<td><a href="../../customizing/forms-views-bpf/#dgt-cus-140">Forms, Views &amp; BPF</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-cus-150" id="dgt-cus-150"><code>DGT-CUS-150</code></a></td>
+<td>Build for the Unified Interface with the modern designers; classic-only features are off limits.</td>
+<td><a href="../../customizing/forms-views-bpf/#dgt-cus-150">Forms, Views &amp; BPF</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-cus-160" id="dgt-cus-160"><code>DGT-CUS-160</code></a></td>
+<td>Build commands in the modern Command Bar Designer, not by hand-editing ribbon XML.</td>
+<td><a href="../../customizing/command-bar/#dgt-cus-160">Command Bar</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-cus-170" id="dgt-cus-170"><code>DGT-CUS-170</code></a></td>
+<td>Don't hide or override standard command-bar buttons globally without a specific, documented reason.</td>
+<td><a href="../../customizing/command-bar/#dgt-cus-170">Command Bar</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-cus-180" id="dgt-cus-180"><code>DGT-CUS-180</code></a></td>
+<td>Brand per app using the modern model-driven app theme, kept inside the solution.</td>
+<td><a href="../../customizing/themes-and-icons/#dgt-cus-180">Themes &amp; Icons</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-cus-190" id="dgt-cus-190"><code>DGT-CUS-190</code></a></td>
+<td>Use SVG web resources for table and command-bar icons.</td>
+<td><a href="../../customizing/themes-and-icons/#dgt-cus-190">Themes &amp; Icons</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-cus-200" id="dgt-cus-200"><code>DGT-CUS-200</code></a></td>
+<td>Assign unattended/production flow connections via an application user / service principal.</td>
+<td><a href="../../customizing/envvars-connectionrefs/#dgt-cus-200">Env Variables &amp; Connection References</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-cus-210" id="dgt-cus-210"><code>DGT-CUS-210</code></a></td>
+<td>In development, create the environment variable definition only (no value) and deploy that.</td>
+<td><a href="../../customizing/envvars-connectionrefs/#dgt-cus-210">Env Variables &amp; Connection References</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-cus-220" id="dgt-cus-220"><code>DGT-CUS-220</code></a></td>
+<td>Apply least privilege — grant only what a persona needs, at the smallest working ownership depth.</td>
+<td><a href="../../customizing/security-model/#dgt-cus-220">Security Model</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-cus-230" id="dgt-cus-230"><code>DGT-CUS-230</code></a></td>
+<td>Don't edit out-of-the-box security roles — copy and adjust.</td>
+<td><a href="../../customizing/security-model/#dgt-cus-230">Security Model</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-cus-240" id="dgt-cus-240"><code>DGT-CUS-240</code></a></td>
+<td>No standing System Administrator for application/service accounts.</td>
+<td><a href="../../customizing/security-model/#dgt-cus-240">Security Model</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-cus-250" id="dgt-cus-250"><code>DGT-CUS-250</code></a></td>
+<td>Test with a real security role, not as System Administrator.</td>
+<td><a href="../../customizing/security-model/#dgt-cus-250">Security Model</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-cus-260" id="dgt-cus-260"><code>DGT-CUS-260</code></a></td>
+<td>Never implement security through UI visibility — use column security and privileges.</td>
+<td><a href="../../customizing/security-model/#dgt-cus-260">Security Model</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-cus-270" id="dgt-cus-270"><code>DGT-CUS-270</code></a></td>
+<td>Security roles are solution components and get deployed — never rebuilt manually in test/prod.</td>
+<td><a href="../../customizing/security-model/#dgt-cus-270">Security Model</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="server-side-srv">Server-side (<code>SRV</code>)<a class="headerlink" href="#server-side-srv" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Statement</th>
+<th>Defined in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#dgt-srv-010" id="dgt-srv-010"><code>DGT-SRV-010</code></a></td>
+<td>Plugin and Custom API assemblies target <strong><code>net462</code></strong>.</td>
+<td><a href="../../coding/serverside/project-setup/#dgt-srv-010">Project Setup</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-srv-020" id="dgt-srv-020"><code>DGT-SRV-020</code></a></td>
+<td>Use the <strong>SDK-style</strong> project format, not the legacy non-SDK <code>.csproj</code>.</td>
+<td><a href="../../coding/serverside/project-setup/#dgt-srv-020">Project Setup</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-srv-030" id="dgt-srv-030"><code>DGT-SRV-030</code></a></td>
+<td>Reference <code>Microsoft.CrmSdk.CoreAssemblies</code> with <code>PrivateAssets="all"</code> — not <code>Dataverse.Client</code>.</td>
+<td><a href="../../coding/serverside/project-setup/#dgt-srv-030">Project Setup</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-srv-040" id="dgt-srv-040"><code>DGT-SRV-040</code></a></td>
+<td>One plugin/Custom API/workflow group per assembly, versioned independently.</td>
+<td><a href="../../coding/serverside/project-setup/#dgt-srv-040">Project Setup</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-srv-050" id="dgt-srv-050"><code>DGT-SRV-050</code></a></td>
+<td>Plugin packages are <strong>not</strong> signed (exceptions: classic single-assembly, managed identity).</td>
+<td><a href="../../coding/serverside/project-setup/#dgt-srv-050">Project Setup</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-srv-060" id="dgt-srv-060"><code>DGT-SRV-060</code></a></td>
+<td>Plugin/Custom API projects use the plugin <strong>package</strong> (dependent-assembly <code>.nupkg</code>) format; ILMerge is not allowed.</td>
+<td><a href="../../coding/serverside/plugin-packages/#dgt-srv-060">Plugin Packages</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-srv-070" id="dgt-srv-070"><code>DGT-SRV-070</code></a></td>
+<td>A plugin package/assembly belongs to exactly one solution.</td>
+<td><a href="../../coding/serverside/plugin-packages/#dgt-srv-070">Plugin Packages</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-srv-080" id="dgt-srv-080"><code>DGT-SRV-080</code></a></td>
+<td>Inherit <code>Executor</code> and return a meaningful <code>ExecutionResult</code> (<code>Ok</code>/<code>Failure</code>/<code>Skipped</code>), not always <code>Ok</code>.</td>
+<td><a href="../../coding/serverside/digitall-assembly/#dgt-srv-080">DIGITALL Assembly</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-srv-090" id="dgt-srv-090"><code>DGT-SRV-090</code></a></td>
+<td>Prefer <code>SecuredOrganizationService</code>/<code>ElevatedOrganizationService</code> over calling <code>OrganizationService(...)</code> directly.</td>
+<td><a href="../../coding/serverside/digitall-assembly/#dgt-srv-090">DIGITALL Assembly</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-srv-100" id="dgt-srv-100"><code>DGT-SRV-100</code></a></td>
+<td>Register steps declaratively via <code>[PluginRegistration]</code> — code is the source of truth.</td>
+<td><a href="../../coding/serverside/registration-attributes/#dgt-srv-100">Registration Attributes</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-srv-110" id="dgt-srv-110"><code>DGT-SRV-110</code></a></td>
+<td>Use generated early-bound models (<code>dgtp codegeneration</code>); generated code is not committed.</td>
+<td><a href="../../coding/serverside/early-binding/#dgt-srv-110">Early-Bound Models</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-srv-120" id="dgt-srv-120"><code>DGT-SRV-120</code></a></td>
+<td>Prefer Custom APIs over classic (un)bound Actions for new server-side operations.</td>
+<td><a href="../../coding/serverside/custom-api/#dgt-srv-120">Custom API &amp; Data Providers</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-srv-130" id="dgt-srv-130"><code>DGT-SRV-130</code></a></td>
+<td>Keep plugins stateless — no mutable <code>static</code> state.</td>
+<td><a href="../../coding/serverside/patterns/#dgt-srv-130">Patterns &amp; Pitfalls</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-srv-140" id="dgt-srv-140"><code>DGT-SRV-140</code></a></td>
+<td>No <code>ExecuteMultipleRequest</code>/<code>ExecuteTransactionRequest</code> inside plugins.</td>
+<td><a href="../../coding/serverside/patterns/#dgt-srv-140">Patterns &amp; Pitfalls</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-srv-150" id="dgt-srv-150"><code>DGT-SRV-150</code></a></td>
+<td>No custom threading (<code>Parallel.*</code>, <code>Task.Run</code>) inside plugins.</td>
+<td><a href="../../coding/serverside/patterns/#dgt-srv-150">Patterns &amp; Pitfalls</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-srv-160" id="dgt-srv-160"><code>DGT-SRV-160</code></a></td>
+<td>Synchronous steps on <code>Retrieve</code>/<code>RetrieveMultiple</code> only in justified exceptions.</td>
+<td><a href="../../coding/serverside/patterns/#dgt-srv-160">Patterns &amp; Pitfalls</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-srv-170" id="dgt-srv-170"><code>DGT-SRV-170</code></a></td>
+<td>Don't use <code>context.Depth</code> as loop control — use filtering attributes and precise registration.</td>
+<td><a href="../../coding/serverside/patterns/#dgt-srv-170">Patterns &amp; Pitfalls</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-srv-180" id="dgt-srv-180"><code>DGT-SRV-180</code></a></td>
+<td>Every query states an explicit <code>ColumnSet</code> — never <code>AllColumns</code>.</td>
+<td><a href="../../coding/serverside/patterns/#dgt-srv-180">Patterns &amp; Pitfalls</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-srv-190" id="dgt-srv-190"><code>DGT-SRV-190</code></a></td>
+<td>Use <code>InvalidPluginExecutionException</code> (<code>Status = Succeeded</code>) only for user-facing validation messages.</td>
+<td><a href="../../coding/serverside/patterns/#dgt-srv-190">Patterns &amp; Pitfalls</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-srv-200" id="dgt-srv-200"><code>DGT-SRV-200</code></a></td>
+<td>Use <code>FilterAttributes</code> on the registration rather than re-checking inside <code>Execute()</code>.</td>
+<td><a href="../../coding/serverside/patterns/#dgt-srv-200">Patterns &amp; Pitfalls</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-srv-210" id="dgt-srv-210"><code>DGT-SRV-210</code></a></td>
+<td>Keep <code>SuppressNullableSupport: true</code> consistent across every project sharing a generated model.</td>
+<td><a href="../../coding/serverside/patterns/#dgt-srv-210">Patterns &amp; Pitfalls</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="client-side-cli">Client-side (<code>CLI</code>)<a class="headerlink" href="#client-side-cli" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Statement</th>
+<th>Defined in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#dgt-cli-010" id="dgt-cli-010"><code>DGT-CLI-010</code></a></td>
+<td>Form and command-bar scripts are written in TypeScript and bundled with webpack (the <code>webresources-template</code>).</td>
+<td><a href="../../coding/clientside/typescript-webresources/#dgt-cli-010">TypeScript Web Resources</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-cli-020" id="dgt-cli-020"><code>DGT-CLI-020</code></a></td>
+<td>Only <code>*.form.ts</code> / <code>*.ribbon.ts</code> become bundles; shared code lives in plain imported modules.</td>
+<td><a href="../../coding/clientside/typescript-webresources/#dgt-cli-020">TypeScript Web Resources</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-cli-030" id="dgt-cli-030"><code>DGT-CLI-030</code></a></td>
+<td>Register only the form's <code>OnLoad</code> event in the designer; wire all other handlers in code.</td>
+<td><a href="../../coding/clientside/typescript-webresources/#dgt-cli-030">TypeScript Web Resources</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-cli-040" id="dgt-cli-040"><code>DGT-CLI-040</code></a></td>
+<td>Generate typed models with <code>dgtp codegeneration</code> and type the form context against them.</td>
+<td><a href="../../coding/clientside/typescript-webresources/#dgt-cli-040">TypeScript Web Resources</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-cli-050" id="dgt-cli-050"><code>DGT-CLI-050</code></a></td>
+<td>No deprecated client APIs: no <code>Xrm.Page</code>, no <code>parent.Xrm</code>, no platform scripts, no OData v2.</td>
+<td><a href="../../coding/clientside/typescript-webresources/#dgt-cli-050">TypeScript Web Resources</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-cli-060" id="dgt-cli-060"><code>DGT-CLI-060</code></a></td>
+<td>Biome owns formatting and linting for web resources; don't hand-tune style.</td>
+<td><a href="../../coding/clientside/typescript-webresources/#dgt-cli-060">TypeScript Web Resources</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-cli-070" id="dgt-cli-070"><code>DGT-CLI-070</code></a></td>
+<td>Use <code>pac</code> for PCF scaffolding rather than copying an older project's structure by hand.</td>
+<td><a href="../../coding/clientside/pcf/#dgt-cli-070">PCF Controls</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="cloud-integration-int">Cloud &amp; Integration (<code>INT</code>)<a class="headerlink" href="#cloud-integration-int" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Statement</th>
+<th>Defined in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#dgt-int-010" id="dgt-int-010"><code>DGT-INT-010</code></a></td>
+<td>Don't do slow/external work synchronously in a plugin (2-minute sandbox limit) — slow or bursty work runs async.</td>
+<td><a href="../../coding/cloud-integration/#dgt-int-010">Cloud &amp; Integration</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-int-020" id="dgt-int-020"><code>DGT-INT-020</code></a></td>
+<td>Use a single, lazily-created, shared <code>HttpClient</code> — never one per invocation.</td>
+<td><a href="../../coding/cloud-integration/#dgt-int-020">Cloud &amp; Integration</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-int-030" id="dgt-int-030"><code>DGT-INT-030</code></a></td>
+<td>External calls from plugins set an explicit timeout and <code>KeepAlive = false</code>.</td>
+<td><a href="../../coding/cloud-integration/#dgt-int-030">Cloud &amp; Integration</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-int-040" id="dgt-int-040"><code>DGT-INT-040</code></a></td>
+<td>Every integration handles HTTP 429 / <code>Retry-After</code> (service protection limits); use <code>ServiceClient</code> or equivalent backoff.</td>
+<td><a href="../../coding/cloud-integration/#dgt-int-040">Cloud &amp; Integration</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-int-050" id="dgt-int-050"><code>DGT-INT-050</code></a></td>
+<td>Never use the Dataverse Search API for bulk queries.</td>
+<td><a href="../../coding/cloud-integration/#dgt-int-050">Cloud &amp; Integration</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-int-060" id="dgt-int-060"><code>DGT-INT-060</code></a></td>
+<td>Push Dataverse events to Azure asynchronously via service-endpoint registration, not synchronous POSTs from plugins.</td>
+<td><a href="../../coding/cloud-integration/#dgt-int-060">Cloud &amp; Integration</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="power-automate-flows-flw">Power Automate Flows (<code>FLW</code>)<a class="headerlink" href="#power-automate-flows-flw" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Statement</th>
+<th>Defined in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#dgt-flw-010" id="dgt-flw-010"><code>DGT-FLW-010</code></a></td>
+<td>Create flows solution-aware, never as standalone "My flows" artifacts.</td>
+<td><a href="../../coding/flows/#dgt-flw-010">Power Automate Flows</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-flw-020" id="dgt-flw-020"><code>DGT-FLW-020</code></a></td>
+<td>No production flow without error handling (scope-based try/catch and failure notification).</td>
+<td><a href="../../coding/flows/#dgt-flw-020">Power Automate Flows</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-flw-030" id="dgt-flw-030"><code>DGT-FLW-030</code></a></td>
+<td>Filter in the trigger (trigger conditions, column/row filters), not with a first-action condition.</td>
+<td><a href="../../coding/flows/#dgt-flw-030">Power Automate Flows</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-flw-040" id="dgt-flw-040"><code>DGT-FLW-040</code></a></td>
+<td>Treat concurrency and pagination settings as code — variables aren't thread-safe under concurrency; raise pagination limits explicitly.</td>
+<td><a href="../../coding/flows/#dgt-flw-040">Power Automate Flows</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="testing-quality-tst">Testing &amp; Quality (<code>TST</code>)<a class="headerlink" href="#testing-quality-tst" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Statement</th>
+<th>Defined in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#dgt-tst-010" id="dgt-tst-010"><code>DGT-TST-010</code></a></td>
+<td>Use <code>Digitall.Dataverse.Testing</code> (in-memory) for plugin/Custom API unit tests, not a live environment.</td>
+<td><a href="../../testing/unit-testing-serverside/#dgt-tst-010">Server-side Unit Testing</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-tst-020" id="dgt-tst-020"><code>DGT-TST-020</code></a></td>
+<td>Run the Power Apps Solution Checker against every packed solution as a build-pipeline quality gate.</td>
+<td><a href="../../testing/solution-checker/#dgt-tst-020">Solution Checker</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-tst-030" id="dgt-tst-030"><code>DGT-TST-030</code></a></td>
+<td>Unit-test TypeScript web resource logic with Jest, mocking <code>Xrm</code> via <code>xrm-mock</code>.</td>
+<td><a href="../../testing/clientside-testing/#dgt-tst-030">Client-side Testing</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-tst-040" id="dgt-tst-040"><code>DGT-TST-040</code></a></td>
+<td>A user story must meet the Definition of Ready before entering a sprint.</td>
+<td><a href="../../testing/dor-dod/#dgt-tst-040">Definition of Ready / Done</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-tst-050" id="dgt-tst-050"><code>DGT-TST-050</code></a></td>
+<td>A user story must meet the Definition of Done, including passing tests and updated documentation, to be closed.</td>
+<td><a href="../../testing/dor-dod/#dgt-tst-050">Definition of Ready / Done</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-tst-060" id="dgt-tst-060"><code>DGT-TST-060</code></a></td>
+<td>Activate each release wave's Early Access in a sandbox and run a regression before the wave reaches production.</td>
+<td><a href="../../testing/performance-and-release-waves/#dgt-tst-060">Performance &amp; Release Waves</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="alm-deployment-alm">ALM &amp; Deployment (<code>ALM</code>)<a class="headerlink" href="#alm-deployment-alm" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Statement</th>
+<th>Defined in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#dgt-alm-010" id="dgt-alm-010"><code>DGT-ALM-010</code></a></td>
+<td>Regularly commit the unpacked Dataverse solution to source control, regardless of deployment approach.</td>
+<td><a href="../../alm/source-control/#dgt-alm-010">Source Control</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-alm-020" id="dgt-alm-020"><code>DGT-ALM-020</code></a></td>
+<td>Enforce a single line-ending convention across the repository via <code>.gitattributes</code>.</td>
+<td><a href="../../alm/source-control/#dgt-alm-020">Source Control</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-alm-030" id="dgt-alm-030"><code>DGT-ALM-030</code></a></td>
+<td>No secrets, environment-specific values, or build artifacts in the repository.</td>
+<td><a href="../../alm/source-control/#dgt-alm-030">Source Control</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-alm-040" id="dgt-alm-040"><code>DGT-ALM-040</code></a></td>
+<td>Bump the solution version via <code>dgtp maintenance solution-version</code>, not by hand-editing <code>solution.xml</code>.</td>
+<td><a href="../../alm/versioning/#dgt-alm-040">Versioning</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-alm-050" id="dgt-alm-050"><code>DGT-ALM-050</code></a></td>
+<td>The plugin package/assembly version must increase on every build that gets pushed.</td>
+<td><a href="../../alm/versioning/#dgt-alm-050">Versioning</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-alm-060" id="dgt-alm-060"><code>DGT-ALM-060</code></a></td>
+<td>Follow the canonical build-pipeline step order, independent of the CI orchestrator.</td>
+<td><a href="../../alm/build-pipeline/#dgt-alm-060">Build Pipeline</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-alm-070" id="dgt-alm-070"><code>DGT-ALM-070</code></a></td>
+<td>Use token-based (service principal) <code>dgtp</code> profiles for CI — never personal credentials.</td>
+<td><a href="../../alm/build-pipeline/#dgt-alm-070">Build Pipeline</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-alm-080" id="dgt-alm-080"><code>DGT-ALM-080</code></a></td>
+<td>Import managed solutions as Upgrade (or stage for upgrade), not Update.</td>
+<td><a href="../../alm/pre-post-deployment/#dgt-alm-080">Pre- &amp; Post-Deployment Tasks</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-alm-090" id="dgt-alm-090"><code>DGT-ALM-090</code></a></td>
+<td>Provide connection references and environment-variable values via a deployment settings file per target.</td>
+<td><a href="../../alm/pre-post-deployment/#dgt-alm-090">Pre- &amp; Post-Deployment Tasks</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-alm-100" id="dgt-alm-100"><code>DGT-ALM-100</code></a></td>
+<td>Power Platform Pipelines production deployments run delegated (service principal) and require approval.</td>
+<td><a href="../../alm/power-platform-pipelines/#dgt-alm-100">Power Platform Pipelines</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-alm-110" id="dgt-alm-110"><code>DGT-ALM-110</code></a></td>
+<td>Use YAML pipelines checked into the repository, not classic editor-defined pipelines.</td>
+<td><a href="../../alm/azure-devops/#dgt-alm-110">Azure DevOps</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-alm-120" id="dgt-alm-120"><code>DGT-ALM-120</code></a></td>
+<td>Use the matching <code>dgtp export</code>/<code>dgtp import</code> command pair for non-solution-aware config objects.</td>
+<td><a href="../../alm/config-data-migration/#dgt-alm-120">Config &amp; Reference Data Migration</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="operations-ops">Operations (<code>OPS</code>)<a class="headerlink" href="#operations-ops" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Statement</th>
+<th>Defined in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#dgt-ops-010" id="dgt-ops-010"><code>DGT-OPS-010</code></a></td>
+<td>Enable Application Insights integration for every production environment.</td>
+<td><a href="../../operations/monitoring/#dgt-ops-010">Monitoring &amp; Telemetry</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-ops-020" id="dgt-ops-020"><code>DGT-OPS-020</code></a></td>
+<td>Every production environment has the monitoring baseline (plugin failures/time, flow failures, checker trend, deployment history).</td>
+<td><a href="../../operations/monitoring/#dgt-ops-020">Monitoring &amp; Telemetry</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-ops-030" id="dgt-ops-030"><code>DGT-OPS-030</code></a></td>
+<td>Define DLP policies at the environment-group or tenant level appropriate to the customer's risk posture.</td>
+<td><a href="../../operations/governance-dlp/#dgt-ops-030">Governance &amp; DLP</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-ops-040" id="dgt-ops-040"><code>DGT-OPS-040</code></a></td>
+<td>Don't customize outside development environments — rely on Managed Environments to enforce this.</td>
+<td><a href="../../operations/governance-dlp/#dgt-ops-040">Governance &amp; DLP</a></td>
+</tr>
+<tr>
+<td><a href="#dgt-ops-050" id="dgt-ops-050"><code>DGT-OPS-050</code></a></td>
+<td>Scope production access to what's needed for support/troubleshooting, not standing System Administrator.</td>
+<td><a href="../../operations/governance-dlp/#dgt-ops-050">Governance &amp; DLP</a></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 7, 2026 07:29:50 UTC">July 7, 2026</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 7, 2026 07:29:50 UTC">July 7, 2026</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Reference">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Reference
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../dgtp-commands/" class="md-footer__link md-footer__link--next" aria-label="Next: dgtp Command Reference">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                dgtp Command Reference
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; DIGITALL Nature
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/DIGITALLNature/DIGITALLNature.github.io/" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.tracking", "navigation.instant", "navigation.instant.progress", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.action.edit", "content.code.copy", "content.code.annotate", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
