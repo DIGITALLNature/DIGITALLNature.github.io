@@ -2,12 +2,11 @@ name: Deploy guidelines site
 
 on:
   push:
-    branches: [main]
-
+    branches:
+      - main
 concurrency:
   group: mkdocs-deploy
   cancel-in-progress: true
-
 permissions:
   contents: write
 jobs:
@@ -17,13 +16,16 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0   # full history, needed for git-revision-date-localized
-
       - uses: actions/setup-python@v5
         with:
           python-version: "3.x"
-
+      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
+      - uses: actions/cache@v4
+        with:
+          key: mkdocs-material-${{ env.cache_id }}
+          path: ~/.cache 
+          restore-keys: |
+            mkdocs-material-
       - run: pip install -r requirements.txt
-
       - run: mkdocs build --strict
-
       - run: mkdocs gh-deploy --force
