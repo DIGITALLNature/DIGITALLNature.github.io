@@ -136,7 +136,7 @@ directly in this list — they land on it and see the surrounding rules for cont
 | [`DGT-TST-030`](#dgt-tst-030){ #dgt-tst-030 } | Unit-test TypeScript web resource logic with Jest, mocking `Xrm` via `xrm-mock`. | [Client-side Testing](../testing/clientside-testing.md#dgt-tst-030) |
 | [`DGT-TST-040`](#dgt-tst-040){ #dgt-tst-040 } | A user story must meet the Definition of Ready before entering a sprint. | [Definition of Ready / Done](../testing/dor-dod.md#dgt-tst-040) |
 | [`DGT-TST-050`](#dgt-tst-050){ #dgt-tst-050 } | A user story must meet the Definition of Done, including passing tests and updated documentation, to be closed. | [Definition of Ready / Done](../testing/dor-dod.md#dgt-tst-050) |
-| [`DGT-TST-060`](#dgt-tst-060){ #dgt-tst-060 } | Activate each release wave's Early Access in a sandbox and run a regression before the wave reaches production. | [Testing & Quality](../testing/index.md#dgt-tst-060) |
+| [`DGT-TST-060`](#dgt-tst-060){ #dgt-tst-060 } | Activate each release wave's Early Access in a sandbox and run a regression before the wave reaches production. | [Performance & Release Waves](../testing/performance-and-release-waves.md#dgt-tst-060) |
 
 ## ALM & Deployment (`ALM`)
 

@@ -22,7 +22,8 @@ need a restore. Audit logs and attachments are the usual silent drivers; see
 Make a deprecation review a recurring ritual (e.g. once per sprint or monthly): check
 [Microsoft's "important changes coming" page](https://learn.microsoft.com/en-us/power-platform/important-changes-coming)
 and the release wave notes against what the project actually uses, and turn hits into backlog
-items. This pairs with the [release wave regression](../testing/index.md#release-wave-regression)
+items. This pairs with the
+[release wave regression](../testing/performance-and-release-waves.md#release-wave-regression)
 in a sandbox — the radar tells you what to look for; the regression run tells you whether it
 bites.
 

@@ -115,5 +115,6 @@ Assert.That(plugin.Result, Is.EqualTo(ExecutionResult.Ok));
 |---|---|
 | Configure tables, forms, security (low-code) | [Customizing](customizing/index.md) |
 | Write a form/ribbon script | [TypeScript Web Resources](coding/clientside/typescript-webresources.md) |
+| Automate with a cloud flow | [Power Automate Flows](coding/flows.md) |
 | Wire this into a build/release pipeline | [ALM & Deployment](alm/index.md) |
 | Look up a `dgtp` command | [dgtp Command Reference](reference/dgtp-commands.md) |

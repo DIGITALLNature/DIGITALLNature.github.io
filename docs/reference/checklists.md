@@ -49,7 +49,8 @@
 Beyond the regular pre-deployment checklist, a first production go-live needs (see
 [Microsoft's go-live checklist](https://learn.microsoft.com/en-us/dynamics365/guidance/implementation-guide/prepare-go-live-checklist)):
 
-- [ ] UAT signed off; [performance test](../testing/index.md#performance-testing-before-go-live)
+- [ ] UAT signed off;
+      [performance test](../testing/performance-and-release-waves.md#performance-testing-before-go-live)
       under realistic load passed.
 - [ ] Data migration rehearsed with a dry run, including throughput measurement — factor
       [service protection limits](../coding/cloud-integration.md#dataverse-service-protection-limits)

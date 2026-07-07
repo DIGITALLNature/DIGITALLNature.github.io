@@ -144,6 +144,7 @@ nav:
       - Solution Checker: testing/solution-checker.md
       - Client-side Testing: testing/clientside-testing.md
       - Definition of Ready / Done: testing/dor-dod.md
+      - Performance & Release Waves: testing/performance-and-release-waves.md
   - ALM & Deployment:
       - alm/index.md
       - Source Control: alm/source-control.md
