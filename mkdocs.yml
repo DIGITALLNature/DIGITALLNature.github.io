@@ -1,0 +1,166 @@
+site_name: DIGITALL - Microsoft BizApps Guidelines
+site_description: Project guidelines for all audiences working on Microsoft Power Platform or Dataverse projects at DIGITALL.
+site_url: https://digitallnature.github.io/
+
+copyright: Copyright &copy; DIGITALL Nature
+
+theme:
+  name: material
+  language: en
+  logo: assets/images/DIGITALL_clover_white.png
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - navigation.tracking
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.footer
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - content.action.edit
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+
+extra_css:
+  - assets/stylesheets/extra.css
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - footnotes
+  - tables
+  - toc:
+      permalink: true
+      title: On this page
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+
+plugins:
+  - search
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: date
+  - tags
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/DIGITALLNature/DIGITALLNature.github.io/
+nav:
+  - Home: index.md
+  - Quickstart: quickstart.md
+  - Foundation:
+      - foundation/index.md
+      - Scope & Principles: foundation/scope-and-principles.md
+      - Rule Notation: foundation/rule-notation.md
+      - Architecture Decision Records: foundation/architecture-decision-records.md
+      - Governance & Contribution: foundation/governance.md
+      - Glossary: foundation/glossary.md
+  - Architecture:
+      - architecture/index.md
+      - Solution Architecture: architecture/solution-architecture.md
+      - Publisher & Prefix: architecture/publisher-and-prefix.md
+      - Environment Strategy: architecture/environment-strategy.md
+      - Deployment Approach (Decision): architecture/deployment-approach.md
+      - Solution Concept (Carrier/Workbench): architecture/solution-concept.md
+  - Setup & Onboarding:
+      - setup/index.md
+      - Toolchain: setup/toolchain.md
+      - dgtp CLI (Install & Profiles): setup/dgtp-cli.md
+      - Dataverse Environment: setup/dataverse-environment.md
+      - Repository Bootstrap: setup/repository-bootstrap.md
+  - Customizing:
+      - customizing/index.md
+      - Naming Conventions: customizing/naming-conventions.md
+      - Tables, Columns & Relationships: customizing/tables-columns-relationships.md
+      - Forms, Views & BPF: customizing/forms-views-bpf.md
+      - Command Bar: customizing/command-bar.md
+      - Themes & Icons: customizing/themes-and-icons.md
+      - Env Variables & Connection References: customizing/envvars-connectionrefs.md
+      - Security Model: customizing/security-model.md
+  - Coding:
+      - Server-side:
+          - coding/serverside/index.md
+          - Project Setup: coding/serverside/project-setup.md
+          - Plugin Packages: coding/serverside/plugin-packages.md
+          - DIGITALL Assembly (Digitall.APower): coding/serverside/digitall-assembly.md
+          - Registration Attributes: coding/serverside/registration-attributes.md
+          - Early-Bound Models (dgtp): coding/serverside/early-binding.md
+          - Custom API & Data Providers: coding/serverside/custom-api.md
+          - Patterns & Pitfalls: coding/serverside/patterns.md
+      - Client-side:
+          - coding/clientside/index.md
+          - TypeScript Web Resources: coding/clientside/typescript-webresources.md
+          - PCF Controls: coding/clientside/pcf.md
+          - TS Model Generation (dgtp): coding/clientside/model-generation.md
+      - Cloud & Integration: coding/cloud-integration.md
+      - Power Automate Flows: coding/flows.md
+  - Testing & Quality:
+      - testing/index.md
+      - Server-side Unit Testing: testing/unit-testing-serverside.md
+      - Solution Checker: testing/solution-checker.md
+      - Client-side Testing: testing/clientside-testing.md
+      - Definition of Ready / Done: testing/dor-dod.md
+      - Performance & Release Waves: testing/performance-and-release-waves.md
+  - ALM & Deployment:
+      - alm/index.md
+      - Source Control: alm/source-control.md
+      - Versioning: alm/versioning.md
+      - Build Pipeline: alm/build-pipeline.md
+      - Pre- & Post-Deployment Tasks: alm/pre-post-deployment.md
+      - Power Platform Pipelines: alm/power-platform-pipelines.md
+      - Azure DevOps: alm/azure-devops.md
+      - GitHub Actions: alm/github-actions.md
+      - Config & Reference Data Migration: alm/config-data-migration.md
+  - Operations:
+      - operations/index.md
+      - Monitoring & Telemetry: operations/monitoring.md
+      - Governance & DLP: operations/governance-dlp.md
+  - Reference:
+      - reference/index.md
+      - Rules Index: reference/rules.md
+      - dgtp Command Reference: reference/dgtp-commands.md
+      - DIGITALL Validators: reference/validators.md
+      - Templates: reference/templates.md
+      - Checklists: reference/checklists.md
