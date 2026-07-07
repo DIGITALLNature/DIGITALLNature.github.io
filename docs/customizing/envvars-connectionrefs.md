@@ -24,9 +24,10 @@ ALM-side handling on this page.
 - Naming: `prfx_..._env` (lowercase), e.g. `dgt_foreign_system_url_env`,
   `dgt_organization_friendlyname_env`.
 - **`DGT-CUS-210`**{ #dgt-cus-210 } — In development, create the environment variable **definition only** (no value) and deploy
-  that. If you set a value while creating it in the dev environment, remove it from the
-  solution before export — "Remove from this solution" works while the variable is still in
-  the same environment it was created in.
+  that. If you set a value while creating it in the dev environment, remove the **current
+  value** (a separate record from the definition) before export — open the variable in the
+  maker portal and delete its value. Take care not to remove the definition itself from the
+  solution.
 - On the target environment, set the actual value either:
     - via an unmanaged "values" solution layered on top, or
     - directly during manual deployment in the modern deployment settings UI, or

@@ -24,8 +24,8 @@ Plugin **packages** (NuGet dependent assemblies) are the standard — scaffold o
 then add the two DIGITALL packages:
 
 ```shell
-pac plugin init --outputDirectory ./src/Plugins/Invoice --skip-signing
-cd ./src/Plugins/Invoice
+pac plugin init --outputDirectory ./src/Plugins/Contacts --skip-signing
+cd ./src/Plugins/Contacts
 dotnet add package Digitall.Plugins                # Executor base class
 dotnet add package Digitall.Plugins.Registration   # declarative step registration
 ```
@@ -85,7 +85,7 @@ public class ContactValidationPlugin : Executor
 
 ```shell
 dotnet build -c Release
-dgtp push ./bin/Release/Invoice.1.0.0.nupkg --solution dgt_myproject_core --publish
+dgtp push ./bin/Release/Contacts.1.0.0.nupkg --solution dgt_myproject_plugins --publish
 ```
 
 `dgtp push` creates or updates the **plugin package** (matched by name + version) **and**

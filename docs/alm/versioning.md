@@ -51,7 +51,9 @@ whether to create or upgrade the `PluginPackage`/`PluginAssembly` records — se
 including dev-loop builds — Dataverse only re-imports a package whose version is higher than
 what's already registered. We bump the `Revision` segment automatically on every CI build
 using the build number (see below); `Major.Minor.Build` follow the same release cadence as the
-solution they ship in.
+solution they ship in. Note the deliberate difference from the solution version above: for the
+**solution**, `Revision` is reserved for hotfixes; for the **assembly**, `Revision` is the
+per-build counter.
 
 ```xml title="Directory.Build.props (excerpt)"
 <PropertyGroup>

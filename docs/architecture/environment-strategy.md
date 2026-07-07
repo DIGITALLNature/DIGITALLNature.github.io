@@ -10,9 +10,11 @@
 | UAT | Customer/business acceptance | Required for pipelines targets |
 | Production | Live system | Required for pipelines targets |
 
-**`DGT-ARC-080`**{ #dgt-arc-080 } — Four target environments (dev → test → UAT → prod) is the common baseline; three is the
-minimum workable setup. Scale up (e.g. a dedicated performance/load environment) based on
-project size, not as a default.
+**`DGT-ARC-080`**{ #dgt-arc-080 } — Four environments (dev → test → UAT → prod) is the common baseline; three is the
+minimum workable setup. The **Build** environment in the table is an addition on top of that
+baseline for projects whose CI pipeline needs a pristine export source — it is not one of the
+four. Scale up (e.g. a dedicated performance/load environment) based on project size, not as a
+default.
 
 Before finalizing the set, agree uptime and recovery targets (RTO/RPO) for the workload with
 the customer — they determine whether the baseline is enough (see
@@ -22,10 +24,10 @@ and they feed directly into the backup and restore approach below.
 ## Managed Environments are the default, not an opt-in
 
 **`DGT-ARC-090`**{ #dgt-arc-090 } — Enable **[Managed Environments](https://learn.microsoft.com/en-us/power-platform/admin/managed-environment-overview)** on every environment used as a Power Platform Pipelines target
-as part of initial environment setup — not as a reaction to a later governance push. See the
-warning in [Power Platform Pipelines](../alm/power-platform-pipelines.md) about Microsoft's
-February 2026 automatic-enablement change: environments that aren't already managed by then get
-enabled for you, so getting ahead of it is simpler than discovering it happened.
+as part of initial environment setup — not as a reaction to a later governance push. Since
+February 2026, Microsoft auto-enables Managed Environments on pipeline target environments
+anyway (see [Power Platform Pipelines](../alm/power-platform-pipelines.md)) — enabling them
+yourself, deliberately, means the switch happens on your schedule with the settings you chose.
 
 ## Per-developer environments
 
@@ -42,8 +44,9 @@ Decide the backup and restore approach as part of the environment strategy, not 
 incident happens. The platform behaviors worth planning around (see
 [Microsoft's backup/restore documentation](https://learn.microsoft.com/en-us/power-platform/admin/backup-restore-environments)):
 
-- System backups are continuous, but **retention differs**: production environments (as
-  Managed Environments) can retain up to 28 days — sandboxes only 7.
+- System backups are continuous, but **retention differs**: production-type environments
+  retain 7 days by default and — as Managed Environments — can be configured up to 28 days;
+  sandboxes always 7.
 - There is **no restore directly onto production**: the path is switching production to
   sandbox type, restoring, and switching back — which also drops it to 7-day retention while
   it is a sandbox. Rehearse this once before you need it.

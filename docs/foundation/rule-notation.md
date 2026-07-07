@@ -32,6 +32,11 @@ Numbers are assigned per area, ascending, and are **never reused or renumbered**
 rule is later removed — a removed rule ID is retired, not recycled, so old references in
 project documentation stay unambiguous (they'll just point to a rule marked as retired).
 
+!!! note "One-time renumbering during the draft phase (July 2026)"
+    While this guideline was still a draft and no project documentation referenced its rule
+    IDs, the entire scheme was renumbered once (July 2026) so that IDs follow the chapter
+    order. The stability guarantee above applies from that point on.
+
 ## Example
 
 > **`DGT-SRV-060`** — Plugin and Custom API projects target the Dataverse plugin package

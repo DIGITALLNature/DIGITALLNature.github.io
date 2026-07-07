@@ -6,9 +6,9 @@ Install these before opening the project for the first time.
 
 | Tool | Notes |
 |---|---|
-| [.NET SDK](https://dotnet.microsoft.com/download) 8.0+ | Required by `dgtp` itself; plugin projects still target `net462` at runtime — see [Project Setup](../coding/serverside/project-setup.md). |
+| [.NET SDK](https://dotnet.microsoft.com/download) 10.0+ | Required by `dgtp` itself (a .NET 10 global tool — see [Command Reference](../reference/dgtp-commands.md)); plugin projects still target `net462` at runtime — see [Project Setup](../coding/serverside/project-setup.md). |
 | [Node.js](https://nodejs.org) LTS | For TypeScript web resources and PCF. Use whatever the current LTS is at project start, pinned via `.nvmrc`/`engines` — don't hardcode an old minor version in this guideline or in a `package.json`. |
-| [Power Platform CLI (`pac`)](https://aka.ms/PowerAppsCLI) | Install via the **Power Platform Tools** VS Code extension, or standalone. Keep it updated: `pac install latest`. |
+| [Power Platform CLI (`pac`)](https://aka.ms/PowerAppsCLI) | Install via the **Power Platform Tools** VS Code extension, as a .NET tool, or via the Windows MSI. Keep it updated: `dotnet tool update -g Microsoft.PowerApps.CLI.Tool` for the .NET-tool install, `pac install latest` for the MSI. |
 | [`dgtp`](https://github.com/DIGITALLNature/DigitallPower) | `dotnet tool install -g dgt.power` — see [dgtp CLI](dgtp-cli.md). |
 | [XrmToolBox](https://www.xrmtoolbox.com/) | For anything with a good plugin already (ribbon/command bar edits, bulk metadata changes) instead of hand-rolling it. |
 

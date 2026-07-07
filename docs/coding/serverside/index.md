@@ -19,10 +19,10 @@ that's the default for new projects.
 
 ```mermaid
 flowchart LR
-    A[".csproj\n(plugin package)"] --> B["Digitall.Plugins\nbase classes"]
-    B --> C["Plugin / Custom API\nclasses"]
-    C --> D["[PluginRegistration] /\n[CustomApiRegistration]\nattributes"]
-    D --> E["dgtp push\n→ .nupkg → Dataverse"]
+    A[".csproj<br/>(plugin package)"] --> B["Digitall.Plugins<br/>base classes"]
+    B --> C["Plugin / Custom API<br/>classes"]
+    C --> D["[PluginRegistration] /<br/>[CustomApiRegistration]<br/>attributes"]
+    D --> E["dgtp push<br/>→ .nupkg → Dataverse"]
 ```
 
 A project references **`Digitall.Plugins`** for the base plugin/Custom API/workflow abstraction,

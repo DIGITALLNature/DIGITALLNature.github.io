@@ -23,7 +23,9 @@ Stack multiple attributes on one class to register multiple steps from a single 
 
 **Mandatory (constructor) parameters:** `mode` (`PluginExecutionMode.Synchronous` /
 `Asynchronous`), `messageName` (e.g. `"Create"`, `"Update"`), `stage`
-(`PluginExecutionStage.PreValidation` / `PreOperation` / `MainOperation` / `PostOperation`).
+(`PluginExecutionStage.PreValidation` / `PreOperation` / `PostOperation` — the enum also
+contains `MainOperation`, but that stage is reserved for the platform operation itself; custom
+steps cannot register there).
 
 **Optional named parameters:** `PrimaryEntityName`, `SecondaryEntityName`, `FilterAttributes`
 (step only fires if one of these changed), `ExecutionOrder` (default `100`), `PreEntityImage` /

@@ -8,9 +8,10 @@ PCF — the [Power Apps component framework](https://learn.microsoft.com/en-us/p
 pac pcf init --namespace dgt.PCF --name MyControl --template field
 ```
 
-**`DGT-CLI-070`**{ #dgt-cli-070 } — Use `pac` (kept current via `pac install latest`) for scaffolding rather than copying an older
-project's structure by hand — the template evolves with platform changes (e.g. virtual control
-support, dataset vs. field control differences) faster than a guideline page can track.
+**`DGT-CLI-070`**{ #dgt-cli-070 } — Use a current `pac` (see [Toolchain](../../setup/toolchain.md) for how to keep it updated)
+for scaffolding rather than copying an older project's structure by hand — the template evolves
+with platform changes (e.g. virtual control support, dataset vs. field control differences)
+faster than a guideline page can track.
 
 ## Build into a solution like any other web resource component
 

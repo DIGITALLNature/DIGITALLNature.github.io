@@ -24,7 +24,7 @@ compiled server-side artifacts, because it does more than copy an assembly: it r
 [registration attributes](../coding/serverside/registration-attributes.md).
 
 ```shell
-dgtp push ./bin/Release/MyPlugins.nupkg --solution dgt_myproject_core --publish
+dgtp push ./bin/Release/MyPlugins.nupkg --solution dgt_myproject_plugins --publish
 ```
 
 Depending on whether `Target` is a `.nupkg`, a plain `.dll`, or a web-resource folder, `dgtp
@@ -42,7 +42,7 @@ The full per-target-type breakdown and the supported web-resource extensions are
 ### Web resource push
 
 ```shell
-dgtp push ./WebResources --solution dgt_myproject_core --publish --delete-obsolete
+dgtp push ./WebResources --solution dgt_myproject_client --publish --delete-obsolete
 ```
 
 When `Target` is a folder, `dgtp push` walks it and creates/updates web resources in the given

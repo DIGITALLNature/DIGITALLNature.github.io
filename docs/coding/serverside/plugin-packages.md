@@ -9,7 +9,9 @@ a supported mechanism.
 
 - Bundle your plugin assembly together with any NuGet dependencies into a single `.nupkg`,
   uploaded as one unit and stored in the `PluginPackage` table.
-- No signing required.
+- No signing required (exception: plugins using a
+  [managed identity](custom-api.md#managed-identity) still need a strong-named assembly — see
+  [Project Setup → Signing](project-setup.md#signing)).
 - Supports including non-assembly resources (e.g. localized string files) alongside code,
   something ILMerge never handled cleanly.
 - This is the path Microsoft is actively investing in; classic single-assembly registration is
@@ -64,7 +66,7 @@ Use [`dgtp push`](../../alm/pre-post-deployment.md#dgtp-push-in-depth) rather th
 Registration Tool for anything beyond local, one-off experimentation:
 
 ```shell
-dgtp push ./bin/Release/MyPlugins.1.4.27.nupkg --solution dgt_myproject_core --publish
+dgtp push ./bin/Release/MyPlugins.1.4.27.nupkg --solution dgt_myproject_plugins --publish
 ```
 
 `dgtp push` detects whether the package already exists in the target environment (by name and

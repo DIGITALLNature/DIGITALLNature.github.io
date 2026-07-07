@@ -20,6 +20,11 @@ on GitHub rather than Azure DevOps.
 
 ## Example workflow
 
+For readability the example uses a single solution (`dgt_myproject_core`); a real project
+pushes and exports per layered solution (see
+[Solution Architecture](../architecture/solution-architecture.md)) — same steps, repeated per
+solution.
+
 ```yaml title=".github/workflows/build.yml"
 name: build
 
@@ -37,7 +42,7 @@ jobs:
 
       - uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: "8.x"
+          dotnet-version: "10.x"
 
       - uses: actions/setup-node@v4
         with:

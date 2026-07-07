@@ -19,7 +19,11 @@ stream, or where the customer already standardizes on Azure DevOps.
 [Source Control](source-control.md)) rather than classic editor-defined pipelines — this keeps
 the pipeline definition reviewable in the same pull request as the code change it affects.
 
-A minimal pipeline follows the [Build Pipeline](build-pipeline.md) step order:
+A minimal pipeline follows the [Build Pipeline](build-pipeline.md) step order. For readability
+the example uses a single solution (`dgt_myproject_core`); a real project pushes and exports
+per layered solution (see
+[Solution Architecture](../architecture/solution-architecture.md)) — same steps, repeated per
+solution:
 
 ```yaml title="pipelines/build.yml"
 trigger:
@@ -41,7 +45,7 @@ stages:
         steps:
           - task: UseDotNet@2
             inputs:
-              version: "8.x"
+              version: "10.x"
 
           - task: NodeTool@0
             inputs:

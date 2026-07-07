@@ -27,10 +27,9 @@ is missing a step.
    [Early-Bound Models](../coding/serverside/early-binding.md).
 
 4. **Bump the solution version in the build environment.**
-   `dgtp maintenance solution-version <solution> --build` (or `--revision` for a hotfix). Must
-   run before solution export (step 7), and after codegeneration only if codegeneration itself
-   doesn't depend on the new version (it doesn't) — ordering relative to step 3 is therefore
-   flexible, but both must complete before step 7.
+   `dgtp maintenance solution-version <solution> --build` (or `--revision` for a hotfix). This
+   step and codegeneration (step 3) don't depend on each other and can run in either order —
+   but both must complete before the solution export in step 7.
 
 5. **Build & package server-side projects.**
    Compile plugin/Custom API projects, producing the plugin package `.nupkg` (see
@@ -93,11 +92,13 @@ The two steps most often placed wrong:
 ## CI credentials
 
 **`DGT-ALM-070`**{ #dgt-alm-070 } — Use **token-based** (`--msal`, service principal / client secret) `dgtp` profiles for CI — never
-store a personal account's credentials in a pipeline. In practice CI needs no stored profile at
-all: set the `dgtp:xrm:connection` environment variable from a pipeline secret (see
-[dgtp CLI → Connecting](../setup/dgtp-cli.md#connecting-profile-or-connection-string)). See
-[Azure DevOps](azure-devops.md#pipeline-structure) and
-[GitHub Actions](github-actions.md#secrets-authentication) for how those secrets are wired in.
+store a personal account's credentials in a pipeline. Two equivalent wirings satisfy this:
+create a token-based profile in the pipeline from a secret (`dgtp profile create build "..."
+--msal`, as the [Azure DevOps](azure-devops.md#pipeline-structure) and
+[GitHub Actions](github-actions.md#secrets-authentication) examples do), or skip the profile
+entirely and set the `dgtp:xrm:connection` environment variable from the secret (see
+[dgtp CLI → Connecting](../setup/dgtp-cli.md#connecting-profile-or-connection-string)). Either
+way, the credential is a service principal held in the pipeline's secret store.
 
 ## Local builds (developer workstation)
 

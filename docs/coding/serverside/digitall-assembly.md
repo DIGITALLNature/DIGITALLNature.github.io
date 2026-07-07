@@ -64,8 +64,10 @@ rather than relying purely on exceptions for control flow. This is also what
 unit tests, so use it deliberately rather than always returning `Ok`.
 
 `Executor.Execute(IServiceProvider)` (the actual `IPlugin.Execute`) clones itself before running
-your code — following Microsoft's "plugins must be stateless" guidance — so you never need to
-worry about instance fields leaking state between invocations of the same registered step.
+your code — following Microsoft's "plugins must be stateless" guidance — so **instance** fields
+never leak state between invocations of the same registered step. `static` fields are not
+protected by this; keep them out of plugins entirely (see
+[`DGT-SRV-130`](patterns.md#dgt-srv-130)).
 
 !!! tip "Prefer a lighter base, or already have a plain `IPlugin`? Use `PluginSkeleton`"
     `PluginSkeleton` is the package's recommended abstract `IPlugin` base for new plugins — it
@@ -95,6 +97,7 @@ worry about instance fields leaking state between invocations of the same regist
 | `GetInputParameter<T>` / `GetOutputParameter<T>` / `SetOutputParameter<T>` | Generic, typed access to the message request/response parameters — used for Custom APIs and actions. |
 | `Query(out QueryExpression, out ColumnSet)` (+ `QueryByAttribute`/`FetchExpression` overloads) | Typed access to a Custom API's `Query` input, with column set inference. |
 | `Core` | The raw `IPluginExecutionContext`, for anything not surfaced as a typed property above. |
+| `ServiceProvider` | The raw `IServiceProvider` — the gateway to `GetTracingService()`, `GetLogger()`, and the other extension methods. |
 | `ProcessName` | A ready-made `"CRM.{Type}.{Message}.{Mode}.{Stage}.{Depth}"` string for logging/telemetry correlation. |
 
 `Executor` itself doesn't wrap a `Trace(...)` convenience method — call

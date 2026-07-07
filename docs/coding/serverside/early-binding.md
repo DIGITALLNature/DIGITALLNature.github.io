@@ -54,10 +54,10 @@ one run; suppress whichever you don't need.
 }
 ```
 
-`SuppressNullableSupport: true` is the right default for **plugin** projects — plugins target
-`net462` (see [Project Setup](project-setup.md)), and disabling C# 8+ nullable-reference-type
-generation keeps the generated model compatible with that constraint and with
-[dependent-plugin shared models](patterns.md).
+`SuppressNullableSupport: true` is the right default for **plugin** projects — the plugin
+`.csproj` sets `<Nullable>disable</Nullable>` (see [Project Setup](project-setup.md)), and
+generating the model without nullable-reference-type annotations keeps it consistent with that
+setting and with [dependent-plugin shared models](patterns.md), which must all agree on it.
 
 ## Scoping generation to what you need
 

@@ -76,8 +76,8 @@ directly in this list — they land on it and see the surrounding rules for cont
 | [`DGT-SRV-010`](#dgt-srv-010){ #dgt-srv-010 } | Plugin and Custom API assemblies target **`net462`**. | [Project Setup](../coding/serverside/project-setup.md#dgt-srv-010) |
 | [`DGT-SRV-020`](#dgt-srv-020){ #dgt-srv-020 } | Use the **SDK-style** project format, not the legacy non-SDK `.csproj`. | [Project Setup](../coding/serverside/project-setup.md#dgt-srv-020) |
 | [`DGT-SRV-030`](#dgt-srv-030){ #dgt-srv-030 } | Reference `Microsoft.CrmSdk.CoreAssemblies` with `PrivateAssets="all"` — not `Dataverse.Client`. | [Project Setup](../coding/serverside/project-setup.md#dgt-srv-030) |
-| [`DGT-SRV-040`](#dgt-srv-040){ #dgt-srv-040 } | Plugin packages are **not** signed (signing is only for classic single-assembly). | [Project Setup](../coding/serverside/project-setup.md#dgt-srv-040) |
-| [`DGT-SRV-050`](#dgt-srv-050){ #dgt-srv-050 } | One plugin/Custom API/workflow group per assembly, versioned independently. | [Project Setup](../coding/serverside/project-setup.md#dgt-srv-050) |
+| [`DGT-SRV-040`](#dgt-srv-040){ #dgt-srv-040 } | One plugin/Custom API/workflow group per assembly, versioned independently. | [Project Setup](../coding/serverside/project-setup.md#dgt-srv-040) |
+| [`DGT-SRV-050`](#dgt-srv-050){ #dgt-srv-050 } | Plugin packages are **not** signed (exceptions: classic single-assembly, managed identity). | [Project Setup](../coding/serverside/project-setup.md#dgt-srv-050) |
 | [`DGT-SRV-060`](#dgt-srv-060){ #dgt-srv-060 } | Plugin/Custom API projects use the plugin **package** (dependent-assembly `.nupkg`) format; ILMerge is not allowed. | [Plugin Packages](../coding/serverside/plugin-packages.md#dgt-srv-060) |
 | [`DGT-SRV-070`](#dgt-srv-070){ #dgt-srv-070 } | A plugin package/assembly belongs to exactly one solution. | [Plugin Packages](../coding/serverside/plugin-packages.md#dgt-srv-070) |
 | [`DGT-SRV-080`](#dgt-srv-080){ #dgt-srv-080 } | Inherit `Executor` and return a meaningful `ExecutionResult` (`Ok`/`Failure`/`Skipped`), not always `Ok`. | [DIGITALL Assembly](../coding/serverside/digitall-assembly.md#dgt-srv-080) |
@@ -161,6 +161,6 @@ directly in this list — they land on it and see the surrounding rules for cont
 |---|---|---|
 | [`DGT-OPS-010`](#dgt-ops-010){ #dgt-ops-010 } | Enable Application Insights integration for every production environment. | [Monitoring & Telemetry](../operations/monitoring.md#dgt-ops-010) |
 | [`DGT-OPS-020`](#dgt-ops-020){ #dgt-ops-020 } | Every production environment has the monitoring baseline (plugin failures/time, flow failures, checker trend, deployment history). | [Monitoring & Telemetry](../operations/monitoring.md#dgt-ops-020) |
-| [`DGT-OPS-030`](#dgt-ops-030){ #dgt-ops-030 } | Define DLP policies at the environment-group or tenant level and check connectors against them before development starts. | [Governance & DLP](../operations/governance-dlp.md#dgt-ops-030) |
+| [`DGT-OPS-030`](#dgt-ops-030){ #dgt-ops-030 } | Define DLP policies at the environment-group or tenant level appropriate to the customer's risk posture. | [Governance & DLP](../operations/governance-dlp.md#dgt-ops-030) |
 | [`DGT-OPS-040`](#dgt-ops-040){ #dgt-ops-040 } | Don't customize outside development environments — rely on Managed Environments to enforce this. | [Governance & DLP](../operations/governance-dlp.md#dgt-ops-040) |
 | [`DGT-OPS-050`](#dgt-ops-050){ #dgt-ops-050 } | Scope production access to what's needed for support/troubleshooting, not standing System Administrator. | [Governance & DLP](../operations/governance-dlp.md#dgt-ops-050) |

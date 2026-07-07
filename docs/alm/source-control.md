@@ -63,13 +63,13 @@ gitGraph
     commit
     commit
     checkout develop
-    merge feature/new-feature-a tag: "CI 1.4.26"
+    merge feature/new-feature-a tag: "v1.4.26"
     checkout feature/new-feature-b
     commit
     checkout develop
-    merge feature/new-feature-b tag: "CI 1.4.27"
+    merge feature/new-feature-b tag: "v1.4.27"
     checkout main
-    merge develop tag: "Release 1.4.0"
+    merge develop tag: "v1.4.27 (release)"
 ```
 
 - `main` reflects production.

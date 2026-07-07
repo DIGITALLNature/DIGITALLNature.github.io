@@ -59,7 +59,7 @@ to use [plugin packages](plugin-packages.md).
 
 ## One project per logical unit, versioned independently
 
-**`DGT-SRV-050`**{ #dgt-srv-050 } — Each plugin/Custom API/workflow "group" lives in its own assembly, including
+**`DGT-SRV-040`**{ #dgt-srv-040 } — Each plugin/Custom API/workflow "group" lives in its own assembly, including
 its own version — don't merge unrelated functional areas into one assembly just because they're both plugins.
 This keeps the version bump described in [Versioning](../../alm/versioning.md) meaningful: a
 version increase tells you specifically what changed, not "something somewhere in the project
@@ -121,8 +121,10 @@ See [Templates](../../reference/templates.md) for the full file.
 
 ## Signing
 
-**`DGT-SRV-040`**{ #dgt-srv-040 } — Plugin packages (the default — see [Plugin Packages](plugin-packages.md))
-**do not require signing**. Only sign assemblies if a project is still on the classic single-assembly
-registration format, in which case follow the standard strong-name signing approach
+**`DGT-SRV-050`**{ #dgt-srv-050 } — Plugin packages (the default — see [Plugin Packages](plugin-packages.md))
+**do not require signing**. Sign assemblies only where something specifically demands a strong
+name: projects still on the classic single-assembly registration format, and plugins using a
+[managed identity](custom-api.md#managed-identity) (the federated-identity trust is bound to
+the signed assembly). In those cases follow the standard strong-name signing approach
 (`AssemblyOriginatorKeyFile`, a `key.snk` committed per
 [Source Control](../../alm/source-control.md)).

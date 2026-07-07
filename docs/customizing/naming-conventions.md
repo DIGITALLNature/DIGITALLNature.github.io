@@ -16,7 +16,7 @@ type not explicitly listed below — the format is `[publisher]_[name][_type-suf
 | Global choice (option set) | `prfx_optionsetname_set` | `dgt_invoicestatus_set` |
 | Action | `prfx_some_action` | `dgt_send_reminder` |
 | Alternate key | `prfx_fieldname_key` (field name without prefix/suffix) | `dgt_accountnumber_key` |
-| Business Process Flow | `prfx_fieldname_process` | `dgt_accountnumber_process` |
+| Business Process Flow | `prfx_processname_process` | `dgt_leadqualification_process` |
 
 ## Column (field) suffixes
 

@@ -15,11 +15,11 @@ this page covers how we configure and extend it once that decision is made.
 - `Deployment Pipeline Administrator` to configure the pipeline; `Deployment Pipeline User` for
   makers who run it.
 
-!!! warning "Managed Environments are becoming mandatory"
-    Starting February 2026, Microsoft enables Managed Environments automatically for any
-    pipeline target environment that isn't already enabled. Don't treat this as optional or
-    defer it to "later" on new projects — enable Managed Environments on all pipeline targets
-    as part of environment setup, not as a reaction to a Message Center notice.
+!!! warning "Managed Environments are mandatory for pipeline targets"
+    Since February 2026, Microsoft enables Managed Environments automatically for any pipeline
+    target environment that isn't already enabled. Enable them yourself as part of environment
+    setup — deliberately, with the settings you chose — rather than letting the automatic
+    enablement decide the timing for you.
 
 ## Standard configuration
 

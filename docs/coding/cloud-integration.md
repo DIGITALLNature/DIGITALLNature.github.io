@@ -29,16 +29,18 @@ helper modules (removed in `2.0.0`; see
 another service means either the managed-identity path above or calling the target SDK/REST API
 directly with your own `HttpClient`.
 
-**`DGT-INT-020`**{ #dgt-int-020 } — Use a **single, lazily-created, shared `HttpClient`** (with
-connection keep-alive disabled, see below) regardless of which path you take — never create one
-per invocation. Per-call clients exhaust sockets under load and are one of the standard causes
-of intermittent outbound-call failures from plugins.
+**`DGT-INT-020`**{ #dgt-int-020 } — Use a **single, lazily-created, shared `HttpClient`**
+regardless of which path you take — never create one per invocation. Per-call clients exhaust
+sockets under load and are one of the standard causes of intermittent outbound-call failures
+from plugins.
 
 **`DGT-INT-030`**{ #dgt-int-030 } — Every external call from a plugin sets an **explicit
 timeout** (well under the two-minute sandbox budget, so *your* error handling runs instead of
-the sandbox killing the worker) and uses **`KeepAlive = false`** — the sandbox recycles
-processes, and kept-alive connections to a recycled worker surface as sporadic, unreproducible
-failures. See
+the sandbox killing the worker) and **disables connection keep-alive** — the sandbox recycles
+worker processes, and kept-alive connections to a recycled worker surface as sporadic,
+unreproducible failures. With `HttpClient` that means sending `Connection: close`
+(`DefaultRequestHeaders.ConnectionClose = true`); the legacy `HttpWebRequest.KeepAlive = false`
+form in Microsoft's sample achieves the same. See
 [Microsoft's guidance on external calls](https://learn.microsoft.com/en-us/power-apps/developer/data-platform/best-practices/business-logic/set-timeout-for-external-calls-from-plug-ins).
 
 ## Dataverse service protection limits
