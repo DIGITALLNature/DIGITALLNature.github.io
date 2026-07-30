@@ -3132,17 +3132,22 @@
 <p><a href="../scope-and-principles/#dgt-fnd-020"><code>DGT-FND-020</code></a> requires deviations from this guideline to
 be documented and justified — but a requirement without a format and a location tends to decay
 into scattered wiki pages and ticket comments. This chapter pins both down: fundamental
-decisions are recorded as <strong>Architecture Decision Records (ADRs)</strong>, in the project repository,
-in a fixed format.</p>
+decisions are recorded as <strong>Architecture Decision Records (ADRs)</strong>, in the project's primary
+documentation repository, in a fixed format.</p>
 <p>This also pays off for automation: rule checks (Solution Checker custom rules,
 <a href="../../reference/dgtp-commands/#analyze"><code>dgtp analyze</code></a>, pipeline linters) can reconcile a
 flagged violation against the project's ADR set and suppress findings that are covered by an
 accepted decision, instead of raising the same noise on every run.</p>
 <h2 id="where-adrs-live">Where ADRs live<a class="headerlink" href="#where-adrs-live" title="Permanent link">&para;</a></h2>
-<p><strong id="dgt-fnd-030"><code>DGT-FND-030</code></strong> — Every project maintains an ADR log in its main repository:
-one Markdown file per decision under <code>docs/decisions/</code>, named <code>NNNN-short-title.md</code> with an
-ascending, never-reused number. ADRs are version-controlled and reviewed like code — not kept
-in a wiki or a ticket system, where they detach from the state of the repository they describe.</p>
+<p><strong id="dgt-fnd-030"><code>DGT-FND-030</code></strong> — Every project maintains an ADR log in its primary documentation
+"repository":
+* either one Markdown file per decision under <code>docs/decisions/</code>, named <code>NNNN-short-title.md</code>
+(with an ascending, never-reused number), version-controlled and reviewed like code,
+* or as pages/articles in a wiki/documentation source (like Confluence), where they keep a similar name
+structure, like <code>NNNN-short-title</code>, so they can be referenced anywhere.</p>
+<p>If using a wiki/documentation page, ADRs tend to detach from the state of the repository they describe.
+Pay attention to include an update loop to review ADRs regularly.</p>
+<p>Avoid using ticket systems, as they're usually not a great match for ADRs.</p>
 <h2 id="when-an-adr-is-required">When an ADR is required<a class="headerlink" href="#when-an-adr-is-required" title="Permanent link">&para;</a></h2>
 <p><strong id="dgt-fnd-040"><code>DGT-FND-040</code></strong> — Fundamental decisions <strong>for or against a rule of this
 guideline</strong> require an ADR in
@@ -3196,7 +3201,7 @@ made during the story.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 7, 2026 07:29:50 UTC">July 7, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 30, 2026 22:06:09 UTC">July 30, 2026</span>
   </span>
 
     
