@@ -3,8 +3,8 @@
 [`DGT-FND-020`](scope-and-principles.md#dgt-fnd-020) requires deviations from this guideline to
 be documented and justified — but a requirement without a format and a location tends to decay
 into scattered wiki pages and ticket comments. This chapter pins both down: fundamental
-decisions are recorded as **Architecture Decision Records (ADRs)**, in the project repository,
-in a fixed format.
+decisions are recorded as **Architecture Decision Records (ADRs)**, in the project's primary
+documentation repository, in a fixed format.
 
 This also pays off for automation: rule checks (Solution Checker custom rules,
 [`dgtp analyze`](../reference/dgtp-commands.md#analyze), pipeline linters) can reconcile a
@@ -13,10 +13,17 @@ accepted decision, instead of raising the same noise on every run.
 
 ## Where ADRs live
 
-**`DGT-FND-030`**{ #dgt-fnd-030 } — Every project maintains an ADR log in its main repository:
-one Markdown file per decision under `docs/decisions/`, named `NNNN-short-title.md` with an
-ascending, never-reused number. ADRs are version-controlled and reviewed like code — not kept
-in a wiki or a ticket system, where they detach from the state of the repository they describe.
+**`DGT-FND-030`**{ #dgt-fnd-030 } — Every project maintains an ADR log in its primary documentation
+"repository":
+* either one Markdown file per decision under `docs/decisions/`, named `NNNN-short-title.md`
+(with an ascending, never-reused number), version-controlled and reviewed like code,
+* or as pages/articles in a wiki/documentation source (like Confluence), where they keep a similar name
+structure, like `NNNN-short-title`, so they can be referenced anywhere.
+
+If using a wiki/documentation page, ADRs tend to detach from the state of the repository they describe.
+Pay attention to include an update loop to review ADRs regularly.
+
+Avoid using ticket systems, as they're usually not a great match for ADRs.
 
 ## When an ADR is required
 
