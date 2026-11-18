@@ -20,8 +20,11 @@ you use for C#.
 
 ## Project-specific additions
 
+For AI assistants and authoring features, follow [AI-assisted engineering](../coding/ai-assisted-engineering.md) and verify
+[tooling approval](../reference/ai.md#approved-tooling) before enabling repository or tenant
+access. Inclusion in an IDE or platform does not establish approval.
+
 A given project may add to this list — e.g. a specific PCF generator version, a data migration
 tool, or Azure CLI for projects with a wider Azure footprint. Document additions in the
 project's own README rather than only in chat/onboarding conversations, so the next person who
 clones the repository doesn't have to ask.
-

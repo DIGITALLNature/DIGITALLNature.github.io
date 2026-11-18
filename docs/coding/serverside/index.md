@@ -14,6 +14,7 @@ that's the default for new projects.
 - [Early-Bound Models](early-binding.md) — generating `.cs` models with `dgtp`.
 - [Custom API & Data Providers](custom-api.md)
 - [Patterns & Pitfalls](patterns.md)
+- [AI-assisted Engineering](../ai-assisted-engineering.md) — context, verification, and review.
 
 ## What a new server-side project looks like
 

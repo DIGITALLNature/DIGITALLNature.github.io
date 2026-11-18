@@ -17,6 +17,10 @@ or a hybrid — this chapter covers *how* each of those is actually implemented 
 - [GitHub Actions](github-actions.md) — the high-code ALM path on GitHub.
 - [Config & Reference Data Migration](config-data-migration.md) — moving non-solution-aware
   data between environments.
+- [AI in the Delivery Lifecycle](ai-delivery-lifecycle.md) — assistance and human responsibility
+  from requirements to deployment.
+- [AI ALM & operations](ai.md) — normal controls for AI-assisted delivery,
+  plus versioned runtime AI assets, evaluations, and operational readiness.
 
 !!! note "Two ALM tracks, used in combination"
     In practice, most projects run **both** tracks at once: the platform's own pipelines for

@@ -6,6 +6,7 @@ Form scripts, ribbon/command bar scripts, and PCF controls, all written in TypeS
   form/library scripts.
 - [PCF Controls](pcf.md) — PowerApps Component Framework setup.
 - [TS Model Generation](model-generation.md) — generating typed models with `dgtp`.
+- [AI-assisted Engineering](../ai-assisted-engineering.md) — context, verification, and review.
 
 ## Baseline tooling
 

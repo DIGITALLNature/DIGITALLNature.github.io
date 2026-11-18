@@ -34,3 +34,7 @@
 - the change is deployed to the test environment;
 - the [Solution Checker](solution-checker.md) passes;
 - developer tests have been executed against the test environment.
+
+AI-assisted work follows the normal DoD; runtime AI also requires release-specific
+[evaluation](ai-evaluation.md) and [operational-readiness](../alm/ai.md) evidence.
+See [AI in the delivery lifecycle](../alm/ai-delivery-lifecycle.md).

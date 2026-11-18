@@ -8,3 +8,5 @@ bottom.
 - [DIGITALL Validators](validators.md) — reusable validation components.
 - [Templates](templates.md) — full copies of files shown as excerpts elsewhere.
 - [Checklists](checklists.md) — PR review, deployment, and onboarding checklists.
+- [AI Tooling & Checklists](ai.md) — tooling approval checks, worked examples, and
+  engineering / runtime AI release checklists.

@@ -10,10 +10,11 @@ This repository holds the source for that site — a [MkDocs](https://www.mkdocs
 reference for how we build, test, and ship Dataverse solutions. It covers:
 
 - **Foundation** — scope & principles, rule notation, governance, glossary
-- **Architecture** — solution architecture, publisher/prefix, environment strategy, deployment approach
+- **Architecture** — solution architecture, AI-enabled and agentic solutions, publisher/prefix,
+  environment strategy, deployment approach
 - **Setup & Onboarding** — toolchain, the `dgtp` CLI, environment provisioning, repository bootstrap
 - **Customizing** — naming, tables/columns/relationships, forms/views/BPF, command bar, themes, security
-- **Coding** — server-side (plugins, Custom APIs, `Digitall.Plugins`) and client-side (TypeScript web resources, PCF)
+- **Coding** — server-side (plugins, Custom APIs, `Digitall.Plugins`), client-side (TypeScript web resources, PCF), and AI-assisted engineering
 - **Testing & Quality**, **ALM & Deployment**, **Operations**, and a **Reference** section
 
 New to a project? Start with the [Quickstart](https://digitallnature.github.io/quickstart/).
