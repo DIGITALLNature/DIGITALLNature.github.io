@@ -7,6 +7,9 @@
 - [Definition of Ready / Done](dor-dod.md)
 - [Performance & Release Waves](performance-and-release-waves.md) — load testing before
   go-live, and regression against Microsoft's release waves.
+- [AI evaluation & testing](ai-evaluation.md) — behavioral evaluation for all
+  runtime AI capabilities, deterministic controls, and regression gates; includes
+  [agent-specific testing](../architecture/agentic-solutions.md#testing-strategy).
 
 These quality gates plug into [Build Pipeline](../alm/build-pipeline.md) at steps 8 and 9 — see
 that page for exactly where each one runs relative to packaging and deployment.

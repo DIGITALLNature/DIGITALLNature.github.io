@@ -37,6 +37,23 @@ directly in this list — they land on it and see the surrounding rules for cont
 | [`DGT-ARC-100`](#dgt-arc-100){ #dgt-arc-100 } | One development environment per developer once the team is larger than one or two people. | [Environment Strategy](../architecture/environment-strategy.md#dgt-arc-100) |
 | [`DGT-ARC-110`](#dgt-arc-110){ #dgt-arc-110 } | Decide the deployment approach (Pipelines / Azure DevOps / GitHub Actions / hybrid) once, early in the project. | [Deployment Approach](../architecture/deployment-approach.md#dgt-arc-110) |
 
+## AI engineering & solutions (`AI`)
+
+| Rule | Statement | Defined in |
+|---|---|---|
+| [`DGT-AI-010`](#dgt-ai-010){ #dgt-ai-010 } | Irreversible agent transactions require deterministic validation and authorization; high-impact actions require bound confirmation or approval. | [Agentic Solutions](../architecture/agentic-solutions.md#dgt-ai-010) |
+| [`DGT-AI-020`](#dgt-ai-020){ #dgt-ai-020 } | Business rules and authorization belong in deterministic services, not prompts. | [Agentic Solutions](../architecture/agentic-solutions.md#dgt-ai-020) |
+| [`DGT-AI-030`](#dgt-ai-030){ #dgt-ai-030 } | Source control and review prompts, instructions, agent components, configuration, and evaluation datasets. | [Agentic Solutions](../architecture/agentic-solutions.md#dgt-ai-030) |
+| [`DGT-AI-040`](#dgt-ai-040){ #dgt-ai-040 } | Document each tool/source identity, apply least privilege, and enforce authorization outside the model. | [Agentic Solutions](../architecture/agentic-solutions.md#dgt-ai-040) |
+| [`DGT-AI-050`](#dgt-ai-050){ #dgt-ai-050 } | Gate agent releases on versioned evaluations and deterministic tool/authorization tests with measurable acceptance thresholds. | [Agentic Solutions](../architecture/agentic-solutions.md#dgt-ai-050) |
+| [`DGT-AI-060`](#dgt-ai-060){ #dgt-ai-060 } | Production agents need operational ownership, usage/cost alerts, bounded execution/retries, and tested failure/handoff procedures. | [Agentic Solutions](../architecture/agentic-solutions.md#dgt-ai-060) |
+| [`DGT-AI-070`](#dgt-ai-070){ #dgt-ai-070 } | AI-generated artifacts follow the same review, testing, security, and human ownership standards as other work. | [AI-assisted engineering](../coding/ai-assisted-engineering.md#dgt-ai-070) |
+| [`DGT-AI-080`](#dgt-ai-080){ #dgt-ai-080 } | Never provide customer secrets, credentials, personal data, production exports, or other non-approved information to AI engineering tools. | [AI-assisted engineering](../coding/ai-assisted-engineering.md#dgt-ai-080) |
+| [`DGT-AI-090`](#dgt-ai-090){ #dgt-ai-090 } | Limit assistant context and permissions to the task; do not expose unrelated repositories or files. | [AI-assisted engineering](../coding/ai-assisted-engineering.md#dgt-ai-090) |
+| [`DGT-AI-100`](#dgt-ai-100){ #dgt-ai-100 } | Verify generated dependencies, APIs, commands, and platform capabilities against authoritative sources and the target environment. | [AI-assisted engineering](../coding/ai-assisted-engineering.md#dgt-ai-100) |
+| [`DGT-AI-110`](#dgt-ai-110){ #dgt-ai-110 } | Gate every runtime AI capability on versioned evaluations and deterministic integration/security tests with predefined measurable criteria. | [Evaluation & testing](../testing/ai-evaluation.md#dgt-ai-110) |
+| [`DGT-AI-120`](#dgt-ai-120){ #dgt-ai-120 } | Version runtime AI assets; require operational ownership, execution bounds, usage/cost alerts, and tested recovery. | [ALM & operations](../alm/ai.md#dgt-ai-120) |
+
 ## Customizing (`CUS`)
 
 | Rule | Statement | Defined in |

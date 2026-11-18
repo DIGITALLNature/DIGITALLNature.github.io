@@ -4,6 +4,10 @@ Decisions in this chapter are made once per project, early, and everything else 
 guideline builds on top of them.
 
 - [Solution Architecture](solution-architecture.md) — how solutions are layered and organized.
+- [AI-enabled Solutions](ai-enabled-solutions.md) — mechanism selection, grounding,
+  deterministic business logic, and security boundaries.
+- [Agentic Solutions & Copilot Studio](agentic-solutions.md) — enterprise Dataverse patterns,
+  governance, evaluation, and operations.
 - [Publisher & Prefix](publisher-and-prefix.md) — choosing a publisher and customization prefix.
 - [Environment Strategy](environment-strategy.md) — how many environments, and what each is for.
 - [Deployment Approach](deployment-approach.md) — Power Platform Pipelines vs. Azure

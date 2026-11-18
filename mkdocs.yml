@@ -93,6 +93,7 @@ nav:
   - Foundation:
       - foundation/index.md
       - Scope & Principles: foundation/scope-and-principles.md
+      - AI Engineering Principles: foundation/ai-principles.md
       - Rule Notation: foundation/rule-notation.md
       - Architecture Decision Records: foundation/architecture-decision-records.md
       - Governance & Contribution: foundation/governance.md
@@ -100,6 +101,8 @@ nav:
   - Architecture:
       - architecture/index.md
       - Solution Architecture: architecture/solution-architecture.md
+      - AI-enabled Solutions: architecture/ai-enabled-solutions.md
+      - Agentic Solutions & Copilot Studio: architecture/agentic-solutions.md
       - Publisher & Prefix: architecture/publisher-and-prefix.md
       - Environment Strategy: architecture/environment-strategy.md
       - Deployment Approach (Decision): architecture/deployment-approach.md
@@ -136,6 +139,7 @@ nav:
           - TS Model Generation (dgtp): coding/clientside/model-generation.md
       - Cloud & Integration: coding/cloud-integration.md
       - Power Automate Flows: coding/flows.md
+      - AI-assisted Engineering: coding/ai-assisted-engineering.md
   - Testing & Quality:
       - testing/index.md
       - Server-side Unit Testing: testing/unit-testing-serverside.md
@@ -143,6 +147,7 @@ nav:
       - Client-side Testing: testing/clientside-testing.md
       - Definition of Ready / Done: testing/dor-dod.md
       - Performance & Release Waves: testing/performance-and-release-waves.md
+      - AI Evaluation & Testing: testing/ai-evaluation.md
   - ALM & Deployment:
       - alm/index.md
       - Source Control: alm/source-control.md
@@ -153,6 +158,8 @@ nav:
       - Azure DevOps: alm/azure-devops.md
       - GitHub Actions: alm/github-actions.md
       - Config & Reference Data Migration: alm/config-data-migration.md
+      - AI in the Delivery Lifecycle: alm/ai-delivery-lifecycle.md
+      - AI ALM & Operations: alm/ai.md
   - Operations:
       - operations/index.md
       - Monitoring & Telemetry: operations/monitoring.md
@@ -164,3 +171,4 @@ nav:
       - DIGITALL Validators: reference/validators.md
       - Templates: reference/templates.md
       - Checklists: reference/checklists.md
+      - AI Tooling & Checklists: reference/ai.md

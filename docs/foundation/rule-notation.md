@@ -19,6 +19,7 @@ DGT-<AREA>-<NUMBER>
 |---|---|
 | `FND` | Foundation |
 | `ARC` | Architecture |
+| `AI` | AI-assisted engineering, AI-enabled solutions, and delivery |
 | `CUS` | Customizing |
 | `SRV` | Server-side coding |
 | `CLI` | Client-side coding |
